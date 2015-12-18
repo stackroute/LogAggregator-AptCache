@@ -27,13 +27,10 @@ function writeJson(jsonObj, fileName)
 function calculateLogMonth(fileName)
 {
     log_no_i = new Object();
-    for(var i=0; i<months.length; i++)
-    {
-        log_no_i[months[i]]=0;
-    }
     log_no_o = new Object();
     for(var i=0; i<months.length; i++)
     {
+        log_no_i[months[i]]=0;
         log_no_o[months[i]]=0;
     }
     jsonString = fs.readFileSync(fileName);
@@ -73,11 +70,13 @@ function calculateLogDay(fileName)
     for(var i=0; i<months.length; i++)
     {
         logs_no_i[months[i]] = new Object();
+        logs_no_o[months[i]] = new Object();
         if(even.indexOf(months[i])>-1)
         {
             for(var j=1; j<=30; j++)
             {
                 logs_no_i[months[i]][j+""]=0;
+                logs_no_o[months[i]][j+""]=0;
             }
         }
         else if(odd.indexOf(months[i])>-1)
@@ -85,6 +84,7 @@ function calculateLogDay(fileName)
             for(var j=1; j<=31; j++)
             {
                 logs_no_i[months[i]][j+""]=0;
+                logs_no_o[months[i]][j+""]=0;
             }
         }
         else
@@ -92,30 +92,6 @@ function calculateLogDay(fileName)
           for(var j=1; j<=28; j++)
           {
               logs_no_i[months[i]][j+""]=0;
-          }
-        }
-    }
-    for(var i=0; i<months.length; i++)
-    {
-        logs_no_o[months[i]] = new Object();
-        if(even.indexOf(months[i])>-1)
-        {
-            for(var j=1; j<=30; j++)
-            {
-                logs_no_o[months[i]][j+""]=0;
-            }
-        }
-        else if(odd.indexOf(months[i])>-1)
-        {
-            for(var j=1; j<=31; j++)
-            {
-                logs_no_o[months[i]][j+""]=0;
-            }
-        }
-        else
-        {
-          for(var j=1; j<=28; j++)
-          {
               logs_no_o[months[i]][j+""]=0;
           }
         }
