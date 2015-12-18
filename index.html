@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+		<!-- Website Title & Description for Search Engine purposes -->
+		<title></title>
+		<meta name="description" content="">
+
+		<!-- Mobile viewport optimized -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Bootstrap CSS -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+		<!-- Custom CSS -->
+		<link href="includes/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="includes/css/graphs.css">
+
+		<!-- Include Modernizr in the head, before any other Javascript -->
+		<script src="includes/js/modernizr-2.6.2.min.js"></script>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+
+		<div class="container" id="main">
+
+
+
+			<div class="row" id="moreInfo">
+				<div class="col-lg-12">
+					<h3>Apt-log statistics</h3>
+					<div class="tabbable">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#tab1" data-toggle="tab" class="tab-link" id="year_tab">Year-wise</a></li>
+							<li><a href="#tab2" data-toggle="tab" class="tab-link" id="month_tab">Month-wise</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab1">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Year<span class="caret"></span></button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#" id="y2015">2015</a></li>
+  </ul>
+</div>
+							</div>
+							<div class="tab-pane" id="tab2">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Year<span class="caret"></span></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <li><a href="#" id="y15">2015</a></li>
+                    </ul>
+                </div>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Month<span class="caret"></span></button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                    <li><a href="#" id="jan">January</a></li>
+                    <li><a href="#" id="feb">February</a></li>
+                    <li><a href="#" id="mar">March</a></li>
+                    <li><a href="#" id="apr">April</a></li>
+                    <li><a href="#" id="may">May</a></li>
+                    <li><a href="#" id="jun">June</a></li>
+                    <li><a href="#" id="jul">July</a></li>
+                    <li><a href="#" id="aug">August</a></li>
+                    <li><a href="#" id="sep">September</a></li>
+                    <li><a href="#" id="oct">October</a></li>
+                    <li><a href="#" id="nov">November</a></li>
+                    <li><a href="#" id="dec">December</a></li>
+                  </ul>
+              </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- end row -->
+			<hr>
+
+
+		</div><!-- end container -->
+
+
+
+	<!-- All Javascript at the bottom of the page for faster page loading -->
+
+	<!-- First try for the online version of jQuery-->
+	<script src="http://code.jquery.com/jquery.js"></script>
+
+	<!-- If no online access, fallback to our hardcoded version of jQuery -->
+	<script>window.jQuery || document.write('<script src="includes/js/jquery-1.8.2.min.js"><\/script>')</script>
+
+	<!-- Bootstrap JS -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="includes/js/script.js"></script>
+
+	</body>
+</html>

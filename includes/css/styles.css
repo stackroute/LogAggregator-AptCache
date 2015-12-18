@@ -1,0 +1,11 @@
+.dropdown {
+  display: inline;
+  width: 20%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+.tab-link {
+  font-size: 20px;
+}
