@@ -21,7 +21,7 @@ function timeConverter(UNIX_timestamp){
 }
 function writeJson(jsonObj, fileName)
 {
-  var jsonString = JSON.stringify(jsonObj);
+  var jsonString = JSON.stringify(jsonObj,null,4);
   fs.writeFileSync(fileName,jsonString);
 }
 function calculateLogMonth(fileName)
