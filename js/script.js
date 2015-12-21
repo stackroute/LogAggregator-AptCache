@@ -69,8 +69,8 @@ function calculateLogMonth(fileName)
         dataArr.push(tempObj1);
 
     }
-    writeJson(finalArr,'../json/monthwise_log.json');
-    writeJson(dataArr,'../json/monthwise_data.json');
+    writeJson(finalArr,'../json/rate/monthwise_log.json');
+    writeJson(dataArr,'../json/size/monthwise_data.json');
 
 }
 function calculateLogDay(fileName)
@@ -152,8 +152,8 @@ function calculateLogDay(fileName)
             dataArr.push(tempObj1);
 
         }
-        writeJson(finalArr,'../json/'+ mon + '_log.json');
-        writeJson(dataArr,'../json/'+ mon + '_data.json');
+        writeJson(finalArr,'../json/rate/'+ mon + '_log.json');
+        writeJson(dataArr,'../json/size/'+ mon + '_data.json');
 
     }
 }
