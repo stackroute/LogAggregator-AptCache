@@ -34,9 +34,12 @@
    }
 
    .dropdown-menu li a {
-     padding: 0;
+     padding: 5px;
+     margin-left: 10px;
    }
-
+ a:hover, li:hover{
+   background-color: #eee;
+ }
     .dropdown .dropdown-menu {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
@@ -49,7 +52,7 @@
       overflow: hidden;
       opacity: 0;
 
-      background-color: #eee;
+      background-color: white;
       left: 5px !important ;
     }
 
@@ -97,5 +100,13 @@ h2 {
   text-align: center;
   font-family: 'Alegreya', serif;
   margin-bottom: 50px;
+}
+.dropdown-menu{
+  margin-top: 20px;
+  margin-left: 0;
+  padding-left: 0;
+}
+.dropdown-menu li a:hover{
+  background-color: #eee;
 }
 >>>>>>> 7ef5a16734bb2b29ec73aaf1481a5fcc22539d1b
