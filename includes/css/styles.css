@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /* --------------------------------------
    Navbar
@@ -80,3 +81,21 @@
     #featuresHeading {
       margin-top: 70px;
     }
+=======
+.dropdown {
+  display: inline;
+  width: 20%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+.tab-link {
+  font-size: 20px;
+}
+h2 {
+  text-align: center;
+  font-family: 'Alegreya', serif;
+  margin-bottom: 50px;
+}
+>>>>>>> 7ef5a16734bb2b29ec73aaf1481a5fcc22539d1b
