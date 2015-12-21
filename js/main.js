@@ -183,6 +183,7 @@ $(function(){
       });
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
+          addPara("#tab1","2015");
           createGraph("json/rate/monthwise_log.json");
       });
   });
