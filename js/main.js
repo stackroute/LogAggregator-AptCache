@@ -1,7 +1,7 @@
 var createGraph = function(fileName)
 {
   d3.select('#somegraph').remove();
-  var margin = {top: 20, right: 80, bottom: 30, left: 70},
+  var margin = {top: 20, right: 80, bottom: 30, left: 150},
       width = 660 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
