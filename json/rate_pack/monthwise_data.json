@@ -1,0 +1,62 @@
+[
+    {
+        "period": "Jan",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Feb",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Mar",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Apr",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "May",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Jun",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Jul",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Aug",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Sep",
+        "Packages": 0,
+        "Metadata": 0
+    },
+    {
+        "period": "Oct",
+        "Packages": 2154,
+        "Metadata": 10876
+    },
+    {
+        "period": "Nov",
+        "Packages": 169,
+        "Metadata": 8627
+    },
+    {
+        "period": "Dec",
+        "Packages": 93,
+        "Metadata": 16418
+    }
+]
