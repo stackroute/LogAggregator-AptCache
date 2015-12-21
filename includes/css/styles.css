@@ -9,3 +9,8 @@ body {
 .tab-link {
   font-size: 20px;
 }
+h2 {
+  text-align: center;
+  font-family: 'Alegreya', serif;
+  margin-bottom: 50px;
+}

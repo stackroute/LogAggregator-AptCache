@@ -56,7 +56,7 @@ function calculateLogMonth(fileName)
         tempObj["Output"] = log_no_o[mon];
         finalArr.push(tempObj);
     }
-    writeJson(finalArr,'../json/monthwise_log.json');
+    writeJson(finalArr,'../json/rate/monthwise_log.json');
 }
 function calculateLogDay(fileName)
 {
@@ -118,7 +118,7 @@ function calculateLogDay(fileName)
             tempObj["Output"] = logs_no_o[mon][day];
             finalArr.push(tempObj);
         }
-        writeJson(finalArr,'../json/'+ mon + '_log.json');
+        writeJson(finalArr,'../json/rate/'+ mon + '_log.json');
     }
 }
 
