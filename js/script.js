@@ -32,10 +32,12 @@ function calculateLogMonth(fileName)
     data_o = new Object();
     data_o_package= new Object();
     data_i_package= new Object();
-    log_no_meta = new Object();
-    log_no_pack = new Object();
+    log_o_package= new Object();
+    log_i_package= new Object();
     data_i_metadata= new Object();
     data_o_metadata= new Object();
+    log_i_metadata= new Object();
+    log_o_metadata= new Object();
     for(var i=0; i<months.length; i++)
     {
         log_no_i[months[i]]=0;
@@ -44,10 +46,12 @@ function calculateLogMonth(fileName)
         data_o[months[i]]=0;
         data_o_metadata[months[i]]=0;
         data_o_package[months[i]]=0;
-        log_no_meta[months[i]]=0;
-        log_no_pack[months[i]]=0;
         data_i_metadata[months[i]]=0;
         data_i_package[months[i]]=0;
+        log_o_metadata[months[i]]=0;
+        log_o_package[months[i]]=0;
+        log_i_metadata[months[i]]=0;
+        log_i_package[months[i]]=0;
     }
     jsonString = fs.readFileSync(fileName);
     var logObj = JSON.parse(jsonString);
@@ -63,44 +67,41 @@ function calculateLogMonth(fileName)
             if(logObj[i]['download'].substring(len-4,len ) === ".deb")
             {
              data_o_package[logObj[i]["month"]]+=logObj[i]["size"];
+             log_o_package[logObj[i]["month"]]++;
             }
             else {
 
                 data_o_metadata[logObj[i]["month"]]+=logObj[i]["size"];
+                log_o_metadata[logObj[i]["month"]]++;
 
             }
 
         }
         else
         {
+          log_no_i[logObj[i]["month"]]++;
+          data_i[logObj[i]["month"]]+=logObj[i]["size"];
           if(logObj[i]['download'].substring(len-4,len ) === ".deb")
           {
            data_i_package[logObj[i]["month"]]+=logObj[i]["size"];
+           log_i_package[logObj[i]["month"]]++;
           }
           else {
 
               data_i_metadata[logObj[i]["month"]]+=logObj[i]["size"];
+              log_i_metadata[logObj[i]["month"]]++;
 
           }
 
-            log_no_i[logObj[i]["month"]]++;
-            data_i[logObj[i]["month"]]+=logObj[i]["size"];
-        }
-        var len = logObj[i]["download"].length;
-        if(logObj[i]["download"].substring(len-4,len) === ".deb")
-        {
-            log_no_pack[logObj[i]["month"]]++;
-        }
-        else
-        {
-            log_no_meta[logObj[i]["month"]]++;
+
         }
     }
     finalArr = new Array();
     dataArr = new Array();
     dataFilterPackage=new Array();
-    finalArrPack = new Array();
     dataFilterMetadata=new Array();
+    logFilterPackage=new Array();
+    logFilterMetadata=new Array();
     for(mon in log_no_i)
     {
         tempObj = new Object();
@@ -108,6 +109,7 @@ function calculateLogMonth(fileName)
         tempObj2 = new Object();
         tempObj3 = new Object();
         tempObj4 = new Object();
+        tempObj5 = new Object();
         tempObj["period"] = mon;
         tempObj["Input"] = log_no_i[mon];
         tempObj["Output"] = log_no_o[mon];
@@ -117,9 +119,14 @@ function calculateLogMonth(fileName)
         tempObj1["Output"] = data_o[mon];
         dataArr.push(tempObj1);
         tempObj2["period"] = mon;
-        tempObj2["Packages"] = log_no_pack[mon];
-        tempObj2["Metadata"] = log_no_meta[mon];
-        finalArrPack.push(tempObj2);
+        tempObj2["Input"] = log_i_package[mon];
+        tempObj2["Output"] = log_o_package[mon];
+        logFilterPackage.push(tempObj2);
+
+        tempObj5["period"] = mon;
+        tempObj5["Input"] = log_i_metadata[mon];
+        tempObj5["Output"] = log_o_metadata[mon];
+        logFilterMetadata.push(tempObj5);
 
         tempObj3["period"] = mon;
         tempObj3["Input"] = data_i_package[mon];
@@ -132,11 +139,12 @@ function calculateLogMonth(fileName)
         dataFilterMetadata.push(tempObj4);
 
     }
-    writeJson(finalArr,'../json/rate/monthwise_log.json');
+    writeJson(finalArr,'../json/rate/all/monthwise_log.json');
     writeJson(dataArr,'../json/size/all/monthwise_data_all.json');
     writeJson(dataFilterPackage,'../json/size/package/monthwise_data_package.json');
-    writeJson(finalArrPack,'../json/rate_pack/monthwise_data.json');
     writeJson(dataFilterMetadata,'../json/size/metadata/monthwise_data_metadata.json');
+    writeJson(logFilterPackage,'../json/rate/package/monthwise_package.json');
+    writeJson(logFilterMetadata,'../json/rate/metadata/monthwise_metadata.json');
 
 }
 function calculateLogDay(fileName)
@@ -152,10 +160,12 @@ function calculateLogDay(fileName)
     data_o = new Object();
     data_o_package=new Object();
     data_o_metadata=new Object();
-    log_no_meta = new Object();
-    log_no_pack = new Object();
     data_i_package=new Object();
     data_i_metadata=new Object();
+    log_o_package=new Object();
+    log_o_metadata=new Object();
+    log_i_package=new Object();
+    log_i_metadata=new Object();
 
     for(var i=0; i<months.length; i++)
     {
@@ -165,10 +175,12 @@ function calculateLogDay(fileName)
         data_o[months[i]] = new Object();
         data_i_package[months[i]] = new Object();
         data_o_package[months[i]] = new Object();
-        log_no_meta[months[i]] = new Object();
-        log_no_pack[months[i]] = new Object();
         data_o_metadata[months[i]] = new Object();
         data_i_metadata[months[i]] = new Object();
+        log_i_package[months[i]] = new Object();
+        log_o_package[months[i]] = new Object();
+        log_o_metadata[months[i]] = new Object();
+        log_i_metadata[months[i]] = new Object();
 
         if(even.indexOf(months[i])>-1)
         {
@@ -180,11 +192,13 @@ function calculateLogDay(fileName)
                 data_o[months[i]][j+""]=0;
 
                 data_i_package[months[i]][j+""]=0;
-                log_no_meta[months[i]][j+""]=0;
-                log_no_pack[months[i]][j+""]=0;
                 data_o_package[months[i]][j+""]=0;
                 data_o_metadata[months[i]][j+""]=0;
                 data_i_metadata[months[i]][j+""]=0;
+                log_i_package[months[i]][j+""]=0;
+                log_o_package[months[i]][j+""]=0;
+                log_o_metadata[months[i]][j+""]=0;
+                log_i_metadata[months[i]][j+""]=0;
 
 
 
@@ -200,11 +214,13 @@ function calculateLogDay(fileName)
                 data_o[months[i]][j+""]=0;
 
                 data_i_package[months[i]][j+""]=0;
-                log_no_meta[months[i]][j+""]=0;
-                log_no_pack[months[i]][j+""]=0;
                 data_o_package[months[i]][j+""]=0;
                 data_o_metadata[months[i]][j+""]=0;
                 data_i_metadata[months[i]][j+""]=0;
+                log_i_package[months[i]][j+""]=0;
+                log_o_package[months[i]][j+""]=0;
+                log_o_metadata[months[i]][j+""]=0;
+                log_i_metadata[months[i]][j+""]=0;
             }
         }
         else
@@ -217,11 +233,13 @@ function calculateLogDay(fileName)
               data_o[months[i]][j+""]=0;
 
               data_i_package[months[i]][j+""]=0;
-              log_no_meta[months[i]][j+""]=0;
-              log_no_pack[months[i]][j+""]=0;
               data_o_package[months[i]][j+""]=0;
               data_o_metadata[months[i]][j+""]=0;
               data_i_metadata[months[i]][j+""]=0;
+              log_i_package[months[i]][j+""]=0;
+              log_o_package[months[i]][j+""]=0;
+              log_o_metadata[months[i]][j+""]=0;
+              log_i_metadata[months[i]][j+""]=0;
           }
         }
     }
@@ -236,10 +254,13 @@ function calculateLogDay(fileName)
             if(logObj[i]['download'].substring(len-4,len ) === ".deb")
             {
              data_o_package[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
+             log_o_package[logObj[i]["month"]][logObj[i]["date"]+""]++;
             }
-            else {
+            else
+            {
 
                 data_o_metadata[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
+                log_o_metadata[logObj[i]["month"]][logObj[i]["date"]+""]++;
 
             }
 
@@ -247,37 +268,33 @@ function calculateLogDay(fileName)
         }
         else
         {
+          logs_no_i[logObj[i]["month"]][logObj[i]["date"]+""]++;
+          data_i[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
           if(logObj[i]['download'].substring(len-4,len ) === ".deb")
           {
            data_i_package[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
+           log_i_package[logObj[i]["month"]][logObj[i]["date"]+""]++;
           }
           else {
 
               data_i_metadata[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
+              log_i_metadata[logObj[i]["month"]][logObj[i]["date"]+""]++;
 
           }
 
-            logs_no_i[logObj[i]["month"]][logObj[i]["date"]+""]++;
-            data_i[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
 
 
-        }
-        var len = logObj[i]["download"].length;
-        if(logObj[i]["download"].substring(len-4,len) === ".deb")
-        {
-            log_no_pack[logObj[i]["month"]][logObj[i]["date"]+""]++;
-        }
-        else
-        {
-            log_no_meta[logObj[i]["month"]][logObj[i]["date"]+""]++;
+
         }
     }
     for(mon in logs_no_i)
-    {   dataFilterPackage=new Array();
+    {
+        dataFilterPackage=new Array();
         dataFilterMetadata=new Array();
         finalArr = new Array();
         dataArr = new Array();
-        finalArrPack = new Array();
+        logFilterPackage=new Array();
+        logFilterMetadata=new Array();
         for(day in logs_no_i[mon])
         {
             tempObj = new Object();
@@ -285,6 +302,7 @@ function calculateLogDay(fileName)
             tempObj3 = new Object();
             tempObj2 = new Object();
             tempObj4 = new Object();
+            tempObj5 = new Object();
             tempObj["period"] = day;
             tempObj["Input"] = logs_no_i[mon][day];
             tempObj["Output"] = logs_no_o[mon][day];
@@ -294,10 +312,6 @@ function calculateLogDay(fileName)
             tempObj1["Input"] = data_i[mon][day];
             tempObj1["Output"] = data_o[mon][day];
             dataArr.push(tempObj1);
-            tempObj2["period"] = day;
-            tempObj2["Packages"] = log_no_pack[mon][day];
-            tempObj2["Metadata"] = log_no_meta[mon][day];
-            finalArrPack.push(tempObj2);
 
             tempObj3["period"] = day;
             tempObj3["Input"] = data_i_package[mon][day];
@@ -308,14 +322,24 @@ function calculateLogDay(fileName)
             tempObj4["Input"] = data_i_metadata[mon][day];
             tempObj4["Output"] = data_o_metadata[mon][day];
             dataFilterMetadata.push(tempObj4);
+            tempObj2["period"] = day;
+            tempObj2["Input"] = log_i_package[mon][day];
+            tempObj2["Output"] = log_o_package[mon][day];
+            dataFilterPackage.push(tempObj2);
+
+            tempObj5["period"] = day;
+            tempObj5["Input"] = log_i_metadata[mon][day];
+            tempObj5["Output"] = log_o_metadata[mon][day];
+            dataFilterMetadata.push(tempObj5);
 
         }
-        writeJson(finalArr,'../json/rate/'+ mon + '_log.json');
+        writeJson(finalArr,'../json/rate/all/'+ mon + '_log.json');
         writeJson(dataArr,'../json/size/all/'+ mon + '_data_all.json');
 
-        writeJson(finalArrPack,'../json/rate_pack/'+ mon + '_data.json');
         writeJson(dataFilterPackage,'../json/size/package/'+ mon + '_data_package.json');
         writeJson(dataFilterMetadata,'../json/size/metadata/'+ mon + '_data_metadata.json');
+        writeJson(logFilterPackage,'../json/rate/package/'+ mon + '_log_package.json');
+        writeJson(logFilterMetadata,'../json/rate/metadata/'+ mon + '_log_metadata.json');
 
     }
 }
