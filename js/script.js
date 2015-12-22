@@ -133,10 +133,10 @@ function calculateLogMonth(fileName)
 
     }
     writeJson(finalArr,'../json/rate/monthwise_log.json');
-    writeJson(dataArr,'../json/size/all/monthwise_data.json');
-    writeJson(dataFilterPackage,'../json/size/package/monthwise_package.json');
+    writeJson(dataArr,'../json/size/all/monthwise_data_all.json');
+    writeJson(dataFilterPackage,'../json/size/package/monthwise_data_package.json');
     writeJson(finalArrPack,'../json/rate_pack/monthwise_data.json');
-    writeJson(dataFilterMetadata,'../json/size/metadata/monthwise_metadata.json');
+    writeJson(dataFilterMetadata,'../json/size/metadata/monthwise_data_metadata.json');
 
 }
 function calculateLogDay(fileName)
@@ -311,7 +311,7 @@ function calculateLogDay(fileName)
 
         }
         writeJson(finalArr,'../json/rate/'+ mon + '_log.json');
-        writeJson(dataArr,'../json/size/all/'+ mon + '_data.json');
+        writeJson(dataArr,'../json/size/all/'+ mon + '_data_all.json');
 
         writeJson(finalArrPack,'../json/rate_pack/'+ mon + '_data.json');
         writeJson(dataFilterPackage,'../json/size/package/'+ mon + '_data_package.json');

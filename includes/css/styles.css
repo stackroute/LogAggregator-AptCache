@@ -109,4 +109,15 @@ h2 {
 .dropdown-menu li a:hover{
   background-color: #eee;
 }
+#radio {
+  width: 400px;
+  display: none;
+
+}
+#radio label, #radio input{
+  font-size: 12px;
+  padding-left: 5px;
+  margin-left: 10px;
+
+}
 >>>>>>> 7ef5a16734bb2b29ec73aaf1481a5fcc22539d1b
