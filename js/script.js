@@ -249,7 +249,6 @@ function calculateLogDay(fileName)
         {
             logs_no_o[logObj[i]["month"]][logObj[i]["date"]+""]++;
             data_o[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
-//*********************************************************************************************
             var len=logObj[i]['download'].length;
             if(logObj[i]['download'].substring(len-4,len ) === ".deb")
             {
@@ -325,12 +324,12 @@ function calculateLogDay(fileName)
             tempObj2["period"] = day;
             tempObj2["Input"] = log_i_package[mon][day];
             tempObj2["Output"] = log_o_package[mon][day];
-            dataFilterPackage.push(tempObj2);
+            logFilterPackage.push(tempObj2);
 
             tempObj5["period"] = day;
             tempObj5["Input"] = log_i_metadata[mon][day];
             tempObj5["Output"] = log_o_metadata[mon][day];
-            dataFilterMetadata.push(tempObj5);
+            logFilterMetadata.push(tempObj5);
 
         }
         writeJson(finalArr,'../json/rate/all/'+ mon + '_log_all.json');

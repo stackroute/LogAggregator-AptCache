@@ -2,7 +2,7 @@ var createGraph = function(fileName)
 {
   d3.select('#somegraph').remove();
   var margin = {top: 20, right: 80, bottom: 30, left: 150},
-      width = 660 - margin.left - margin.right,
+      width = 800 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
 
@@ -12,18 +12,7 @@ var createGraph = function(fileName)
       .range([height, 0]);
 
   var color = d3.scale.category10();
-  var bytesToString = function (bytes) {
-    // One way to write it, not the prettiest way to write it.
 
-    var fmt = d3.format('0.0f');
-    if (bytes < 1024) {
-        return fmt(bytes) + 'B';
-    } else if (bytes < 1024 * 1024) {
-        return fmt(bytes / 1024) + 'kB';
-    } else  {
-        return fmt(bytes / 1024 / 1024) + 'MB';
-    }
-}
 
   var xAxis = d3.svg.axis()
       .scale(x)
@@ -32,7 +21,6 @@ var createGraph = function(fileName)
 
   var yAxis = d3.svg.axis()
       .scale(y)
-      .tickFormat(bytesToString)
       .orient("left");
 
   var line = d3.svg.line()
@@ -83,7 +71,7 @@ var createGraph = function(fileName)
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Date Rate in MB (period-wise)");
+        .text("Request Rate (period-wise)");
 
     var city = svg.selectAll(".city")
         .data(continents)
@@ -123,7 +111,7 @@ var createGraph = function(fileName)
 function addPara(tab,when)
 {
   $(tab + " p").remove();
-  $(tab).append("<p>Data Rate for all of " + when + " </p>");
+  $(tab).append("<p>Request Rate for all of " + when + " </p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }

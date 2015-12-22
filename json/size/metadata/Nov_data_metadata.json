@@ -5,16 +5,6 @@
         "Output": 0
     },
     {
-        "period": "1",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "2",
-        "Input": 0,
-        "Output": 0
-    },
-    {
         "period": "2",
         "Input": 0,
         "Output": 0
@@ -25,22 +15,7 @@
         "Output": 0
     },
     {
-        "period": "3",
-        "Input": 0,
-        "Output": 0
-    },
-    {
         "period": "4",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "4",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "5",
         "Input": 0,
         "Output": 0
     },
@@ -55,22 +30,7 @@
         "Output": 23032606
     },
     {
-        "period": "6",
-        "Input": 72,
-        "Output": 102
-    },
-    {
         "period": "7",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "7",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "8",
         "Input": 0,
         "Output": 0
     },
@@ -85,32 +45,12 @@
         "Output": 0
     },
     {
-        "period": "9",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "10",
-        "Input": 0,
-        "Output": 0
-    },
-    {
         "period": "10",
         "Input": 0,
         "Output": 0
     },
     {
         "period": "11",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "11",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "12",
         "Input": 0,
         "Output": 0
     },
@@ -125,22 +65,7 @@
         "Output": 22399444
     },
     {
-        "period": "13",
-        "Input": 93,
-        "Output": 51
-    },
-    {
         "period": "14",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "14",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "15",
         "Input": 0,
         "Output": 0
     },
@@ -155,24 +80,9 @@
         "Output": 69364029
     },
     {
-        "period": "16",
-        "Input": 233,
-        "Output": 345
-    },
-    {
         "period": "17",
         "Input": 22401455,
         "Output": 22398482
-    },
-    {
-        "period": "17",
-        "Input": 51,
-        "Output": 51
-    },
-    {
-        "period": "18",
-        "Input": 0,
-        "Output": 0
     },
     {
         "period": "18",
@@ -185,32 +95,12 @@
         "Output": 135203684
     },
     {
-        "period": "19",
-        "Input": 263,
-        "Output": 593
-    },
-    {
         "period": "20",
         "Input": 26994135,
         "Output": 315043446
     },
     {
-        "period": "20",
-        "Input": 585,
-        "Output": 816
-    },
-    {
         "period": "21",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "21",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "22",
         "Input": 0,
         "Output": 0
     },
@@ -225,19 +115,9 @@
         "Output": 283294392
     },
     {
-        "period": "23",
-        "Input": 501,
-        "Output": 918
-    },
-    {
         "period": "24",
         "Input": 73463387,
         "Output": 262836643
-    },
-    {
-        "period": "24",
-        "Input": 465,
-        "Output": 918
     },
     {
         "period": "25",
@@ -245,19 +125,9 @@
         "Output": 74024282
     },
     {
-        "period": "25",
-        "Input": 302,
-        "Output": 459
-    },
-    {
         "period": "26",
         "Input": 42524594,
         "Output": 110532651
-    },
-    {
-        "period": "26",
-        "Input": 196,
-        "Output": 633
     },
     {
         "period": "27",
@@ -265,22 +135,7 @@
         "Output": 74403564
     },
     {
-        "period": "27",
-        "Input": 171,
-        "Output": 257
-    },
-    {
         "period": "28",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "28",
-        "Input": 0,
-        "Output": 0
-    },
-    {
-        "period": "29",
         "Input": 0,
         "Output": 0
     },
@@ -293,10 +148,5 @@
         "period": "30",
         "Input": 41389838,
         "Output": 86465156
-    },
-    {
-        "period": "30",
-        "Input": 266,
-        "Output": 357
     }
 ]
