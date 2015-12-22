@@ -1,7 +1,7 @@
 var createGraph = function(fileName)
 {
   d3.select('#somegraph').remove();
-  var margin = {top: 20, right: 80, bottom: 30, left: 70},
+  var margin = {top: 20, right: 80, bottom: 30, left: 150},
       width = 660 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
@@ -127,12 +127,22 @@ function addPara(tab,when)
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
+function filter(value)
+{
+  $("#radio").show();
+  $('#radio input[value="all"]').prop('checked', true);
+  $('#radio input').on('change', function() {
+  var data=$('input[name="filter"]:checked', '#radio').val();
+    createGraph("json/size/"+data+"/"+value+"_data_"+data+".json");
+  });
+}
 $(function(){
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#tab1","2015");
-      createGraph("json/size/monthwise_data.json");
-  });
+      createGraph("json/size/all/monthwise_data_all.json");
+      filter("monthwise");
+    });
   $('#y15').click(function(){
       $('#dropdownMenu2').html('2015');
 
@@ -141,14 +151,15 @@ $(function(){
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
           addPara("#tab2",month);
-          createGraph("json/size/"+id+"_data.json");
+          createGraph("json/size/all/"+id+"_data_all.json");
+            filter(id);
       });
 
 
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
           addPara("#tab1","2015");
-          createGraph("json/size/monthwise_data.json");
+          createGraph("json/size/all/monthwise_data.json");
       });
   });
   $('#year_tab').click(function(){
