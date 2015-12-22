@@ -12,6 +12,18 @@ var createGraph = function(fileName)
       .range([height, 0]);
 
   var color = d3.scale.category10();
+  var bytesToString = function (bytes) {
+    // One way to write it, not the prettiest way to write it.
+
+    var fmt = d3.format('0.0f');
+    if (bytes < 1024) {
+        return fmt(bytes) + 'B';
+    } else if (bytes < 1024 * 1024) {
+        return fmt(bytes / 1024) + 'kB';
+    } else  {
+        return fmt(bytes / 1024 / 1024) + 'MB';
+    }
+}
 
   var xAxis = d3.svg.axis()
       .scale(x)
@@ -20,6 +32,7 @@ var createGraph = function(fileName)
 
   var yAxis = d3.svg.axis()
       .scale(y)
+      .tickFormat(bytesToString)
       .orient("left");
 
   var line = d3.svg.line()
@@ -64,12 +77,13 @@ var createGraph = function(fileName)
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
+
       .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Number of logs (period-wise)");
+        .text("Date Rate in MB (period-wise)");
 
     var city = svg.selectAll(".city")
         .data(continents)
@@ -109,7 +123,7 @@ var createGraph = function(fileName)
 function addPara(tab,when)
 {
   $(tab + " p").remove();
-  $(tab).append("<p>Number of logs for all of " + when + " </p>");
+  $(tab).append("<p>Data Rate for all of " + when + " </p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
@@ -117,25 +131,73 @@ $(function(){
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#tab1","2015");
-      createGraph("json/rate/monthwise_log.json");
+      createGraph("json/size/monthwise_data.json");
   });
   $('#y15').click(function(){
       $('#dropdownMenu2').html('2015');
-
-      $("#monthList1 li").click(function() {
-          var month = $(this).text();
-          var id = $(this).children().attr('id');
-          $('#dropdownMenu3').html(month);
-          addPara("#tab2",month);
-          createGraph("json/rate/"+id+"_log.json");
-
+      $('#jan').click(function(){
+        $('#dropdownMenu3').html('January');
+        addPara("#tab2","January");
+        createGraph("json/size/Jan_data.json");
       });
-
-
+      $('#feb').click(function(){
+        $('#dropdownMenu3').html('February');
+        addPara("#tab2","February");
+        createGraph("json/size/Feb_data.json");
+      });
+      $('#mar').click(function(){
+        $('#dropdownMenu3').html('March');
+        addPara("#tab2","March");
+        createGraph("json/size/Mar_data.json");
+      });
+      $('#apr').click(function(){
+        $('#dropdownMenu3').html('April');
+        addPara("#tab2","April");
+        createGraph("json/size/Apr_data.json");
+      });
+      $('#may').click(function(){
+        $('#dropdownMenu3').html('May');
+        addPara("#tab2","May");
+        createGraph("json/size/May_data.json");
+      });
+      $('#jun').click(function(){
+        $('#dropdownMenu3').html('June');
+        addPara("#tab2","June");
+        createGraph("json/size/Jun_data.json");
+      });
+      $('#jul').click(function(){
+        $('#dropdownMenu3').html('July');
+        addPara("#tab2","July");
+        createGraph("json/size/Jul_data.json");
+      });
+      $('#aug').click(function(){
+        $('#dropdownMenu3').html('August');
+        addPara("#tab2","August");
+        createGraph("json/size/Aug_data.json");
+      });
+      $('#sep').click(function(){
+        $('#dropdownMenu3').html('September');
+        addPara("#tab2","September");
+        createGraph("json/size/Sep_data.json");
+      });
+      $('#oct').click(function(){
+        $('#dropdownMenu3').html('October');
+        addPara("#tab2","October");
+        createGraph("json/size/Oct_data.json");
+      });
+      $('#nov').click(function(){
+        $('#dropdownMenu3').html('November');
+        addPara("#tab2","November");
+        createGraph("json/size/Nov_data.json");
+      });
+      $('#dec').click(function(){
+        $('#dropdownMenu3').html('December');
+        addPara("#tab2","December");
+        createGraph("json/size/Dec_data.json");
+      });
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
-          addPara("#tab1","2015");
-          createGraph("json/rate/monthwise_log.json");
+          createGraph("json/size/monthwise_data.json");
       });
   });
   $('#year_tab').click(function(){
