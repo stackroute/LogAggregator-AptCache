@@ -1,0 +1,62 @@
+[
+    {
+        "period": "Jan",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Feb",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Mar",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Apr",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "May",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Jun",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Jul",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Aug",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Sep",
+        "Input": 0,
+        "Output": 0
+    },
+    {
+        "period": "Oct",
+        "Input": 98497346,
+        "Output": 1291400374
+    },
+    {
+        "period": "Nov",
+        "Input": 309531674,
+        "Output": 1478998379
+    },
+    {
+        "period": "Dec",
+        "Input": 188572110,
+        "Output": 1977650169
+    }
+]
