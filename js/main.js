@@ -119,7 +119,7 @@ function filter(value)
   $('#radio input[value="all"]').prop('checked', true);
   $('#radio input').on('change', function() {
   var data=$('input[name="filter"]:checked', '#radio').val();
-    createGraph("json/rate/"+data+"/"+value+"_data_"+data+".json");
+    createGraph("json/rate/"+data+"/"+value+"_log_"+data+".json");
   });
 }
 
@@ -128,6 +128,7 @@ $(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#tab1","2015");
       createGraph("json/rate/monthwise_log.json");
+      filter("monthwise");
   });
   $('#y15').click(function(){
       $('#dropdownMenu2').html('2015');
@@ -137,7 +138,7 @@ $(function(){
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
           addPara("#tab2",month);
-          createGraph("json/rate/"+id+"_log.json");
+          createGraph("json/rate/all/"+id+"_log.json");
           filter(id);
       });
 
