@@ -12,6 +12,18 @@ var createGraph = function(fileName)
       .range([height, 0]);
 
   var color = d3.scale.category10();
+  var bytesToString = function (bytes) {
+    // One way to write it, not the prettiest way to write it.
+
+    var fmt = d3.format('0.0f');
+    if (bytes < 1024) {
+        return fmt(bytes) + 'B';
+    } else if (bytes < 1024 * 1024) {
+        return fmt(bytes / 1024) + 'kB';
+    } else  {
+        return fmt(bytes / 1024 / 1024) + 'MB';
+    }
+}
 
   var xAxis = d3.svg.axis()
       .scale(x)
@@ -20,6 +32,7 @@ var createGraph = function(fileName)
 
   var yAxis = d3.svg.axis()
       .scale(y)
+      .tickFormat(bytesToString)
       .orient("left");
 
   var line = d3.svg.line()
@@ -27,7 +40,7 @@ var createGraph = function(fileName)
       .x(function(d) { return x(d.period); })
       .y(function(d) { return y(d.logs); });
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("div #main").append("svg")
       .attr('id','somegraph')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -64,12 +77,13 @@ var createGraph = function(fileName)
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
+
       .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Number of logs (period-wise)");
+        .text("Date Rate in MB (period-wise)");
 
     var city = svg.selectAll(".city")
         .data(continents)
@@ -109,16 +123,26 @@ var createGraph = function(fileName)
 function addPara(tab,when)
 {
   $(tab + " p").remove();
-  $(tab).append("<p>Number of logs for all of " + when + " </p>");
+  $(tab).append("<p>Data Rate for all of " + when + " </p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
+}
+function filter(value)
+{
+  $("#radio").show();
+  $('#radio input[value="all"]').prop('checked', true);
+  $('#radio input').on('change', function() {
+  var data=$('input[name="filter"]:checked', '#radio').val();
+    createGraph("json/size/"+data+"/"+value+"_data_"+data+".json");
+  });
 }
 $(function(){
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#tab1","2015");
-      createGraph("json/rate/monthwise_log.json");
-  });
+      createGraph("json/size/all/monthwise_data_all.json");
+      filter("monthwise");
+    });
   $('#y15').click(function(){
       $('#dropdownMenu2').html('2015');
 
@@ -127,15 +151,15 @@ $(function(){
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
           addPara("#tab2",month);
-          createGraph("json/rate/"+id+"_log.json");
-
+          createGraph("json/size/all/"+id+"_data_all.json");
+            filter(id);
       });
 
 
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
           addPara("#tab1","2015");
-          createGraph("json/rate/monthwise_log.json");
+          createGraph("json/size/all/monthwise_data.json");
       });
   });
   $('#year_tab').click(function(){
