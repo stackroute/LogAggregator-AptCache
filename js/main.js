@@ -113,6 +113,16 @@ function addPara(tab,when)
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
+function filter(value)
+{
+  $("#radio").show();
+  $('#radio input[value="all"]').prop('checked', true);
+  $('#radio input').on('change', function() {
+  var data=$('input[name="filter"]:checked', '#radio').val();
+    createGraph("json/rate/"+data+"/"+value+"_data_"+data+".json");
+  });
+}
+
 $(function(){
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
@@ -128,7 +138,7 @@ $(function(){
           $('#dropdownMenu3').html(month);
           addPara("#tab2",month);
           createGraph("json/rate/"+id+"_log.json");
-
+          filter(id);
       });
 
 
