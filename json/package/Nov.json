@@ -60,8 +60,28 @@
         "Count": 1
     },
     {
-        "Package Name": "krb5",
-        "Count": 5
+        "Package Name": "libk5crypto3",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libgssapi-krb5-2",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libkrb5-3",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libkrb5support0",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
     },
     {
         "Package Name": "libpam-systemd",
@@ -114,6 +134,12 @@
     {
         "Package Name": "tzdata",
         "Package Version": "2015g-0ubuntu0.14.04",
+        "Package Architecture": "all",
+        "Count": 1
+    },
+    {
+        "Package Name": "krb5-locales",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
         "Package Architecture": "all",
         "Count": 1
     },
@@ -444,30 +470,6 @@
     {
         "Package Name": "mongodb",
         "Package Version": "2.4.9-1ubuntu2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libk5crypto3",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libgssapi-krb5-2",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libkrb5-3",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libkrb5support0",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
         "Package Architecture": "i386",
         "Count": 1
     },

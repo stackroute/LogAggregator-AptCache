@@ -48,7 +48,9 @@
         "Count": 1
     },
     {
-        "Package Name": "libpng",
+        "Package Name": "libpng12-0",
+        "Package Version": "1.2.50-1ubuntu2.14.04.1",
+        "Package Architecture": "i386",
         "Count": 2
     },
     {
@@ -70,8 +72,10 @@
         "Count": 2
     },
     {
-        "Package Name": "expat",
-        "Count": 1
+        "Package Name": "libexpat1-dev",
+        "Package Version": "2.1.0-4ubuntu1.1",
+        "Package Architecture": "i386",
+        "Count": 2
     },
     {
         "Package Name": "zlib1g-dev",
@@ -80,8 +84,16 @@
         "Count": 2
     },
     {
-        "Package Name": "freetype",
-        "Count": 1
+        "Package Name": "libpng12-dev",
+        "Package Version": "1.2.50-1ubuntu2.14.04.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libfreetype6-dev",
+        "Package Version": "2.5.2-1ubuntu2.5",
+        "Package Architecture": "i386",
+        "Count": 2
     },
     {
         "Package Name": "pkg-config",
@@ -94,30 +106,6 @@
         "Package Version": "2.11.0-0ubuntu4.1",
         "Package Architecture": "i386",
         "Count": 2
-    },
-    {
-        "Package Name": "libpng12-0",
-        "Package Version": "1.2.50-1ubuntu2.14.04.1",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libexpat1-dev",
-        "Package Version": "2.1.0-4ubuntu1.1",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libpng12-dev",
-        "Package Version": "1.2.50-1ubuntu2.14.04.1",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libfreetype6-dev",
-        "Package Version": "2.5.2-1ubuntu2.5",
-        "Package Architecture": "i386",
-        "Count": 1
     },
     {
         "Package Name": "libboost-system1.54.0",

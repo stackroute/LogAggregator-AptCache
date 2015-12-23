@@ -684,8 +684,28 @@
         "Count": 1
     },
     {
-        "Package Name": "krb5",
-        "Count": 5
+        "Package Name": "libk5crypto3",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libgssapi-krb5-2",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libkrb5-3",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libkrb5support0",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
+        "Package Architecture": "i386",
+        "Count": 2
     },
     {
         "Package Name": "libpam-systemd",
@@ -738,6 +758,12 @@
     {
         "Package Name": "tzdata",
         "Package Version": "2015g-0ubuntu0.14.04",
+        "Package Architecture": "all",
+        "Count": 1
+    },
+    {
+        "Package Name": "krb5-locales",
+        "Package Version": "1.12+dfsg-2ubuntu5.2",
         "Package Architecture": "all",
         "Count": 1
     },
@@ -1000,30 +1026,6 @@
         "Count": 4
     },
     {
-        "Package Name": "libk5crypto3",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libgssapi-krb5-2",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libkrb5-3",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libkrb5support0",
-        "Package Version": "1.12+dfsg-2ubuntu5.2",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
         "Package Name": "libgssrpc4",
         "Package Version": "1.12+dfsg-2ubuntu5.2",
         "Package Architecture": "i386",
@@ -1096,16 +1098,28 @@
         "Count": 1
     },
     {
-        "Package Name": "libpng",
+        "Package Name": "libpng12-0",
+        "Package Version": "1.2.50-1ubuntu2.14.04.1",
+        "Package Architecture": "i386",
         "Count": 2
     },
     {
-        "Package Name": "expat",
-        "Count": 1
+        "Package Name": "libexpat1-dev",
+        "Package Version": "2.1.0-4ubuntu1.1",
+        "Package Architecture": "i386",
+        "Count": 2
     },
     {
-        "Package Name": "freetype",
-        "Count": 1
+        "Package Name": "libpng12-dev",
+        "Package Version": "1.2.50-1ubuntu2.14.04.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libfreetype6-dev",
+        "Package Version": "2.5.2-1ubuntu2.5",
+        "Package Architecture": "i386",
+        "Count": 2
     },
     {
         "Package Name": "pkg-config",
@@ -1118,29 +1132,5 @@
         "Package Version": "2.11.0-0ubuntu4.1",
         "Package Architecture": "i386",
         "Count": 2
-    },
-    {
-        "Package Name": "libpng12-0",
-        "Package Version": "1.2.50-1ubuntu2.14.04.1",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libexpat1-dev",
-        "Package Version": "2.1.0-4ubuntu1.1",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libpng12-dev",
-        "Package Version": "1.2.50-1ubuntu2.14.04.1",
-        "Package Architecture": "i386",
-        "Count": 1
-    },
-    {
-        "Package Name": "libfreetype6-dev",
-        "Package Version": "2.5.2-1ubuntu2.5",
-        "Package Architecture": "i386",
-        "Count": 1
     }
 ]
