@@ -412,6 +412,30 @@
                     "Name": "libperl5.18",
                     "Version": "5.18.2-2ubuntu1"
                 },
+                "libapr1_1.5.0-1_i386.deb": {
+                    "Name": "libapr1",
+                    "Version": "1.5.0-1"
+                },
+                "libaprutil1_1.5.3-1_i386.deb": {
+                    "Name": "libaprutil1",
+                    "Version": "1.5.3-1"
+                },
+                "libaprutil1-ldap_1.5.3-1_i386.deb": {
+                    "Name": "libaprutil1-ldap",
+                    "Version": "1.5.3-1"
+                },
+                "apache2-data_2.4.7-1ubuntu4.8_all.deb": {
+                    "Name": "apache2-data",
+                    "Version": "2.4.7-1ubuntu4.8"
+                },
+                "libaprutil1-dbd-sqlite3_1.5.3-1_i386.deb": {
+                    "Name": "libaprutil1-dbd-sqlite3",
+                    "Version": "1.5.3-1"
+                },
+                "apache2-bin_2.4.7-1ubuntu4.8_i386.deb": {
+                    "Name": "apache2-bin",
+                    "Version": "2.4.7-1ubuntu4.8"
+                },
                 "apache2_2.4.7-1ubuntu4.8_i386.deb": {
                     "Name": "apache2",
                     "Version": "2.4.7-1ubuntu4.8"
@@ -730,6 +754,10 @@
                 },
                 "libasound2-data_1.0.27.2-3ubuntu7_all.deb": {
                     "Name": "libasound2-data",
+                    "Version": "1.0.27.2-3ubuntu7"
+                },
+                "libasound2_1.0.27.2-3ubuntu7_i386.deb": {
+                    "Name": "libasound2",
                     "Version": "1.0.27.2-3ubuntu7"
                 },
                 "pkg-config_0.26-1ubuntu4_i386.deb": {
