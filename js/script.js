@@ -360,9 +360,19 @@ function calculatePackages(fileName)
     {
         var arr = logObj[i]["download"].split('/');
         var len = arr.length;
-        var os = arr[2].split('-');
+
         if(arr[len-1]==="Packages.bz2" && logObj[i]["mode"]==="I")
         {
+            var os = "";
+            if(arr[0]==="security.debian.org")
+            {
+                os = arr[2].split('-');
+            }
+            else
+            {
+                os = arr[len-4].split('-');
+            }
+
             if(packages[arr[0]]==undefined)
             {
                 packages[arr[0]] = new Object();
@@ -431,7 +441,7 @@ function calculatePackages(fileName)
             {
                 packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"]++;
             }
-            
+
         }
     }
     writeJson(packages,"../json/package_bz2_info/packages_all.json");
