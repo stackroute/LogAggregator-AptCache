@@ -147,6 +147,8 @@ $(function(){
       $('#dropdownMenu2').html('2015');
 
       $("#monthList1 li").click(function() {
+
+        $('#dropdownMenu3').html('jan');
           var month = $(this).text();
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
