@@ -345,6 +345,8 @@ function calculateLogDay(fileName)
 function calculatePackages(fileName)
 {
     packages = new Object();
+    packages_monthly = new Object();
+    packages_daily = new Object();
     jsonString = fs.readFileSync(fileName);
     var logObj = JSON.parse(jsonString);
     var LENGTH = logObj.length;
@@ -370,10 +372,34 @@ function calculatePackages(fileName)
             {
                 packages[arr[0]][os[0]]["count"]++;
             }
+            if(packages_monthly[logObj[i]["month"]] == undefined)
+            {
+                packages_monthly[logObj[i]["month"]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"] = 1;
+
+            }
+            else if(packages_monthly[logObj[i]["month"]][arr[0]] == undefined)
+            {
+                packages_monthly[logObj[i]["month"]][arr[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_monthly[logObj[i]["month"]][arr[0]][os[0]] == undefined)
+            {
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else
+            {
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"]++;
+            }
 
         }
     }
-    writeJson(packages,"../json/package_bz2_info/package_by_os.json");
+    writeJson(packages,"../json/package_bz2_info/packages_all.json");
+    writeJson(packages_monthly,"../json/package_bz2_info/packages_monthly.json");
 
 
 }
