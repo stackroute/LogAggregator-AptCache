@@ -1,5 +1,4 @@
 var fs = require('fs');
-
 var rl = require('readline').createInterface({
   input: require('fs').createReadStream('../rawdata/apt-cacher.log')
 });
@@ -431,7 +430,7 @@ function calculatePackages(fileName)
             {
                 packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"]++;
             }
-            
+
         }
     }
     writeJson(packages,"../json/package_bz2_info/packages_all.json");
