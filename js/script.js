@@ -272,7 +272,6 @@ function calculateLogDay(fileName)
 
             }
 
-//***************************************************************************************************
         }
         else
         {
@@ -283,7 +282,8 @@ function calculateLogDay(fileName)
            data_i_package[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
            log_i_package[logObj[i]["month"]][logObj[i]["date"]+""]++;
           }
-          else {
+          else
+          {
 
               data_i_metadata[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
               log_i_metadata[logObj[i]["month"]][logObj[i]["date"]+""]++;
@@ -351,6 +351,68 @@ function calculateLogDay(fileName)
 
     }
 }
+function calculatePackages(fileName)
+{
+    packages = new Object();
+    packages_monthly = new Object();
+    packages_daily = new Object();
+    jsonString = fs.readFileSync(fileName);
+    var logObj = JSON.parse(jsonString);
+    var LENGTH = logObj.length;
+    for(var i=0; i<LENGTH; i++)
+    {
+        var arr = logObj[i]["download"].split('/');
+        var len = arr.length;
+        var os = arr[2].split('-');
+        if(arr[len-1]==="Packages.bz2" && logObj[i]["mode"]==="I")
+        {
+            if(packages[arr[0]]==undefined)
+            {
+                packages[arr[0]] = new Object();
+                packages[arr[0]][os[0]] = new Object();
+                packages[arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages[arr[0]][os[0]]==undefined)
+            {
+                packages[arr[0]][os[0]] = new Object();
+                packages[arr[0]][os[0]]["count"] = 1;
+            }
+            else
+            {
+                packages[arr[0]][os[0]]["count"]++;
+            }
+            if(packages_monthly[logObj[i]["month"]] == undefined)
+            {
+                packages_monthly[logObj[i]["month"]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"] = 1;
+
+            }
+            else if(packages_monthly[logObj[i]["month"]][arr[0]] == undefined)
+            {
+                packages_monthly[logObj[i]["month"]][arr[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_monthly[logObj[i]["month"]][arr[0]][os[0]] == undefined)
+            {
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]] = new Object();
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else
+            {
+                packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"]++;
+            }
+            
+        }
+    }
+    writeJson(packages,"../json/package_bz2_info/packages_all.json");
+    writeJson(packages_monthly,"../json/package_bz2_info/packages_monthly.json");
+
+
+}
+
 
 /*********************************** Package count yearly method ******************************/
 function packageCountYearly(line){
@@ -467,6 +529,7 @@ rl.on('close',function(){
     writeJson(log_json,'../json/apt-cacher.json');
     calculateLogMonth('../json/apt-cacher.json');
     calculateLogDay('../json/apt-cacher.json');
+    calculatePackages('../json/apt-cacher.json');
 
     /****** Package count yearly *********/
     var finalresult=[];
