@@ -1,0 +1,20 @@
+{
+    "uburep": {
+        "vivid": {
+            "count": 16
+        },
+        "trusty": {
+            "count": 1518
+        }
+    },
+    "security.ubuntu.com": {
+        "dists": {
+            "count": 555
+        }
+    },
+    "security.debian.org": {
+        "jessie": {
+            "count": 1
+        }
+    }
+}

@@ -263,7 +263,6 @@ function calculateLogDay(fileName)
 
             }
 
-//***************************************************************************************************
         }
         else
         {
@@ -274,7 +273,8 @@ function calculateLogDay(fileName)
            data_i_package[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
            log_i_package[logObj[i]["month"]][logObj[i]["date"]+""]++;
           }
-          else {
+          else
+          {
 
               data_i_metadata[logObj[i]["month"]][logObj[i]["date"]+""]+=logObj[i]["size"];
               log_i_metadata[logObj[i]["month"]][logObj[i]["date"]+""]++;
@@ -342,7 +342,41 @@ function calculateLogDay(fileName)
 
     }
 }
+function calculatePackages(fileName)
+{
+    packages = new Object();
+    jsonString = fs.readFileSync(fileName);
+    var logObj = JSON.parse(jsonString);
+    var LENGTH = logObj.length;
+    for(var i=0; i<LENGTH; i++)
+    {
+        var arr = logObj[i]["download"].split('/');
+        var len = arr.length;
+        var os = arr[2].split('-');
+        if(arr[len-1]==="Packages.bz2" && logObj[i]["mode"]==="I")
+        {
+            if(packages[arr[0]]==undefined)
+            {
+                packages[arr[0]] = new Object();
+                packages[arr[0]][os[0]] = new Object();
+                packages[arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages[arr[0]][os[0]]==undefined)
+            {
+                packages[arr[0]][os[0]] = new Object();
+                packages[arr[0]][os[0]]["count"] = 1;
+            }
+            else
+            {
+                packages[arr[0]][os[0]]["count"]++;
+            }
 
+        }
+    }
+    writeJson(packages,"../json/package_bz2_info/package_by_os.json");
+
+
+}
 rl.on('line',function(line){
   var arr = line.split('|');
   tempObj = new Object();
@@ -361,4 +395,5 @@ rl.on('close',function(){
     writeJson(log_json,'../json/apt-cacher.json');
     calculateLogMonth('../json/apt-cacher.json');
     calculateLogDay('../json/apt-cacher.json');
+    calculatePackages('../json/apt-cacher.json');
 });
