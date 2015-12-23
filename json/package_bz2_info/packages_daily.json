@@ -14,7 +14,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 14
                 }
             }
@@ -26,7 +26,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 4
                 }
             }
@@ -38,7 +38,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 8
                 }
             }
@@ -50,7 +50,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 4
                 }
             }
@@ -62,7 +62,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 16
                 }
             }
@@ -74,7 +74,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 61
                 }
             }
@@ -86,7 +86,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 24
                 }
             }
@@ -98,7 +98,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 24
                 }
             }
@@ -110,7 +110,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 8
                 }
             }
@@ -124,7 +124,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 4
                 }
             }
@@ -136,7 +136,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 2
                 }
             }
@@ -148,7 +148,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 8
                 }
             }
@@ -160,7 +160,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 2
                 }
             }
@@ -172,7 +172,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 12
                 }
             }
@@ -184,7 +184,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 24
                 }
             }
@@ -196,7 +196,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 22
                 }
             }
@@ -208,7 +208,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 14
                 }
             }
@@ -220,7 +220,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 14
                 }
             }
@@ -239,7 +239,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 8
                 }
             }
@@ -251,7 +251,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 12
                 }
             }
@@ -265,7 +265,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 20
                 }
             }
@@ -277,7 +277,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 12
                 }
             }
@@ -289,7 +289,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 22
                 }
             }
@@ -301,7 +301,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 26
                 }
             }
@@ -313,7 +313,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 4
                 }
             }
@@ -325,7 +325,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 18
                 }
             }
@@ -337,7 +337,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 36
                 }
             }
@@ -349,14 +349,14 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 34
                 }
             }
         },
         "10": {
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 32
                 }
             },
@@ -368,7 +368,7 @@
         },
         "11": {
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 32
                 }
             },
@@ -385,7 +385,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 2
                 }
             }
@@ -397,7 +397,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "trusty": {
                     "count": 24
                 }
             },
@@ -414,7 +414,7 @@
                 }
             },
             "security.ubuntu.com": {
-                "dists": {
+                "vivid": {
                     "count": 8
                 }
             }

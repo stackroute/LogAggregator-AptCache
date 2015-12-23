@@ -8,8 +8,11 @@
         }
     },
     "security.ubuntu.com": {
-        "dists": {
-            "count": 555
+        "trusty": {
+            "count": 547
+        },
+        "vivid": {
+            "count": 8
         }
     },
     "security.debian.org": {
