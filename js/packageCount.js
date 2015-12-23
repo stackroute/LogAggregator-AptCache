@@ -41,16 +41,18 @@ len = tempObj["download"].length;
   if(tempObj["year"]===2015 && tempObj["mode"]==="O" && tempObj["download"].substring(len-4,len ) === ".deb" )
   {
 
-  var packageFile = tempObj["download"].split('/')[5];
-  if(packageFile!=undefined)
-  {
+  var packages = tempObj["download"].split('/');
+  var packageFile = packages[packages.length-1];
+
+  // if(packageFile!=undefined)
+  // {
 
     if(mainObj[packageFile]==undefined)
     {
       mainObj[packageFile]={};
       var packageFileName = packageFile.split('_')[0];
       var packageFileVersion = packageFile.split('_')[1];
-      if(packageFileVersion!=undefined)
+      // if(packageFileVersion!=undefined)
       var packageFileArch = packageFile.split('_')[2].split('.')[0];
       mainObj[packageFile]["Package Name"] = packageFileName;
       mainObj[packageFile]["Package Version"] = packageFileVersion;
@@ -61,7 +63,7 @@ len = tempObj["download"].length;
     {
       mainObj[packageFile]["Count"]++;
     }
-  }
+  // }
 }
 
 });
