@@ -1,9 +1,15 @@
 var fs = require('fs');
+
 var rl = require('readline').createInterface({
   input: require('fs').createReadStream('../rawdata/apt-cacher.log')
 });
+
+/************************************** Global variables ********************************/
 months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 log_json = new Array();
+var mainObj = new Object();
+var mainObjMonthly = new Object();
+
 function timeConverter(UNIX_timestamp){
   var a = new Date(UNIX_timestamp * 1000);
   var year = a.getFullYear();
@@ -19,11 +25,13 @@ function timeConverter(UNIX_timestamp){
   timeObj["time"] = hour + ':' + min + ':' + sec;
   return timeObj;
 }
+
 function writeJson(jsonObj, fileName)
 {
   var jsonString = JSON.stringify(jsonObj,null,4);
   fs.writeFileSync(fileName,jsonString);
 }
+
 function calculateLogMonth(fileName)
 {
     log_no_i = new Object();
@@ -147,6 +155,7 @@ function calculateLogMonth(fileName)
     writeJson(logFilterMetadata,'../json/rate/metadata/monthwise_log_metadata.json');
 
 }
+
 function calculateLogDay(fileName)
 {
     var even = ["Apr","Jun","Sep","Nov"];
@@ -343,6 +352,100 @@ function calculateLogDay(fileName)
     }
 }
 
+/*********************************** Package count yearly method ******************************/
+function packageCountYearly(line){
+  var arr = line.split('|');
+  tempObj = new Object();
+  var tempTime = timeConverter(parseInt(arr[0]));
+  tempObj["date"] = tempTime["date"];
+  tempObj["month"] = tempTime["month"];
+  tempObj["year"] = tempTime["year"];
+  tempObj["time"] = tempTime["time"];
+  tempObj["mode"] = arr[1];
+  tempObj["size"] = parseInt(arr[2]);
+  tempObj["source_ip"] = arr[3];
+  tempObj["download"] = arr[4];
+
+  len = tempObj["download"].length;
+  if(tempObj["year"]===2015 && tempObj["mode"]==="O" && tempObj["download"].substring(len-4,len ) === ".deb" )
+  {
+    var packages = tempObj["download"].split('/');
+    var packageFile = packages[packages.length-1];
+    if(mainObj[packageFile]==undefined)
+    {
+      mainObj[packageFile]={};
+      var packageFileName = packageFile.split('_')[0];
+      var packageFileVersion = packageFile.split('_')[1];
+      var packageFileArch = packageFile.split('_')[2].split('.')[0];
+      mainObj[packageFile]["Package Name"] = packageFileName;
+      mainObj[packageFile]["Package Version"] = packageFileVersion;
+      mainObj[packageFile]["Package Architecture"] = packageFileArch;
+      mainObj[packageFile]["Count"]=1;
+    }
+    else
+    {
+      mainObj[packageFile]["Count"]++;
+    }
+  }
+}
+
+/*********************************** Package count monthly method ******************************/
+function packageCountMonthly(line) {
+  var arr = line.split('|');
+  tempObj = new Object();
+  var tempTime = timeConverter(parseInt(arr[0]));
+  tempObj["date"] = tempTime["date"];
+  tempObj["month"] = tempTime["month"];
+  tempObj["year"] = tempTime["year"];
+  tempObj["time"] = tempTime["time"];
+  tempObj["mode"] = arr[1];
+  tempObj["size"] = parseInt(arr[2]);
+  tempObj["source_ip"] = arr[3];
+  tempObj["download"] = arr[4];
+
+  len = tempObj["download"].length;
+  if(tempObj["year"]===2015 && tempObj["mode"]==="O" && tempObj["download"].substring(len-4,len ) === ".deb" )
+  {
+
+    var packages = tempObj["download"].split('/');
+    var packageFile = packages[packages.length-1];
+    var month = tempObj["month"];
+
+    if(mainObjMonthly[month]===undefined)
+    {
+      mainObjMonthly[month]={};
+      if(mainObjMonthly[month][packageFile]===undefined)
+      {
+        mainObjMonthly[month][packageFile]={};
+        var packageFileName = packageFile.split('_')[0];
+        var packageFileVersion = packageFile.split('_')[1];
+        var packageFileArch = packageFile.split('_')[2].split('.')[0];
+        mainObjMonthly[month][packageFile]["Package Name"] = packageFileName;
+        mainObjMonthly[month][packageFile]["Package Version"] = packageFileVersion;
+        mainObjMonthly[month][packageFile]["Package Architecture"] = packageFileArch;
+        mainObjMonthly[month][packageFile]["Count"]=1;
+      }
+    }
+    else {
+      if(mainObjMonthly[month][packageFile]===undefined)
+      {
+        mainObjMonthly[month][packageFile]={};
+        var packageFileName = packageFile.split('_')[0];
+        var packageFileVersion = packageFile.split('_')[1];
+        if(packageFileVersion!=undefined)
+        var packageFileArch = packageFile.split('_')[2].split('.')[0];
+        mainObjMonthly[month][packageFile]["Package Name"] = packageFileName;
+        mainObjMonthly[month][packageFile]["Package Version"] = packageFileVersion;
+        mainObjMonthly[month][packageFile]["Package Architecture"] = packageFileArch;
+        mainObjMonthly[month][packageFile]["Count"]=1;
+      }
+      else {
+        mainObjMonthly[month][packageFile]["Count"]++;
+      }
+    }
+  }
+}
+
 rl.on('line',function(line){
   var arr = line.split('|');
   tempObj = new Object();
@@ -356,9 +459,32 @@ rl.on('line',function(line){
   tempObj["source_ip"] = arr[3];
   tempObj["download"] = arr[4];
   log_json.push(tempObj);
+  packageCountYearly(line);
+  packageCountMonthly(line);
 });
+
 rl.on('close',function(){
     writeJson(log_json,'../json/apt-cacher.json');
     calculateLogMonth('../json/apt-cacher.json');
     calculateLogDay('../json/apt-cacher.json');
+
+    /****** Package count yearly *********/
+    var finalresult=[];
+    for(item in mainObj)
+    {
+      finalresult.push(mainObj[item]);
+    }
+    writeJson(finalresult,'../json/package/Year2015.json');
+
+    /****** Package count monthly *********/
+    for(i in mainObjMonthly)
+    {
+      var finalResultMonthly=[];
+      for(j in mainObjMonthly[i])
+      {
+        finalResultMonthly.push(mainObjMonthly[i][j])
+      }
+      var fileLocation = "../json/package/"+i+".json";
+      writeJson(finalResultMonthly,fileLocation);
+    }
 });
