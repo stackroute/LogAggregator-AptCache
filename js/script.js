@@ -362,9 +362,19 @@ function calculatePackages(fileName)
     {
         var arr = logObj[i]["download"].split('/');
         var len = arr.length;
-        var os = arr[2].split('-');
+
         if(arr[len-1]==="Packages.bz2" && logObj[i]["mode"]==="I")
         {
+            var os = "";
+            if(arr[0]==="security.debian.org")
+            {
+                os = arr[2].split('-');
+            }
+            else
+            {
+                os = arr[len-4].split('-');
+            }
+
             if(packages[arr[0]]==undefined)
             {
                 packages[arr[0]] = new Object();

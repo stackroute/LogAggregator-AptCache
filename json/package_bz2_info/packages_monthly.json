@@ -9,7 +9,7 @@
             }
         },
         "security.ubuntu.com": {
-            "dists": {
+            "trusty": {
                 "count": 163
             }
         }
@@ -21,7 +21,7 @@
             }
         },
         "security.ubuntu.com": {
-            "dists": {
+            "trusty": {
                 "count": 122
             }
         }
@@ -36,8 +36,11 @@
             }
         },
         "security.ubuntu.com": {
-            "dists": {
-                "count": 270
+            "trusty": {
+                "count": 262
+            },
+            "vivid": {
+                "count": 8
             }
         },
         "security.debian.org": {
