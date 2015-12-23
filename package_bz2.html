@@ -1,107 +1,183 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
+  <head>
 
-		<!-- Website Title & Description for Search Engine purposes -->
-		<title></title>
-		<meta name="description" content="">
+    <!-- Website Title & Description for Search Engine purposes -->
+    <title></title>
+    <meta name="description" content="">
 
-		<!-- Mobile viewport optimized -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<!-- Bootstrap CSS -->
-		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="includes/css/styles.css" rel="stylesheet">
 
-		<!-- Custom CSS -->
-		<link href="includes/css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="includes/css/graphs.css">
-		<link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
+    <!-- Include Modernizr in the head, before any other Javascript -->
+    <script src="includes/js/modernizr-2.6.2.min.js"></script>
 
-		<!-- Include Modernizr in the head, before any other Javascript -->
-		<script src="includes/js/modernizr-2.6.2.min.js"></script>
-    <script src="js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="js/package_bz2_script.js"></script>
-	</head>
-	<body>
+  </head>
+  <body>
 
-		<div class="container" id="main">
+    <div class="container-fluid">
 
-  		<div class="row" id="moreInfo">
-				<div class="col-lg-12">
-					<h2>Apt-log Package Count</h2>
-					<div class="tabbable">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab1" data-toggle="tab" class="tab-link" id="year_tab">Year-wise</a></li>
-							<li><a href="#tab2" data-toggle="tab" class="tab-link" id="month_tab">Month-wise</a></li>
-						</ul>
-						<div class="tab-content">
-							<div class="tab-pane active" id="tab1">
-                <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Year<span class="caret"></span></button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="#" id="y2015">2015</a></li>
-  </ul>
-								</div>
+      <div class="row" id="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-xs-2">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <img alt="Log Aggregator" src="images/log_aggregator_logo.png">
+              </a>
+            </div>
 
-							</div>
-							<div class="tab-pane" id="tab2">
-                <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Year<span class="caret"></span></button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <li><a href="#" id="y15">2015</a></li>
-                    </ul>
-                </div>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-Month<span class="caret"></span></button>
-                  <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                    <li><a href="#" id="Jan">January</a></li>
-                    <li><a href="#" id="Feb">February</a></li>
-                    <li><a href="#" id="Mar">March</a></li>
-                    <li><a href="#" id="Apr">April</a></li>
-                    <li><a href="#" id="May">May</a></li>
-                    <li><a href="#" id="Jun">June</a></li>
-                    <li><a href="#" id="Jul">July</a></li>
-                    <li><a href="#" id="Aug">August</a></li>
-                    <li><a href="#" id="Sep">September</a></li>
-                    <li><a href="#" id="Oct">October</a></li>
-                    <li><a href="#" id="Nov">November</a></li>
-                    <li><a href="#" id="Dec">December</a></li>
-                  </ul>
-              </div>
-							</div>
-						</div>
-					</div>
-				</div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse divider-vertical" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav col-xs-10">
+                <li role="presentation" ><a href="index.html">Home</a></li>
+                <li role="presentation" ><a href="allLogs.html">Request Rate</a></li>
+                <li role="presentation" ><a href="allData.html">Data Rate</a></li>
+                <li role="presentation" ><a href="package.html">Package Count</a></li>
+								<li role="presentation" class="active"><a href="package_bz2.html">Packages.bz2 Updates</a></li>
+              </ul>
+            </div>
+
+          </div> <!-- end container -->
+        </nav>
+      </div> <!-- end row -->
+
+      <div class="row" id="row_well">
+
+        <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
+				<div class="container" id="main">
+		  		<div class="row" id="moreInfo">
+						<div class="col-lg-12">
+							<h2>Apt-log Package Count</h2>
+							<p class="lead">In the year-wise table we are showing the information of the downloaded Packages.bz2 for its particular operating system and count for the given year, and in month-wise graph all the same information will come monthly.</p>
+
+							<div class="tabbable">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab1" data-toggle="tab" class="tab-link" id="year_tab">Year-wise</a></li>
+									<li><a href="#tab2" data-toggle="tab" class="tab-link" id="month_tab">Month-wise</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab1">
+		                <div class="dropdown">
+		                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    								Year<span class="caret"></span>
+											</button>
+										  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										    <li><a href="#" id="y2015">2015</a></li>
+										  </ul>
+										</div> <!-- end dropdown -->
+									</div> <!-- end tab-pane, tab1 -->
+									<div class="tab-pane" id="tab2">
+		                <div class="dropdown">
+		                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+												Year<span class="caret"></span>
+											</button>
+		                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+		                    <li><a href="#" id="y15">2015</a></li>
+		                  </ul>
+		                </div> <!-- end dropdown -->
+		              	<div class="dropdown">
+		                	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+												Month<span class="caret"></span>
+											</button>
+                      <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                        <li><a href="#" id="Jan">January</a></li>
+                        <li><a href="#" id="Feb">February</a></li>
+                        <li><a href="#" id="Mar">March</a></li>
+                        <li><a href="#" id="Apr">April</a></li>
+                        <li><a href="#" id="May">May</a></li>
+                        <li><a href="#" id="Jun">June</a></li>
+                        <li><a href="#" id="Jul">July</a></li>
+                        <li><a href="#" id="Aug">August</a></li>
+                        <li><a href="#" id="Sep">September</a></li>
+                        <li><a href="#" id="Oct">October</a></li>
+                        <li><a href="#" id="Nov">November</a></li>
+                        <li><a href="#" id="Dec">December</a></li>
+                      </ul>
+		              	</div> <!-- end dropdown -->
+									</div> <!-- end tab-pane, tab2 -->
+								</div> <!-- end tab-content -->
+							</div> <!-- end tabbable -->
+						</div> <!-- end col-lg-12 -->
+					</div> <!-- end row -->
+					<hr>
+		      <div id="content">
+		        <table class="table table-striped" id="contenttable">
+		        </table>
+		      </div> <!-- end content -->
+				</div> <!-- end container -->
+		<!-- Delete Till Here -->
+
+	</div> <!-- end row_well -->
+
+	<footer class="row">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<h6>Copyright &copy; 2015 {name}</h6>
+				</div><!-- end col-xs-2 -->
+
+				<div class="col-xs-4">
+					<h6>About Us</h6>
+					<p>We provide visual representation for all logs generated in our server and the source of data is the apt request done by all the devices communicating through our container.</p>
+				</div><!-- end col-xs-4 -->
+
+				<div class="col-xs-2">
+					<h6>Navigation</h6>
+					<ul class="list-unstyled">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Links</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div><!-- end col-xs-2 -->
+
+				<div class="col-xs-2">
+					<h6>Follow Us</h6>
+					<ul class="list-unstyled">
+						<li><a href="#">Twitter</a></li>
+						<li><a href="#">Facebook</a></li>
+						<li><a href="#">Google Plus</a></li>
+					</ul>
+				</div><!-- end col-xs-2 -->
+
+				<div class="col-xs-2">
+					<h6>Coded with <span class="glyphicon glyphicon-heart"></span> by Team</h6>
+				</div><!-- end col-xs-2 -->
 			</div><!-- end row -->
-			<hr>
-      <div id="content">
-          <table id="contenttable">
-          </table>
-      </div>
-
 		</div><!-- end container -->
+	</footer>
 
+</div> <!-- end container-fluid -->
 
+<!-- All Javascript at the bottom of the page for faster page loading -->
 
-	<!-- All Javascript at the bottom of the page for faster page loading -->
+<!-- First try for the online version of jQuery-->
+<script src="http://code.jquery.com/jquery.js"></script>
 
-	<!-- First try for the online version of jQuery-->
-	<script src="http://code.jquery.com/jquery.js"></script>
+<!-- If no online access, fallback to our hardcoded version of jQuery -->
+<script>window.jQuery || document.write('<script src="includes/js/jquery-1.8.2.min.js"><\/script>')</script>
 
-	<!-- If no online access, fallback to our hardcoded version of jQuery -->
-	<script>window.jQuery || document.write('<script src="includes/js/jquery-1.8.2.min.js"><\/script>')</script>
+<!-- Bootstrap JS -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
 
-	<!-- Bootstrap JS -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom JS -->
+<script src="includes/js/script.js"></script>
+<script src="js/package_bz2_script.js"></script>
 
-	<!-- Custom JS -->
-	<script src="includes/js/script.js"></script>
-
-	</body>
+</body>
 </html>
