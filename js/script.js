@@ -281,9 +281,6 @@ function calculateLogDay(fileName)
 
           }
 
-
-
-
         }
     }
     for(mon in logs_no_i)
@@ -395,11 +392,42 @@ function calculatePackages(fileName)
             {
                 packages_monthly[logObj[i]["month"]][arr[0]][os[0]]["count"]++;
             }
+            if(packages_daily[logObj[i]["month"]] == undefined)
+            {
+                packages_daily[logObj[i]["month"]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if (packages_daily[logObj[i]["month"]][logObj[i]["date"]] == undefined)
+            {
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]] == undefined)
+            {
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] == undefined)
+            {
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else
+            {
+                packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"]++;
+            }
 
         }
     }
     writeJson(packages,"../json/package_bz2_info/packages_all.json");
     writeJson(packages_monthly,"../json/package_bz2_info/packages_monthly.json");
+    writeJson(packages_daily,"../json/package_bz2_info/packages_daily.json");
 
 
 }
