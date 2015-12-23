@@ -13,27 +13,30 @@ function WriteTable(data) {
 function WriteRow(data,ele) {
   var row = $("<tr />");
   $("#contenttable").append(row);
+  var th = $('<th />')
+  th.append(ele);
+  row.append(th);
+  var i=0;
   var flag = false;
   for(e in data[ele])
   {
-      var innerRow = $("<tr />");
-      $("#contenttable").append(innerRow);
       if(flag === false)
       {
-          innerRow.append($("<th>"+ele+"</th>"));
-          innerRow.append($("<td>"+e+"</td>"));
-          innerRow.append($("<td>"+data[ele][e]["count"]+"</td>"));
+          row.append($("<td>"+e+"</td>"));
+          row.append($("<td>"+data[ele][e]["count"]+"</td>"));
           flag = true;
       }
       else
       {
-        innerRow.append($("<td></td>"));
+        var innerRow = $("<tr />");
+        $("#contenttable").append(innerRow);
         innerRow.append($("<td>"+e+"</td>"));
         innerRow.append($("<td>"+data[ele][e]["count"]+"</td>"));
       }
-
+      i++;
 
   }
+  th.attr('rowspan',i);
 
 }
 
@@ -55,6 +58,7 @@ $(document).ready(function(){
       $("#monthList1 li").click(function() {
           var month = $(this).text();
           var id = $(this).children().attr('id');
+          $("#contenttable").empty();
           $('#dropdownMenu3').html(month);
           $.ajax({
             url:'json/package_bz2_info/packages_monthly.json',
@@ -62,14 +66,18 @@ $(document).ready(function(){
             type:'get',
             cache:false,
             success:function(data){
-              console.log(id);
-              console.log(data[id]);
               WriteTable(data[id]);
             }
           });
 
       });
 
+    });
+    $("#year_tab").click(function(){
+        $("#contenttable").empty();
+    });
+    $("#month_tab").click(function(){
+        $("#contenttable").empty();
     });
 
 });
