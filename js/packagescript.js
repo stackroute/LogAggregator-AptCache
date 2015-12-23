@@ -1,7 +1,14 @@
 (function(){
     $('#contenttable').hide();
+
+    $('#year_tab').click(function(){
+      $('#contenttable').hide();
+      $('#dropdownMenu1').html('Year');
+    });
+
     $("#y2015").click(function(){
       $('#dropdownMenu1').html('2015');
+      $('#contenttable td').remove();
       $.ajax({
         url:'json/package/Year2015.json',
         dataType:'json',
@@ -23,7 +30,6 @@
         var row = $("<tr />")
         $("#contenttable").show();
         $("#contenttable").append(row);
-
         row.append($("<td>" + parseInt(i+1) + "</td>"));
         row.append($("<td>" + rowData["Package Name"] + "</td>"));
         row.append($("<td>" + rowData["Package Version"] + "</td>"));
@@ -36,6 +42,8 @@
 
     $('#month_tab').click(function(){
       $('#contenttable').hide();
+      $('#dropdownMenu2').html('Year');
+      $("#dropdownMenu3").html('Month');
       $('#dropdownMenu3').attr("disabled", true);
 
       $('#y15').click(function(){
@@ -44,11 +52,10 @@
       });
 
       $("#monthList li").click(function() {
+        $('#contenttable tr').show();
         $('#contenttable td').remove();
         $('#dropdownMenu3').html($(this).text())
                 var id =$ (this).children().attr('id');
-                console.log(id);
-
 
             $.ajax({
               url:'json/package/'+id+'.json',
@@ -60,9 +67,8 @@
                 WriteTable(data);
               },
               error: function() {
-                
-                // alert("Error: " + errorThrown);
-                // alert("XML error" + XMLHttpRequest );
+                $('#contenttable tr').hide();
+
               }
             });
 
@@ -76,8 +82,7 @@
               var row = $("<tr />")
               $("#contenttable").show();
               $("#contenttable").append(row);
-              i= i===0?1:i;
-              row.append($("<td>" + i + "</td>"));
+              row.append($("<td>" + parseInt(i+1) + "</td>"));
               row.append($("<td>" + rowData["Package Name"] + "</td>"));
               row.append($("<td>" + rowData["Package Version"] + "</td>"));
               row.append($("<td>" + rowData["Package Architecture"] + "</td>"));
@@ -87,7 +92,5 @@
       });
 
     });
-
-
 
 })();
