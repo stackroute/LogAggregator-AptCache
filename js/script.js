@@ -625,8 +625,17 @@ rl.on('close',function(){
       writeJson(finalResultMonthly,fileLocation);
 
       var finalresult1=[];
-      finalresult1.push(repo_o);
-      writeJson(finalresult1,'../json/package_repo/output_repo.json');
+      for(i in repo_o){
+        for(j in repo_o[i]){
+          for(k in repo_o[i][j]){
+            finalresult1.push(repo_o[i][j][k]);
+          }
+          repo_o[i][j]=(finalresult1);
+        }
+
+      }
+
+      writeJson(repo_o,'../json/package_repo/output_repo.json');
       var finalresult2=[];
       finalresult2.push(repo_i);
       writeJson(finalresult2,'../json/package_repo/input_repo.json');
