@@ -29,7 +29,19 @@ function WriteRow(data,ele) {
 }
 
 $(document).ready(function(){
+  $("#dropdownMenu1").html("2015");
+  $.ajax({
+    url:'json/package_bz2_info/packages_all.json',
+    dataType:'json',
+    type:'get',
+    cache:false,
+    success:function(data){
+      WriteTable(data);
+
+    }
+  });
   $("#y2015").click(function(){
+
     $("#contenttable").bootgrid("destroy");
     $("#contenttable").empty();
       $("#dropdownMenu1").html("2015");

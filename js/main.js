@@ -1,111 +1,101 @@
 var createGraph = function(fileName)
 {
   d3.select('#somegraph').remove();
-  var margin = {top: 20, right: 80, bottom: 30, left: 150},
-      width = 800 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
 
+var margin = {top: 20, right: 100, bottom: 30, left: 50},
+    width = 800 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
-  var x = d3.scale.ordinal().rangeRoundBands([0, width]);
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
-  var y = d3.scale.linear()
-      .range([height, 0]);
+var x1 = d3.scale.ordinal();
 
-  var color = d3.scale.category10();
+var y = d3.scale.linear()
+    .range([height, 0]);
 
+var color = d3.scale.category10();
 
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .ticks(10)
-      .orient("bottom");
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom");
 
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left");
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
 
-  var line = d3.svg.line()
-      .interpolate("basis")
-      .x(function(d) { return x(d.period); })
-      .y(function(d) { return y(d.logs); });
+var svg = d3.select("div #main").append("svg")
+    .attr('id','somegraph')
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var svg = d3.select("div #main").append("svg")
-      .attr('id','somegraph')
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+d3.json(fileName, function(error, data) {
+  if (error) throw error;
 
-  d3.json(fileName, function(error, data) {
-    if (error) throw error;
+  var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "period"; });
 
-    color.domain(d3.keys(data[0]).filter(function(key) { return key !== "period"; }));
-
-
-    var continents = color.domain().map(function(name) {
-      return {
-        name: name,
-        values: data.map(function(d) {
-          return {period: d.period, logs: +d[name]};
-        })
-      };
-    });
-
-    x.domain(data.map(function(d) { return d.period; }));
-
-    y.domain([
-      d3.min(continents, function(c) { return d3.min(c.values, function(v) { return v.logs; }); }),
-      d3.max(continents, function(c) { return d3.max(c.values, function(v) { return v.logs; }); })
-    ]);
-
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-
-      .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Request Rate (period-wise)");
-
-    var city = svg.selectAll(".city")
-        .data(continents)
-      .enter().append("g")
-        .attr("class", "city");
-
-    city.append("path")
-        .attr("class", "line")
-        .attr("d", function(d) { return line(d.values); })
-        .style("stroke", function(d) { return color(d.name); });
-
-
-        var legend = svg.selectAll(".legend")
-        .data(color.domain().slice().reverse())
-      .enter().append("g")
-        .attr("class", "legend")
-        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-    legend.append("rect")
-        .attr("x", width - 18)
-        .attr("width", 18)
-        .attr("height", 18)
-        .style("fill", color)
-        .attr("transform", "translate(50,-10)");
-
-    legend.append("text")
-        .attr("x", width - 24)
-        .attr("y", 9)
-        .attr("dy", ".35em")
-        .style("text-anchor", "end")
-        .text(function(d) { return d; })
-        .attr("transform", "translate(50,-10)");;
-
+  data.forEach(function(d) {
+    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
   });
+
+  x0.domain(data.map(function(d) { return d.period; }));
+  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Number of Logs");
+
+  var period = svg.selectAll(".period")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "period")
+      .attr("transform", function(d) { return "translate(" + x0(d.period) + ",0)"; });
+
+  period.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.name); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.name); });
+
+  var legend = svg.selectAll(".legend")
+      .data(ageNames.slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color)
+      .attr("transform", "translate(100,-20)");
+
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; })
+      .attr("transform", "translate(100,-20)");
+
+});
 
 }
 function addPara(tab,when)
@@ -125,6 +115,9 @@ function filter(value)
   });
 }
 $(function(){
+  $('#dropdownMenu1').html('2015')
+  createGraph("json/rate/all/monthwise_log_all.json");
+  filter("monthwise");
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#tab1","2015");
@@ -147,7 +140,7 @@ $(function(){
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
           addPara("#tab1","2015");
-          createGraph("json/rate/all/monthwise_log.json");
+          createGraph("json/rate/all/monthwise_log_all.json");
       });
   });
   $('#year_tab').click(function(){
