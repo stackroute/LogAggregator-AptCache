@@ -14,6 +14,9 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
 
+    <!-- jQuery Bootgrid CSS -->
+    <link rel="stylesheet" href="jqueryBootgrid/css/jquery.bootgrid.css">
+
     <!-- Custom CSS -->
     <link href="includes/css/styles.css" rel="stylesheet">
 
@@ -116,15 +119,20 @@
 					</div> <!-- end row -->
 					<hr>
 		      <div id="content">
-		        <table class="table table-striped" id="contenttable">
-		          <tr>
-		            <th>SI No.</th>
-		            <th>Package Name</th>
-								<th>Package Version</th>
-								<th>Package Architecture</th>
-								<th>Count</th>
-		          </tr>
+		        <table class="table table-striped table-condensed table-hover" id="grid-basic">
+              <thead>
+                <tr>
+  		            <th data-column-id="serialNo" data-type="numeric">SI No.</th>
+  		            <th data-column-id="packageName">Package Name</th>
+  								<th data-column-id="packageVersion">Package Version</th>
+  								<th data-column-id="packageArchitecture">Package Architecture</th>
+  								<th data-column-id="packageCount" data-type="numeric">Count</th>
+  		          </tr>
+              </thead>
+              <tbody id="grid-body">
+              </tbody>
 		        </table>
+
 		      </div> <!-- end content -->
 				</div> <!-- end container -->
 		<!-- Delete Till Here -->
@@ -146,8 +154,13 @@
 
 <!-- Custom JS -->
 <!-- <script src="includes/js/script.js"></script> -->
-	<!-- Custom JS -->
+
+<!-- jQuery Bootgrid JS -->
+
+
+<!-- Custom JS -->
 <script src="js/jquery-1.11.3.js"></script>
+<script src="jqueryBootgrid/js/jquery.bootgrid.js"></script>
 	<script type="text/javascript" src="js/packagescript.js"></script>
 	</body>
 </html>
