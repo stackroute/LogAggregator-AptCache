@@ -80,26 +80,21 @@ function WriteRow(data,ele) {
         }
         td.attr('rowspan',c);
           }
-
   }
   th.attr('rowspan',i);
-
 }
+function read_json(){
 
-$(document).ready(function(){
+  $.ajax({
+    url:'json/package_repo/output_repo.json',
+    dataType:'json',
+    type:'get',
+    cache:false,
+    success:function(data){
+      WriteTable(data);
+    }
+  });
 
-      $("#dropdownMenu1").html("2015");
-        $('#dropdownMenu2').html("Output");
-      $.ajax({
-        url:'json/package_repo/output_repo.json',
-        dataType:'json',
-        type:'get',
-        cache:false,
-        success:function(data){
-          WriteTable(data);
-        }
-      });
-  
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
       $("#inout li").click(function() {
@@ -114,17 +109,15 @@ $(document).ready(function(){
             cache:false,
             success:function(data){
               WriteTable(data);
-            }
-          });
-
-      });
-
+}
+$(document).ready(function(){
+  var year="2015"
+  $("#dropdownMenu1").html(year);
+  read_json();
+  $("#y2015").click(function(){
+      $("#contenttable").empty();
+    var year = $(this).text();
+      $("#dropdownMenu1").html(year);
+      read_json();
     });
-    $("#year_tab").click(function(){
-        $("#contenttable").empty();
-    });
-    $("#month_tab").click(function(){
-        $("#contenttable").empty();
-    });
-
 });
