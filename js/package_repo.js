@@ -31,8 +31,6 @@ function WriteRow(data,ele) {
           flag2 = false;
           for(j in data[ele][e])
           {
-            for(k in data[ele][e][j]){
-            console.log(k);
               if(flag2 === false)
               {
                   row.append($("<td>"+data[ele][e][j]["Name"]+"</td>"));
@@ -48,7 +46,7 @@ function WriteRow(data,ele) {
               }
               c++;
               i++;
-          }
+
         }
           td.attr('rowspan',c);
           flag = true;
@@ -64,7 +62,6 @@ function WriteRow(data,ele) {
         flag2 = false;
         for(j in data[ele][e])
         {
-          for(k in data[ele][e][j]){
             if(flag2 === false)
             {
                 innerRow.append($("<td>"+data[ele][e][j]["Name"]+"</td>"));
@@ -82,9 +79,7 @@ function WriteRow(data,ele) {
             i++;
         }
         td.attr('rowspan',c);
-      }
-    }
-      //i++;
+          }
 
   }
   th.attr('rowspan',i);
