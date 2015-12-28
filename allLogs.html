@@ -75,7 +75,7 @@
                   <li class="active"><a href="#tab1" data-toggle="tab" class="tab-link" id="year_tab">Year-wise</a></li>
                   <li><a href="#tab2" data-toggle="tab" class="tab-link" id="month_tab">Month-wise</a></li>
                 </ul>
-                <div class="tab-content">
+                <div id="myTab" class="tab-content col-lg-4">
                   <div class="tab-pane active" id="tab1">
                     <div class="dropdown">
                       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -113,25 +113,27 @@
                   </div>
                   </div>
                 </div>
+                <div  id="radio" class="alert col-lg-8">
+                        <div class="form-inline">
+                            <label class="control-label">
+                                Filter</label>
+                            <label class="radio">
+                                <input value="all" name="filter"  type="radio" checked>All
+                            </label>
+                            <label class="radio">
+                                <input value="metadata" name="filter" type="radio">Metadata
+                            </label>
+                            <label class="radio">
+                                <input value="package" name="filter" type="radio">Packages
+                            </label>
+                        </div>
+                    </div>
+
               </div>
             </div>
           </div><!-- end row -->
           <hr>
-          <div  id="radio" class="alert alert-info">
-                  <div class="form-inline">
-                      <label class="control-label">
-                          Filter</label>
-                      <label class="radio">
-                          <input value="all" name="filter"  type="radio" checked>All
-                      </label>
-                      <label class="radio">
-                          <input value="metadata" name="filter" type="radio">Metadata
-                      </label>
-                      <label class="radio">
-                          <input value="package" name="filter" type="radio">Packages
-                      </label>
-                  </div>
-              </div>
+
 
         </div><!-- end container -->
 
