@@ -101,7 +101,8 @@ d3.json(fileName, function(error, data) {
 function addPara(tab,when)
 {
   $(tab + " p").remove();
-  $(tab).append("<p>Request Rate for all of " + when + " </p>");
+  $(tab).append("<p><strong>Request Rate for all of " + when + " <strong></p>");
+  $(tab).append("<p>This graph shows the number of logs for all of " + when + ". The Output refers to the apt requests made by individual devices and Input refers to the ones cached by the server.</p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
@@ -117,6 +118,7 @@ function filter(value)
 $(function(){
   $('#dropdownMenu1').html('2015')
   createGraph("json/rate/all/monthwise_log_all.json");
+  addPara("#tab1","2015");
   filter("monthwise");
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
