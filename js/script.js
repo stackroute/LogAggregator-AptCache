@@ -1,5 +1,4 @@
 var fs = require('fs');
-
 var rl = require('readline').createInterface({
   input: require('fs').createReadStream('../rawdata/apt-cacher.log')
 });
