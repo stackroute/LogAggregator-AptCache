@@ -80,50 +80,44 @@ function WriteRow(data,ele) {
         }
         td.attr('rowspan',c);
           }
-
   }
   th.attr('rowspan',i);
-
 }
+function read_json(){
 
-$(document).ready(function(){
-  $("#y2015").click(function(){
-      $("#dropdownMenu1").html("2015");
-      $.ajax({
-        url:'json/package_repo/output_repo.json',
-        dataType:'json',
-        type:'get',
-        cache:false,
-        success:function(data){
-          WriteTable(data);
-        }
-      });
-    });
-  $('#y15').click(function(){
-      $('#dropdownMenu2').html('2015');
-      $("#monthList1 li").click(function() {
-          var month = $(this).text();
+  $.ajax({
+    url:'json/package_repo/output_repo.json',
+    dataType:'json',
+    type:'get',
+    cache:false,
+    success:function(data){
+      WriteTable(data);
+    }
+  });
+
+  $('#y2015').click(function(){
+      $('#dropdownMenu1').html('2015');
+      $("#inout li").click(function() {
+          var type = $(this).text();
           var id = $(this).children().attr('id');
           $("#contenttable").empty();
-          $('#dropdownMenu3').html(month);
+          $('#dropdownMenu2').html(type);
           $.ajax({
-            url:'json/package_repo/output_repo.json',
+            url:'json/package_repo/'+id+'_repo.json',
             dataType:'json',
             type:'get',
             cache:false,
             success:function(data){
-              WriteTable(data[id]);
-            }
-          });
-
-      });
-
+              WriteTable(data);
+}
+$(document).ready(function(){
+  var year="2015"
+  $("#dropdownMenu1").html(year);
+  read_json();
+  $("#y2015").click(function(){
+      $("#contenttable").empty();
+    var year = $(this).text();
+      $("#dropdownMenu1").html(year);
+      read_json();
     });
-    $("#year_tab").click(function(){
-        $("#contenttable").empty();
-    });
-    $("#month_tab").click(function(){
-        $("#contenttable").empty();
-    });
-
 });
