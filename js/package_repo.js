@@ -87,8 +87,9 @@ function WriteRow(data,ele) {
 }
 
 $(document).ready(function(){
-  $("#y2015").click(function(){
+
       $("#dropdownMenu1").html("2015");
+        $('#dropdownMenu2').html("Output");
       $.ajax({
         url:'json/package_repo/output_repo.json',
         dataType:'json',
@@ -98,21 +99,21 @@ $(document).ready(function(){
           WriteTable(data);
         }
       });
-    });
-  $('#y15').click(function(){
-      $('#dropdownMenu2').html('2015');
-      $("#monthList1 li").click(function() {
-          var month = $(this).text();
+  
+  $('#y2015').click(function(){
+      $('#dropdownMenu1').html('2015');
+      $("#inout li").click(function() {
+          var type = $(this).text();
           var id = $(this).children().attr('id');
           $("#contenttable").empty();
-          $('#dropdownMenu3').html(month);
+          $('#dropdownMenu2').html(type);
           $.ajax({
-            url:'json/package_repo/output_repo.json',
+            url:'json/package_repo/'+id+'_repo.json',
             dataType:'json',
             type:'get',
             cache:false,
             success:function(data){
-              WriteTable(data[id]);
+              WriteTable(data);
             }
           });
 
