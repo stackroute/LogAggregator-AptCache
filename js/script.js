@@ -355,6 +355,7 @@ function calculatePackages(fileName)
     packages = new Object();
     packages_monthly = new Object();
     packages_daily = new Object();
+    packages_yearly = new Object();
     jsonString = fs.readFileSync(fileName);
     var logObj = JSON.parse(jsonString);
     var LENGTH = logObj.length;
@@ -443,12 +444,52 @@ function calculatePackages(fileName)
             {
                 packages_daily[logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"]++;
             }
+            if(packages_yearly[logObj[i]["year"]] == undefined)
+            {
+                packages_yearly[logObj[i]["year"]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_yearly[logObj[i]["year"]][logObj[i]["month"]] == undefined)
+            {
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]] == undefined)
+            {
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]]==undefined)
+            {
+              packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]] = new Object();
+              packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+              packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else if(packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] == undefined)
+            {
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]] = new Object();
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"] = 1;
+            }
+            else
+            {
+                packages_yearly[logObj[i]["year"]][logObj[i]["month"]][logObj[i]["date"]][arr[0]][os[0]]["count"]++;
+            }
 
         }
     }
     writeJson(packages,"../json/package_bz2_info/packages_all.json");
     writeJson(packages_monthly,"../json/package_bz2_info/packages_monthly.json");
     writeJson(packages_daily,"../json/package_bz2_info/packages_daily.json");
+    writeJson(packages_yearly,"../json/package_bz2_info/packages_yearly.json");
 
 
 }
