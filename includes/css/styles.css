@@ -124,6 +124,10 @@
       margin-left: 10px;
     }
 
+    #myTab{
+      padding: 0px;
+    }
+
     #row_well {
       background: rgba(29, 83, 119, 1);
     }
