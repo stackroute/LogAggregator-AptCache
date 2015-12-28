@@ -11,11 +11,20 @@ var createGraph = function(fileName)
   var y = d3.scale.linear()
       .range([height, 0]);
 
-  var div = d3.select("body").append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
-
   var color = d3.scale.category10();
+  var bytesToString = function (bytes) {
+    // One way to write it, not the prettiest way to write it.
+
+    var fmt = d3.format('0.0f');
+    if (bytes < 1024) {
+        return fmt(bytes) + 'B';
+    } else if (bytes < 1024 * 1024) {
+        return fmt(bytes / 1024) + 'kB';
+    } else  {
+        return fmt(bytes / 1024 / 1024) + 'MB';
+    }
+}
+
   var xAxis = d3.svg.axis()
       .scale(x)
       .ticks(10)
@@ -23,7 +32,7 @@ var createGraph = function(fileName)
 
   var yAxis = d3.svg.axis()
       .scale(y)
-      //.tickFormat(bytesToString)
+      .tickFormat(bytesToString)
       .orient("left");
 
   var line = d3.svg.line()
@@ -37,7 +46,6 @@ var createGraph = function(fileName)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 
   d3.json(fileName, function(error, data) {
     if (error) throw error;
@@ -77,35 +85,6 @@ var createGraph = function(fileName)
         .style("text-anchor", "end")
         .text("Date Rate in MB (period-wise)");
 
-        svg.selectAll("dot")
-               .data(data)
-           .enter().append("circle")
-               .attr("r", 3.5)
-               .attr("cx", function(d) { return x(d.period); })
-               .attr("cy", function(d) { return y(d.Input); });
-
-       svg.selectAll("dot")
-              .data(data)
-          .enter().append("circle")
-              .attr("r", 3.5)
-              .attr("cx", function(d) { return x(d.period); })
-              .attr("cy", function(d) { return y(d.Output); })
-
-               .on("mouseover", function(d) {
-                   div.transition()
-                       .duration(200)
-                       .style("opacity", .9);
-                   div	.html(d.period + "<br/>"  + d.Output)
-                       .style("left", (d3.event.pageX) + "px")
-                       .style("top", (d3.event.pageY - 28) + "px");
-                   })
-               .on("mouseout", function(d) {
-                   div.transition()
-                       .duration(500)
-                       .style("opacity", 0);
-               });
-
-
     var city = svg.selectAll(".city")
         .data(continents)
       .enter().append("g")
@@ -113,7 +92,7 @@ var createGraph = function(fileName)
 
     city.append("path")
         .attr("class", "line")
-        .attr("d", function(d) { return line(d.logs); })
+        .attr("d", function(d) { return line(d.values); })
         .style("stroke", function(d) { return color(d.name); });
 
 
@@ -136,9 +115,7 @@ var createGraph = function(fileName)
         .attr("dy", ".35em")
         .style("text-anchor", "end")
         .text(function(d) { return d; })
-        .attr("transform", "translate(50,-10)");
-
-
+        .attr("transform", "translate(50,-10)");;
 
   });
 
