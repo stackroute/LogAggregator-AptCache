@@ -163,14 +163,14 @@ var flag=1;
        id="Oct";
        $('#dropdownMenu2').html(year);
        $('#dropdownMenu3').html(month);
-       addPara("#tab2",month);
+       addPara("#moreInfo",month);
        createGraph("json/size/all/"+id+"_data_all.json");
        });
 
   $('#y2015').click(function(){
 
       $('#dropdownMenu1').html('2015');
-      addPara("#tab1","2015");
+      addPara("#moreInfo","2015");
       createGraph("json/size/all/monthwise_data_all.json");
       filter("monthwise");
     });
@@ -183,7 +183,7 @@ var flag=1;
           var month = $(this).text();
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
-          addPara("#tab2",month);
+          addPara("#moreInfo",month);
           createGraph("json/size/all/"+id+"_data_all.json");
             filter(id);
       });
@@ -191,7 +191,7 @@ var flag=1;
 
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
-          addPara("#tab1","2015");
+          addPara("#moreInfo","2015");
           createGraph("json/size/all/monthwise_data.json");
       });
   });

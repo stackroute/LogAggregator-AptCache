@@ -131,11 +131,11 @@ function filter(value)
 $(function(){
   $('#dropdownMenu1').html('2015')
   createGraph("json/rate/all/monthwise_log_all.json");
-  addPara("#tab1","2015");
+  addPara("#moreInfo","2015");
   filter("monthwise");
   $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
-      addPara("#tab1","2015");
+      addPara("#moreInfo","2015");
       createGraph("json/rate/all/monthwise_log_all.json");
       filter("monthwise");
     });
@@ -146,7 +146,7 @@ $(function(){
           var month = $(this).text();
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
-          addPara("#tab2",month);
+          addPara("#moreInfo",month);
           createGraph("json/rate/all/"+id+"_log_all.json");
             filter(id);
       });
@@ -154,7 +154,7 @@ $(function(){
 
       $('#y2015').click(function(){
           $('#dropdownMenu1').html('2015');
-          addPara("#tab1","2015");
+          addPara("#moreInfo","2015");
           createGraph("json/rate/all/monthwise_log_all.json");
       });
   });
