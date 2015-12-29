@@ -143,7 +143,7 @@ function filter(value)
 function default_selection(year,month)
 {
     $('#dropdownMenu1').html(year);
-  addPara("#tab1",year);
+  addPara("#moreInfo",year);
   createGraph("json/size/all/monthwise_data_all.json");
   filter("monthwise");
 
