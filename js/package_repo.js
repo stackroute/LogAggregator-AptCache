@@ -83,41 +83,47 @@ function WriteRow(data,ele) {
   }
   th.attr('rowspan',i);
 }
-function read_json(){
 
+function read_json(selection){
+
+   url="json/package_repo/"+selection+"_repo.json"
   $.ajax({
-    url:'json/package_repo/output_repo.json',
+    url:url,
     dataType:'json',
     type:'get',
     cache:false,
     success:function(data){
+
       WriteTable(data);
     }
   });
-
-  $('#y2015').click(function(){
-      $('#dropdownMenu1').html('2015');
-      $("#inout li").click(function() {
-          var type = $(this).text();
-          var id = $(this).children().attr('id');
-          $("#contenttable").empty();
-          $('#dropdownMenu2').html(type);
-          $.ajax({
-            url:'json/package_repo/'+id+'_repo.json',
-            dataType:'json',
-            type:'get',
-            cache:false,
-            success:function(data){
-              WriteTable(data);
 }
+var selection;
 $(document).ready(function(){
-  var year="2015"
+  var year="2015";
+   selection="input";
   $("#dropdownMenu1").html(year);
-  read_json();
-  $("#y2015").click(function(){
+  $("#dropdownMenu2").html(selection);
+    $("#contenttable").empty();
+  read_json(selection);
+
+});
+$("#y2015").click(function(){
+  var year = $(this).text();
+  $("#dropdownMenu1").html(year);
+    $("#dropdownMenu2").html("In/Out");
+  });
+    $("#input").click(function(){
+      selection=$(this).text();
       $("#contenttable").empty();
-    var year = $(this).text();
-      $("#dropdownMenu1").html(year);
-      read_json();
-    });
+      $("#dropdownMenu2").html(selection);
+     read_json(selection);
+  });
+  $("#output").click(function(){
+    console.log("am here");
+    selection=$(this).text();
+    console.log(selection);
+    $("#contenttable").empty();
+    $("#dropdownMenu2").html(selection);
+   read_json(selection);
 });
