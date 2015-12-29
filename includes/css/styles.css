@@ -184,3 +184,6 @@
     top: 100%;
     left: 0;
   }
+#moreInfo p{
+  padding: 10px;
+}
