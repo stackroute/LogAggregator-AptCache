@@ -123,7 +123,7 @@ var createGraph = function(fileName)
 function addPara(tab,when)
 {
   $(tab + " p").remove();
-  $(tab).append("<p>Data Rate for all of " + when + " </p>");
+  $(tab).append("<p>This Line graph represent Request rate in Megabytes(both Input and Output) for the year "+ when + ". Here the Output  represents the total data rate(in MB) which is served from Server to clients and the Input rate represents the total data rate (in MB) which is downloaded from external medium to Server repository.    </p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
@@ -136,8 +136,35 @@ function filter(value)
     createGraph("json/size/"+data+"/"+value+"_data_"+data+".json");
   });
 }
+function default_selection(year,month)
+{
+    $('#dropdownMenu1').html(year);
+  addPara("#tab1",year);
+  createGraph("json/size/all/monthwise_data_all.json");
+  filter("monthwise");
+
+
+}
+
 $(function(){
+var flag=1;
+  var year="2015";
+  var month="October";
+  default_selection(year,month);
+  $('#year_tab').click(function(){
+        default_selection(year,month);
+     });
+
+     $('#month_tab').click(function(){
+       id="Oct";
+       $('#dropdownMenu2').html(year);
+       $('#dropdownMenu3').html(month);
+       addPara("#tab2",month);
+       createGraph("json/size/all/"+id+"_data_all.json");
+       });
+
   $('#y2015').click(function(){
+
       $('#dropdownMenu1').html('2015');
       addPara("#tab1","2015");
       createGraph("json/size/all/monthwise_data_all.json");
