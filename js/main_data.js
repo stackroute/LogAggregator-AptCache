@@ -18,11 +18,11 @@ var createGraph = function(fileName)
 
     var fmt = d3.format('0.0f');
     if (bytes < 1024) {
-        return fmt(bytes) + 'B';
+        return fmt(bytes) + ' B';
     } else if (bytes < 1024 * 1024) {
-        return fmt(bytes / 1024) + 'kB';
+        return fmt(bytes / 1024) + ' kB';
     } else  {
-        return fmt(bytes / 1024 / 1024) + 'MB';
+        return fmt(bytes / 1024 / 1024) + ' MB';
     }
   }
 
@@ -42,7 +42,7 @@ var createGraph = function(fileName)
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<strong>Size:</strong> <span>" + d.value + " Bytes</span>";
+          return "<strong>Size:</strong> <span>" + bytesToString(d.value) + "</span>";
         })
 
   var svg = d3.select("div #main").append("svg")
