@@ -24,12 +24,21 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return "<strong>Size:</strong> <span>" + d.value + "</span>";
+      })
+
 var svg = d3.select("div #main").append("svg")
     .attr('id','somegraph')
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
 
 d3.json(fileName, function(error, data) {
   if (error) throw error;
@@ -73,6 +82,10 @@ d3.json(fileName, function(error, data) {
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
       .style("fill", function(d) { return color(d.name); });
+
+  period.selectAll('rect')
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
 
   var legend = svg.selectAll(".legend")
       .data(ageNames.slice().reverse())
