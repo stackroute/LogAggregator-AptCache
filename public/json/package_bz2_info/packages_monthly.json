@@ -1,0 +1,52 @@
+{
+    "Oct": {
+        "uburep": {
+            "vivid": {
+                "count": 3
+            },
+            "trusty": {
+                "count": 483
+            }
+        },
+        "security.ubuntu.com": {
+            "trusty": {
+                "count": 163
+            }
+        }
+    },
+    "Nov": {
+        "uburep": {
+            "trusty": {
+                "count": 480
+            }
+        },
+        "security.ubuntu.com": {
+            "trusty": {
+                "count": 122
+            }
+        }
+    },
+    "Dec": {
+        "uburep": {
+            "trusty": {
+                "count": 555
+            },
+            "vivid": {
+                "count": 13
+            }
+        },
+        "security.ubuntu.com": {
+            "trusty": {
+                "count": 262
+            },
+            "vivid": {
+                "count": 8
+            }
+        },
+        "security.debian.org": {
+            "jessie": {
+                "count": 1
+            }
+        }
+    }
+}

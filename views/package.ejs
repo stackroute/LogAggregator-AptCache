@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include partial/head.ejs %>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <% include partial/header.ejs %>
+
+      <div class="row" id="row_well">
+
+        <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
+				<div class="container" id="main">
+		  		<div class="row" id="moreInfo">
+						<div class="col-lg-12">
+							<h2>Apt-log Package Count</h2>
+							<p class="lead">In the year-wise table we are showing the information of the downloaded packages along with their details such as package name, version, architecture and count for the given year, and in month-wise graph all the same information will come monthly.</p>
+              <% include partial/tab.ejs %>
+						</div> <!-- end col-lg-12 -->
+					</div> <!-- end row -->
+					<hr>
+		      <div id="content">
+		        <table class="table table-striped table-condensed table-hover" id="grid-basic">
+              <thead>
+                <tr>
+  		            <th data-column-id="serialNo" data-type="numeric">SI No.</th>
+  		            <th data-column-id="packageName">Package Name</th>
+  								<th data-column-id="packageVersion">Package Version</th>
+  								<th data-column-id="packageArchitecture">Package Architecture</th>
+  								<th data-column-id="packageCount" data-type="numeric">Count</th>
+  		          </tr>
+              </thead>
+              <tbody id="grid-body">
+              </tbody>
+		        </table>
+	        </div> <!-- end content -->
+				</div> <!-- end container -->
+
+	</div> <!-- end row_well -->
+
+</div> <!-- end container-fluid -->
+
+<!-- All Javascript at the bottom of the page for faster page loading -->
+  <% include partial/jsdefaults.ejs %>
+	<script type="text/javascript" src="../javascripts/packagescript.js"></script>
+	</body>
+</html>

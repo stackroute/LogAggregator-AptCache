@@ -1,0 +1,200 @@
+[
+    {
+        "Package Name": "libstdc++-4.8-dev",
+        "Package Version": "4.8.4-2ubuntu1~14.04",
+        "Package Architecture": "i386",
+        "Count": 4
+    },
+    {
+        "Package Name": "g++-4.8",
+        "Package Version": "4.8.4-2ubuntu1~14.04",
+        "Package Architecture": "i386",
+        "Count": 1
+    },
+    {
+        "Package Name": "g++",
+        "Package Version": "4.8.2-1ubuntu6",
+        "Package Architecture": "i386",
+        "Count": 1
+    },
+    {
+        "Package Name": "gconf2-common",
+        "Package Version": "3.2.6-0ubuntu2",
+        "Package Architecture": "all",
+        "Count": 1
+    },
+    {
+        "Package Name": "libgconf-2-4",
+        "Package Version": "3.2.6-0ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 1
+    },
+    {
+        "Package Name": "gconf-service-backend",
+        "Package Version": "3.2.6-0ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 1
+    },
+    {
+        "Package Name": "gconf-service",
+        "Package Version": "3.2.6-0ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 1
+    },
+    {
+        "Package Name": "libasound2-data",
+        "Package Version": "1.0.27.2-3ubuntu7",
+        "Package Architecture": "all",
+        "Count": 1
+    },
+    {
+        "Package Name": "libpng12-0",
+        "Package Version": "1.2.50-1ubuntu2.14.04.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "fonts-dejavu-core",
+        "Package Version": "2.34-1ubuntu1",
+        "Package Architecture": "all",
+        "Count": 2
+    },
+    {
+        "Package Name": "fontconfig-config",
+        "Package Version": "2.11.0-0ubuntu4.1",
+        "Package Architecture": "all",
+        "Count": 2
+    },
+    {
+        "Package Name": "libfontconfig1",
+        "Package Version": "2.11.0-0ubuntu4.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libexpat1-dev",
+        "Package Version": "2.1.0-4ubuntu1.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "zlib1g-dev",
+        "Package Version": "1.2.8.dfsg-1ubuntu1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libpng12-dev",
+        "Package Version": "1.2.50-1ubuntu2.14.04.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libfreetype6-dev",
+        "Package Version": "2.5.2-1ubuntu2.5",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "pkg-config",
+        "Package Version": "0.26-1ubuntu4",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libfontconfig1-dev",
+        "Package Version": "2.11.0-0ubuntu4.1",
+        "Package Architecture": "i386",
+        "Count": 2
+    },
+    {
+        "Package Name": "libboost-system1.54.0",
+        "Package Version": "1.54.0-4ubuntu3.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libboost-filesystem1.54.0",
+        "Package Version": "1.54.0-4ubuntu3.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libboost-program-options1.54.0",
+        "Package Version": "1.54.0-4ubuntu3.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libboost-thread1.54.0",
+        "Package Version": "1.54.0-4ubuntu3.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libpcrecpp0",
+        "Package Version": "8.31-2ubuntu2.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libboost1.54-dev",
+        "Package Version": "1.54.0-4ubuntu3.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libboost-dev",
+        "Package Version": "1.54.0.1ubuntu1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libtcmalloc-minimal4",
+        "Package Version": "2.1-2ubuntu1.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libgoogle-perftools4",
+        "Package Version": "2.1-2ubuntu1.1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libv8-3.14.5",
+        "Package Version": "3.14.5.8-5ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "mongodb-dev",
+        "Package Version": "2.4.9-1ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "libsnappy1",
+        "Package Version": "1.1.0-1ubuntu1",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "mongodb-clients",
+        "Package Version": "2.4.9-1ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "mongodb-server",
+        "Package Version": "2.4.9-1ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 3
+    },
+    {
+        "Package Name": "mongodb",
+        "Package Version": "2.4.9-1ubuntu2",
+        "Package Architecture": "i386",
+        "Count": 3
+    }
+]

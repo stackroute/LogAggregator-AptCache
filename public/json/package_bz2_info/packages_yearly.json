@@ -1,0 +1,425 @@
+{
+    "2015": {
+        "Oct": {
+            "19": {
+                "uburep": {
+                    "vivid": {
+                        "count": 3
+                    }
+                }
+            },
+            "20": {
+                "uburep": {
+                    "trusty": {
+                        "count": 64
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 14
+                    }
+                }
+            },
+            "21": {
+                "uburep": {
+                    "trusty": {
+                        "count": 10
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 4
+                    }
+                }
+            },
+            "23": {
+                "uburep": {
+                    "trusty": {
+                        "count": 29
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 8
+                    }
+                }
+            },
+            "26": {
+                "uburep": {
+                    "trusty": {
+                        "count": 16
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 4
+                    }
+                }
+            },
+            "27": {
+                "uburep": {
+                    "trusty": {
+                        "count": 56
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 16
+                    }
+                }
+            },
+            "28": {
+                "uburep": {
+                    "trusty": {
+                        "count": 151
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 61
+                    }
+                }
+            },
+            "29": {
+                "uburep": {
+                    "trusty": {
+                        "count": 67
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 24
+                    }
+                }
+            },
+            "30": {
+                "uburep": {
+                    "trusty": {
+                        "count": 66
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 24
+                    }
+                }
+            },
+            "31": {
+                "uburep": {
+                    "trusty": {
+                        "count": 24
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 8
+                    }
+                }
+            }
+        },
+        "Nov": {
+            "6": {
+                "uburep": {
+                    "trusty": {
+                        "count": 8
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 4
+                    }
+                }
+            },
+            "13": {
+                "uburep": {
+                    "trusty": {
+                        "count": 8
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 2
+                    }
+                }
+            },
+            "16": {
+                "uburep": {
+                    "trusty": {
+                        "count": 29
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 8
+                    }
+                }
+            },
+            "17": {
+                "uburep": {
+                    "trusty": {
+                        "count": 8
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 2
+                    }
+                }
+            },
+            "19": {
+                "uburep": {
+                    "trusty": {
+                        "count": 46
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 12
+                    }
+                }
+            },
+            "20": {
+                "uburep": {
+                    "trusty": {
+                        "count": 86
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 24
+                    }
+                }
+            },
+            "23": {
+                "uburep": {
+                    "trusty": {
+                        "count": 73
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 22
+                    }
+                }
+            },
+            "24": {
+                "uburep": {
+                    "trusty": {
+                        "count": 78
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 14
+                    }
+                }
+            },
+            "25": {
+                "uburep": {
+                    "trusty": {
+                        "count": 41
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 14
+                    }
+                }
+            },
+            "26": {
+                "uburep": {
+                    "trusty": {
+                        "count": 36
+                    }
+                }
+            },
+            "27": {
+                "uburep": {
+                    "trusty": {
+                        "count": 29
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 8
+                    }
+                }
+            },
+            "30": {
+                "uburep": {
+                    "trusty": {
+                        "count": 38
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 12
+                    }
+                }
+            }
+        },
+        "Dec": {
+            "1": {
+                "uburep": {
+                    "trusty": {
+                        "count": 55
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 20
+                    }
+                }
+            },
+            "2": {
+                "uburep": {
+                    "trusty": {
+                        "count": 50
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 12
+                    }
+                }
+            },
+            "3": {
+                "uburep": {
+                    "trusty": {
+                        "count": 61
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 22
+                    }
+                }
+            },
+            "4": {
+                "uburep": {
+                    "trusty": {
+                        "count": 47
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 26
+                    }
+                }
+            },
+            "5": {
+                "uburep": {
+                    "trusty": {
+                        "count": 9
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 4
+                    }
+                }
+            },
+            "7": {
+                "uburep": {
+                    "trusty": {
+                        "count": 44
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 18
+                    }
+                }
+            },
+            "8": {
+                "uburep": {
+                    "trusty": {
+                        "count": 93
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 36
+                    }
+                }
+            },
+            "9": {
+                "uburep": {
+                    "trusty": {
+                        "count": 74
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 34
+                    }
+                }
+            },
+            "10": {
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 32
+                    }
+                },
+                "uburep": {
+                    "trusty": {
+                        "count": 22
+                    }
+                }
+            },
+            "11": {
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 32
+                    }
+                },
+                "uburep": {
+                    "trusty": {
+                        "count": 52
+                    }
+                }
+            },
+            "12": {
+                "uburep": {
+                    "trusty": {
+                        "count": 1
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 2
+                    }
+                }
+            },
+            "14": {
+                "uburep": {
+                    "trusty": {
+                        "count": 47
+                    }
+                },
+                "security.ubuntu.com": {
+                    "trusty": {
+                        "count": 24
+                    }
+                },
+                "security.debian.org": {
+                    "jessie": {
+                        "count": 1
+                    }
+                }
+            },
+            "15": {
+                "uburep": {
+                    "vivid": {
+                        "count": 13
+                    }
+                },
+                "security.ubuntu.com": {
+                    "vivid": {
+                        "count": 8
+                    }
+                }
+            }
+        }
+    }
+}

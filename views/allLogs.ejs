@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include partial/head.ejs %>
+    <script type="text/javascript" src="../javascripts/main.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <% include partial/header.ejs %>
+      <div class="row" id="row_well">
+        <div class="container" id="main">
+          <div class="row" id="moreInfo">
+            <div class="col-lg-12">
+              <h2>Apt-log Request rate</h2>
+              <% include partial/tab.ejs %>
+              <% include partial/filter.ejs %>
+            </div>
+          </div><!-- end row -->
+          <hr>
+        </div><!-- end container -->
+  	  </div> <!-- end row_well -->
+    </div> <!-- end container-fluid -->
+
+    <!-- All Javascript at the bottom of the page for faster page loading -->
+    <% include partial/jsdefaults.ejs %>
+  </body>
+</html>
