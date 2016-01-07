@@ -50,10 +50,11 @@ rl.on('close',function(){
       }
 
   var collection = db.collection('AllLogsData');
-  collection.insert(log_json, function(err, docs) {
-
-        console.log("Database created successfully");
-  });
+  var LENGTH = log_json.length;
+  for(var i = 0 ; i<LENGTH; i++)
+  {
+      collection.insert(log_json[i]);
+  }
     db.close();
 });
 });
