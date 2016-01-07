@@ -137,7 +137,7 @@ function filter(value)
 $(function(){
   $('#dropdownMenu1').html('2015')
   $.ajax({
-    url:'/rate/all/monthwise_log_all',
+    url:'/graph/rate/all/monthwise_log_all',
     dataType:'json',
     type:'get',
     cache:false,
