@@ -10,33 +10,25 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var obj={};
   mongoClient.connect(url,function(err,db){
-    //db.AllLogsData.aggregate([{$match : {mode:"O",year:2015,month:"Dec",download:{$regex:".deb$"}}},{$group:{_id:{package:"$download"},count:{$sum:1}}}])
-    var cursor=db.AllLogsData.aggregate([{$match : {mode:"O",year:2015,download:{$regex:".deb$"}}},{$group:{_id:{package:"$download"},count:{$sum:1}}}]);
+    var cursor=db.collection("AllLogsData").aggregate([{$match : {mode:"O",year:2015,download:{$regex:".deb$"}}},{$group:{_id:{package:"$download"},count:{$sum:1}}}]);
     cursor.toArray(function(err,doc){
       for(var i=0; i<doc.length; i++)
       {
-        len = doc[i]["download"].length;
-        // if(doc[i]["year"]===2015 && doc[i]["mode"]==="O" && doc[i]["download"].substring(len-4,len ) === ".deb" )
-        // {
+        len = doc[i]["_id"]["package"].length;
           var packages = doc[i]["_id"]["package"].split('/');
-          console.log("packages = ",packages);
-          // var packageFile = packages[packages.length-1];
-          // if(obj[packageFile]==undefined)
-          // {
-          //   obj[packageFile]={};
-          //   var packageFileName = packageFile.split('_')[0];
-          //   var packageFileVersion = packageFile.split('_')[1];
-          //   var packageFileArch = packageFile.split('_')[2].split('.')[0];
-          //   obj[packageFile]["Package Name"] = packageFileName;
-          //   obj[packageFile]["Package Version"] = packageFileVersion;
-          //   obj[packageFile]["Package Architecture"] = packageFileArch;
-          //   obj[packageFile]["Count"]=1;
-          // }
-          // else
-          // {
-          //   obj[packageFile]["Count"]++;
-          // }
-        // }
+          var count = doc[i]["count"];
+          var packageFile = packages[packages.length-1];
+          if(obj[packageFile]==undefined)
+          {
+            obj[packageFile]={};
+            var packageFileName = packageFile.split('_')[0];
+            var packageFileVersion = packageFile.split('_')[1];
+            var packageFileArch = packageFile.split('_')[2].split('.')[0];
+            obj[packageFile]["Package Name"] = packageFileName;
+            obj[packageFile]["Package Version"] = packageFileVersion;
+            obj[packageFile]["Package Architecture"] = packageFileArch;
+            obj[packageFile]["Count"]=count;
+          }
       }
       var finalresult=[];
       for(item in obj)
@@ -50,19 +42,17 @@ router.get('/', function(req, res, next) {
 });
 
 
-// var mainObjMonthly = {};
 router.get('/month1/month/:month=?', function(req, res, next) {
   var obj={};
-  var month = req.params.month;
+  var pmonth = req.params.month;
   mongoClient.connect(url,function(err,db){
-    var cursor=db.collection('AllLogsData').find();
+    var cursor=db.collection("AllLogsData").aggregate([{$match : {mode:"O",year:2015,month:pmonth,download:{$regex:".deb$"}}},{$group:{_id:{package:"$download"},count:{$sum:1}}}]);
     cursor.toArray(function(err,doc){
       for(var i=0; i<doc.length; i++)
       {
-        len = doc[i]["download"].length;
-        if(doc[i]["year"]===2015 && doc[i]["month"]===month && doc[i]["mode"]==="O" && doc[i]["download"].substring(len-4,len ) === ".deb" )
-        {
-          var packages = doc[i]["download"].split('/');
+        len = doc[i]["_id"]["package"].length;
+          var packages = doc[i]["_id"]["package"].split('/');
+          var count = doc[i]["count"];
           var packageFile = packages[packages.length-1];
           if(obj[packageFile]==undefined)
           {
@@ -73,13 +63,8 @@ router.get('/month1/month/:month=?', function(req, res, next) {
             obj[packageFile]["Package Name"] = packageFileName;
             obj[packageFile]["Package Version"] = packageFileVersion;
             obj[packageFile]["Package Architecture"] = packageFileArch;
-            obj[packageFile]["Count"]=1;
+            obj[packageFile]["Count"]=count;
           }
-          else
-          {
-            obj[packageFile]["Count"]++;
-          }
-        }
       }
       var finalresult=[];
       for(item in obj)
