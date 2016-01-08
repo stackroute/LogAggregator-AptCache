@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRoutes);
 app.use('/db', packageRoutes);
-app.use('/graph',graphRoutes);
+// app.use('/graph',graphRoutes);
 
 
 // catch 404 and forward to error handler
