@@ -153,7 +153,7 @@ $(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#moreInfo","2015");
       $.ajax({
-        url:'/rate/all/monthwise_log_all',
+        url:'/graph/rate/all/monthwise_log_all',
         dataType:'json',
         type:'get',
         cache:false,
@@ -173,7 +173,7 @@ $(function(){
           $('#dropdownMenu3').html(month);
           addPara("#moreInfo",month);
           $.ajax({
-            url:'/rate/all/'+id+'_log_all',
+            url:'/graph/rate/all/'+id+'_log_all',
             dataType:'json',
             type:'get',
             cache:false,
@@ -191,7 +191,7 @@ $(function(){
           $('#dropdownMenu1').html('2015');
           addPara("#moreInfo","2015");
           $.ajax({
-            url:'/rate/all/monthwise_log_all',
+            url:'/graph/rate/all/monthwise_log_all',
             dataType:'json',
             type:'get',
             cache:false,
