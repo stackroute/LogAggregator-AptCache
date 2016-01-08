@@ -46,7 +46,60 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
               });
 
           }
-          else if(sp[0]===)
+          else
+          {
+              var odd = ["Jan","Mar","May","Jul","Aug","Oct","Dec"];
+              var even = ["Apr","Jun","Sep","Nov"];
+              data = new Array();
+              if(odd.indexOf(sp[0]) > -1)
+              {
+                  for(var i=1; i<32; i++)
+                  {
+                      tempObj = new Object();
+                      tempObj["period"] = i;
+                      tempObj["Input"] = 0;
+                      tempObj["Output"] = 0;
+                      data.push(tempObj);
+                  }
+              }
+              else if(even.indexOf(sp[0]) > -1)
+              {
+                  for(var i=1; i<31; i++)
+                  {
+                      tempObj = new Object();
+                      tempObj["period"] = i;
+                      tempObj["Input"] = 0;
+                      tempObj["Output"] = 0;
+                      data.push(tempObj);
+                  }
+              }
+              else
+              {
+                  for(var i=0; i<30; i++)
+                  {
+                      tempObj = new Object();
+                      tempObj["period"] = i;
+                      tempObj["Input"] = 0;
+                      tempObj["Output"] = 0;
+                      data.push(tempObj);
+                  }
+              }
+              User.aggregate([{$match:{"year":2015,"month":sp[0]}},{$group:{_id: {"period":"$date","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+                for(var i=0; i<result.length; i++)
+                {
+                    if(result[i]["_id"]["Type"]==="I")
+                    {
+                        data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["count"];
+                    }
+
+                    else
+                    {
+                        data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["count"];
+                    }
+                }
+                res.send(JSON.stringify(data));
+              });
+          }
       }
   }
 //  res.send(data.toString());
