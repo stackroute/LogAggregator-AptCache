@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var mainRoutes = require('./routes/index');
 var packageRoutes = require('./routes/pc');
+var graphRoutes = require('./routes/graph');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRoutes);
 app.use('/db', packageRoutes);
+app.use('/graph',graphRoutes);
 
 
 // catch 404 and forward to error handler
