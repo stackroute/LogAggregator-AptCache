@@ -1,10 +1,8 @@
 var express = require('express');
 var fs = require('fs');
 var router = express.Router();
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/LogAggregate');
 var User = require('../model/schema');
-//console.log(User);
+
 router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
   var charttype = req.params.charttype;
   var packagetype = req.params.packagetype;

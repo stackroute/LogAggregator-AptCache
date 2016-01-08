@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/LogAggregate');
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
