@@ -88,7 +88,7 @@ function read_json(selection){
 
    url="/package_repo/"+selection+"_repo"
   $.ajax({
-    url:url,
+    url:"/repository/mode/"+selection,
     dataType:'json',
     type:'get',
     cache:false,
@@ -101,7 +101,7 @@ function read_json(selection){
 var selection;
 $(document).ready(function(){
   var year="2015";
-   selection="input";
+   selection="Input";
   $("#dropdownMenu1").html(year);
   $("#dropdownMenu2").html(selection);
     $("#contenttable").empty();
