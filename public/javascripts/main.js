@@ -122,13 +122,15 @@ function filter(value)
   $('#radio input[value="all"]').prop('checked', true);
   $('#radio input').on('change', function() {
   var data=$('input[name="filter"]:checked', '#radio').val();
+  console.log("Mundhinaniltana "+data+" "+value);
   $.ajax({
-    url:'/rate/'+data+'/'+value+'_log_'+data,
+    url:'/graph/rate/'+data+'/'+value+'_log_'+data,
+    //url:'/graph/rate/metadata/Nov_log_metadata',
     dataType:'json',
     type:'get',
     cache:false,
     success:function(data){
-
+      //console.log("Mundhinaniltana "+data+" "+value);
       createGraph(data);
           }
   });
