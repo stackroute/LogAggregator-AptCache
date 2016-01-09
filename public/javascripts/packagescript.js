@@ -22,7 +22,7 @@
     $('#grid-basic').bootgrid("destroy");
     $('#grid-basic tbody').empty();
     $.ajax({
-      url:'/db/',
+      url:'/package/year/yearwise/2015',
       dataType:'json',
       type:'get',
       cache:false,
@@ -48,7 +48,7 @@
     $('#grid-basic').bootgrid("destroy");
     $('#grid-basic tbody').empty();
     $.ajax({
-      url:'/db/month1/month/Oct',
+      url:'/package/year/monthwise/2015/Oct',
       dataType:'json',
       type:'get',
       cache:false,
@@ -66,10 +66,10 @@
       $('#grid-basic').bootgrid("destroy");
       $('#grid-basic tbody').empty();
       $('#dropdownMenu3').html($(this).text());
-      var id =$ (this).children().attr('id');
+      var id =$(this).children().attr('id');
 
       $.ajax({
-        url:'/db/month1/month/'+id,
+        url:'/package/year/monthwise/2015/'+id,
         dataType:'json',
         type:'get',
         cache:false,

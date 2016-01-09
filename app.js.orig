@@ -26,10 +26,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', mainRoutes);
+<<<<<<< HEAD
+app.use('/db', packageRoutes);
 app.use('/graph',graphRoutes);
+app.use('/repository/mode',repRoutes);
+
+=======
 app.use('/graph',graphRoutes);
 app.use('/package', packageRoutes);
-app.use('/repository/mode',repRoutes);
+>>>>>>> fbe04c3bb339c172c870421a98dc99d750d000cd
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
