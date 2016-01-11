@@ -126,42 +126,37 @@ function addPara(tab,when)
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
-function filter(value)
-{
-  //$("#radio").show();
-  $('#radio input[value="all"]').prop('checked', true);
-  $('#radio input').on('change', function() {
-  var data=$('input[name="filter"]:checked', '#radio').val();
+
+function ajaxCall(value,data){
+
+  var url='/datagraph/size/size/'+data+'/'+value+'_data_'+data
   $.ajax({
-    url:'/graph2/size/size/'+data+'/'+value+'_data_'+data,
+    url:url,
     dataType:'json',
     type:'get',
     cache:false,
     success:function(data){
-      console.log(value);
       createGraph(data);
-          }
+    }
   });
 
+}
+function filter(value)
+{
+  $("#radio input").off("change");
+  $("#radio").show();
+  $('#radio input[value="all"]').prop('checked', true);
+  $('#radio input').on('change', function() {
+  var data=$('input[name="filter"]:checked', '#radio').val();
+  ajaxCall(value,data);
   });
 }
 function default_selection(year,month)
 {
     $('#dropdownMenu1').html(year);
-  addPara("#moreInfo",year);
-  $.ajax({
-    url:'/graph2/size/size/all/monthwise_data_all',
-    dataType:'json',
-    type:'get',
-    cache:false,
-    success:function(data){
-
-      createGraph(data);
-          }
-  });
-   filter("monthwise");
-
-
+    addPara("#moreInfo",year);
+    ajaxCall("monthwise","all");
+    filter("monthwise");
 }
 
 $(function(){
@@ -178,16 +173,7 @@ $(function(){
        $('#dropdownMenu2').html(year);
        $('#dropdownMenu3').html(month);
        addPara("#moreInfo",month);
-       $.ajax({
-         url:'/graph2/size/size/all/'+id+'_data_all',
-         dataType:'json',
-         type:'get',
-         cache:false,
-         success:function(data){
-           console.log("Default Selection");
-           createGraph(data);
-               }
-       });
+       ajaxCall(id,"all");
        filter(id);
        });
 
@@ -195,16 +181,7 @@ $(function(){
 
       $('#dropdownMenu1').html('2015');
       addPara("#moreInfo","2015");
-      $.ajax({
-        url:'/graph2/size/size/all/monthwise_data_all',
-        dataType:'json',
-        type:'get',
-        cache:false,
-        success:function(data){
-
-          createGraph(data);
-              }
-      });
+      ajaxCall("monthwise","all");
       filter("monthwise");
     });
   $('#y15').click(function(){
@@ -217,35 +194,10 @@ $(function(){
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
           addPara("#moreInfo",month);
-          $.ajax({
-            url:'/graph2/size/size/all/'+id+'_data_all',
-            dataType:'json',
-            type:'get',
-            cache:false,
-            success:function(data){
-              console.log("Monthwise - "+id);
-              createGraph(data);
-                  }
-          });
-            filter(id);
+          ajaxCall(id,"all");
+          filter(id);
       });
 
-
-      $('#y2015').click(function(){
-          $('#dropdownMenu1').html('2015');
-          addPara("#moreInfo","2015");
-          $.ajax({
-            url:'/graph2/size/size/all/monthwise_data_all',
-            dataType:'json',
-            type:'get',
-            cache:false,
-            success:function(data){
-
-              createGraph(data);
-                  }
-          });
-
-      });
   });
   $('#year_tab').click(function(){
       $('#dropdownMenu2').html('Year');
