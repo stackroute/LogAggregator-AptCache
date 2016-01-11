@@ -2,44 +2,43 @@ var createGraph = function(data)
 {
   d3.select('#somegraph').remove();
 
-var margin = {top: 20, right: 100, bottom: 30, left: 80},
+  var margin = {top: 20, right: 100, bottom: 30, left: 80},
     width = 800 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-var x0 = d3.scale.ordinal()
+  var x0 = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
-var x1 = d3.scale.ordinal();
+  var x1 = d3.scale.ordinal();
 
-var y = d3.scale.linear()
+  var y = d3.scale.linear()
     .range([height, 0]);
 
-var color = d3.scale.category10();
+  var color = d3.scale.category10();
 
-var xAxis = d3.svg.axis()
+  var xAxis = d3.svg.axis()
     .scale(x0)
     .orient("bottom");
 
-var yAxis = d3.svg.axis()
+  var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-    var tip = d3.tip()
-      .attr('class', 'd3-tip')
-      .offset([-10, 0])
-      .html(function(d) {
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
         return "<strong>Size:</strong> <span>" + d.value + "</span>";
-      })
+    })
 
-var svg = d3.select("div #main").append("svg")
+  var svg = d3.select("div #main").append("svg")
     .attr('id','somegraph')
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
-
+  svg.call(tip);
 
   var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "period"; });
 
@@ -106,8 +105,8 @@ svg.call(tip);
       .text(function(d) { return d; })
       .attr("transform", "translate(100,-20)");
 
-
 }
+
 function addPara(tab,when)
 {
   $(tab + " p").remove();
@@ -116,42 +115,80 @@ function addPara(tab,when)
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
+
 function filter(value)
 {
   $("#radio").show();
   $('#radio input[value="all"]').prop('checked', true);
   $('#radio input').on('change', function() {
-  var data=$('input[name="filter"]:checked', '#radio').val();
-  console.log("Mundhinaniltana "+data+" "+value);
-  $.ajax({
-    url:'/graph/rate/'+data+'/'+value+'_log_'+data,
-    //url:'/graph/rate/metadata/Nov_log_metadata',
-    dataType:'json',
-    type:'get',
-    cache:false,
-    success:function(data){
-      //console.log("Mundhinaniltana "+data+" "+value);
-      createGraph(data);
-          }
-  });
+    var data=$('input[name="filter"]:checked', '#radio').val();
+    console.log("Mundhinaniltana "+data+" "+value);
+    $.ajax({
+      url:'/graph/rate/'+data+'/'+value+'_log_'+data,
+      //url:'/graph/rate/metadata/Nov_log_metadata',
+      dataType:'json',
+      type:'get',
+      cache:false,
+      success:function(data){
+        //console.log("Mundhinaniltana "+data+" "+value);
+        createGraph(data);
+      }
+    });
   });
 }
+
 $(function(){
   $('#dropdownMenu1').html('2015')
+
+  //code for showing by default graph
   $.ajax({
     url:'/graph/rate/all/monthwise_log_all',
     dataType:'json',
     type:'get',
     cache:false,
     success:function(data){
-
       createGraph(data);
-          }
+    }
   });
 
   addPara("#moreInfo","2015");
   filter("monthwise");
+
   $('#y2015').click(function(){
+    $('#dropdownMenu1').html('2015');
+    addPara("#moreInfo","2015");
+    $.ajax({
+      url:'/graph/rate/all/monthwise_log_all',
+      dataType:'json',
+      type:'get',
+      cache:false,
+      success:function(data){
+        createGraph(data);
+      }
+    });
+    filter("monthwise");
+  });
+
+  $('#y15').click(function(){
+    $('#dropdownMenu2').html('2015');
+    $("#monthList1 li").click(function() {
+      var month = $(this).text();
+      var id = $(this).children().attr('id');
+      $('#dropdownMenu3').html(month);
+      addPara("#moreInfo",month);
+      $.ajax({
+        url:'/graph/rate/all/'+id+'_log_all',
+        dataType:'json',
+        type:'get',
+        cache:false,
+        success:function(data){
+          createGraph(data);
+        }
+      });
+      filter(id);
+    });
+
+    $('#y2015').click(function(){
       $('#dropdownMenu1').html('2015');
       addPara("#moreInfo","2015");
       $.ajax({
@@ -160,55 +197,18 @@ $(function(){
         type:'get',
         cache:false,
         success:function(data){
-
           createGraph(data);
-              }
+        }
       });
-      filter("monthwise");
     });
-  $('#y15').click(function(){
-      $('#dropdownMenu2').html('2015');
-
-      $("#monthList1 li").click(function() {
-          var month = $(this).text();
-          var id = $(this).children().attr('id');
-          $('#dropdownMenu3').html(month);
-          addPara("#moreInfo",month);
-          $.ajax({
-            url:'/graph/rate/all/'+id+'_log_all',
-            dataType:'json',
-            type:'get',
-            cache:false,
-            success:function(data){
-
-              createGraph(data);
-                  }
-          });
-
-            filter(id);
-      });
-
-
-      $('#y2015').click(function(){
-          $('#dropdownMenu1').html('2015');
-          addPara("#moreInfo","2015");
-          $.ajax({
-            url:'/graph/rate/all/monthwise_log_all',
-            dataType:'json',
-            type:'get',
-            cache:false,
-            success:function(data){
-
-              createGraph(data);
-                  }
-          });
-      });
   });
+
   $('#year_tab').click(function(){
-      $('#dropdownMenu2').html('Year');
-      $('#dropdownMenu3').html('Month');
+    $('#dropdownMenu2').html('Year');
+    $('#dropdownMenu3').html('Month');
   });
+
   $('#month_tab').click(function(){
-      $('#dropdownMenu1').html('Year');
+    $('#dropdownMenu1').html('Year');
   });
 });
