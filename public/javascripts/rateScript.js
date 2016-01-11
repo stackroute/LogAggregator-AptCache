@@ -137,7 +137,6 @@ function filter(value)
   $('#radio input[value="all"]').prop('checked', true);
   $('#radio input').on('click', function() {
   var data=$('input[name="filter"]:checked', '#radio').val();
-  console.log("Mundhinaniltana "+data+" "+value);
   ajaxCall(value,data);
 
   });
