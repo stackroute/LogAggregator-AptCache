@@ -93,7 +93,6 @@ function read_json(selection){
     type:'get',
     cache:false,
     success:function(data){
-
       WriteTable(data);
     }
   });
@@ -120,9 +119,7 @@ $("#y2015").click(function(){
      read_json(selection);
   });
   $("#output").click(function(){
-    console.log("am here");
     selection=$(this).text();
-    console.log(selection);
     $("#contenttable").empty();
     $("#dropdownMenu2").html(selection);
    read_json(selection);

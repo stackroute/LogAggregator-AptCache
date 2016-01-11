@@ -115,7 +115,7 @@
         }
     #radio {
       width: 400px;
-      display: none;
+    /*  display: none;*/
     }
 
     #radio label, #radio input{

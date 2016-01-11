@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var mainRoutes = require('./routes/index');
 var packageRoutes = require('./routes/package');
 var graphRoutes = require('./routes/graph');
+var graph2Routes = require('./routes/graph2');
 var repRoutes = require('./routes/repository');
 
 var app = express();
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRoutes);
 app.use('/graph',graphRoutes);
-app.use('/graph',graphRoutes);
+app.use('/graph2',graph2Routes);
 app.use('/package', packageRoutes);
 app.use('/repository/mode',repRoutes);
 
