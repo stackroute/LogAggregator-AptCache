@@ -31,7 +31,7 @@ function WriteRow(data,ele) {
 $(document).ready(function(){
   $("#dropdownMenu1").html("2015");
   $.ajax({
-    url:'/package_bz2_info/packages_all',
+    url:'/packageanalytics/package/package_bz2_info/packages_all',
     dataType:'json',
     type:'get',
     cache:false,
@@ -46,7 +46,7 @@ $(document).ready(function(){
     $("#contenttable").empty();
       $("#dropdownMenu1").html("2015");
       $.ajax({
-        url:'/package_bz2_info/packages_all',
+        url:'/packageanalytics/package/package_bz2_info/packages_all',
         dataType:'json',
         type:'get',
         cache:false,
@@ -66,7 +66,7 @@ $(document).ready(function(){
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
           $.ajax({
-            url:'/package_bz2_info/packages_monthly',
+            url:'/packageanalytics/package/package_bz2_info/packages_monthly',
             dataType:'json',
             type:'get',
             cache:false,

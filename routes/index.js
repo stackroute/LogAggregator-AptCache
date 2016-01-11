@@ -27,12 +27,12 @@ router.get('/packagerepository', function(req, res, next) {
   res.render('package_repo', { title: 'Package Repository' });
 });
 
-router.get('/:charttype=?/:datename=?',function(req,res,next){
-  var charttype = req.params.charttype;
-  var datename = req.params.datename;
-  var data = fs.readFileSync('./public/json/'+charttype+'/'+datename+'.json');
-  res.send(data.toString());
-});
+// router.get('/:charttype=?/:datename=?',function(req,res,next){
+//   var charttype = req.params.charttype;
+//   var datename = req.params.datename;
+//   var data = fs.readFileSync('./public/json/'+charttype+'/'+datename+'.json');
+//   res.send(data.toString());
+// });
 
 router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
   var charttype = req.params.charttype;
