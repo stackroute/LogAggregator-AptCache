@@ -107,7 +107,7 @@ $(document).ready(function(){
   read_json(selection);
 
 });
-$("#y2015").click(function(){
+$("#year2015").click(function(){
   var year = $(this).text();
   $("#dropdownMenu1").html(year);
     $("#dropdownMenu2").html("In/Out");

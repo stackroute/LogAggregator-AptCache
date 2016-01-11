@@ -38,7 +38,7 @@
     loadYearData();
   });
 
-  $("#y2015").click(function(){
+  $("#year2015").click(function(){
     loadYearData();
   });
 
@@ -57,7 +57,7 @@
       }
     });
 
-    $('#y15').click(function(){
+    $('#month2015').click(function(){
       $('#dropdownMenu2').html($(this).text());
     });
 

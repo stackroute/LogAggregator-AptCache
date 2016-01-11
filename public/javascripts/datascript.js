@@ -177,14 +177,14 @@ $(function(){
        filter(id);
        });
 
-  $('#y2015').click(function(){
+  $('#year2015').click(function(){
 
       $('#dropdownMenu1').html('2015');
       addPara("#moreInfo","2015");
       ajaxCall("monthwise","all");
       filter("monthwise");
     });
-  $('#y15').click(function(){
+  $('#month2015').click(function(){
       $('#dropdownMenu2').html('2015');
 
       $("#monthList1 li").click(function() {

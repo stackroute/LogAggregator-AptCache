@@ -21,11 +21,11 @@ router.get('/packagecount', function(req, res, next) {
 });
 
 router.get('/packageanalytics', function(req, res, next) {
-  res.render('package_bz2', { title: 'Package Analytics' ,navClass1:"" ,navClass2:"" ,navClass3:"" ,navClass4:"" ,navClass5:"active" ,navClass6:""});
+  res.render('packageAnalytics', { title: 'Package Analytics' ,navClass1:"" ,navClass2:"" ,navClass3:"" ,navClass4:"" ,navClass5:"active" ,navClass6:""});
 });
 
 router.get('/packagerepository', function(req, res, next) {
-  res.render('package_repo', { title: 'Package Repository' ,navClass1:"" ,navClass2:"" ,navClass3:"" ,navClass4:"" ,navClass5:"" ,navClass6:"active"});
+  res.render('packageRepository', { title: 'Package Repository' ,navClass1:"" ,navClass2:"" ,navClass3:"" ,navClass4:"" ,navClass5:"" ,navClass6:"active"});
 });
 
 // router.get('/:charttype=?/:datename=?',function(req,res,next){
