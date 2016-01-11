@@ -128,17 +128,17 @@ function addPara(tab,when)
 }
 function filter(value)
 {
-  $("#radio").show();
+  //$("#radio").show();
   $('#radio input[value="all"]').prop('checked', true);
   $('#radio input').on('change', function() {
   var data=$('input[name="filter"]:checked', '#radio').val();
   $.ajax({
-    url:'/size/'+data+'/'+value+'_data_'+data,
+    url:'/graph2/size/size/'+data+'/'+value+'_data_'+data,
     dataType:'json',
     type:'get',
     cache:false,
     success:function(data){
-
+      console.log(value);
       createGraph(data);
           }
   });
@@ -150,7 +150,7 @@ function default_selection(year,month)
     $('#dropdownMenu1').html(year);
   addPara("#moreInfo",year);
   $.ajax({
-    url:'/size/all/monthwise_data_all',
+    url:'/graph2/size/size/all/monthwise_data_all',
     dataType:'json',
     type:'get',
     cache:false,
@@ -159,13 +159,13 @@ function default_selection(year,month)
       createGraph(data);
           }
   });
-  filter("monthwise");
+   filter("monthwise");
 
 
 }
 
 $(function(){
-var flag=1;
+  var flag=1;
   var year="2015";
   var month="October";
   default_selection(year,month);
@@ -179,15 +179,16 @@ var flag=1;
        $('#dropdownMenu3').html(month);
        addPara("#moreInfo",month);
        $.ajax({
-         url:'/size/all/'+id+'_data_all',
+         url:'/graph2/size/size/all/'+id+'_data_all',
          dataType:'json',
          type:'get',
          cache:false,
          success:function(data){
-
+           console.log("Default Selection");
            createGraph(data);
                }
        });
+       filter(id);
        });
 
   $('#y2015').click(function(){
@@ -195,7 +196,7 @@ var flag=1;
       $('#dropdownMenu1').html('2015');
       addPara("#moreInfo","2015");
       $.ajax({
-        url:'/size/all/monthwise_data_all',
+        url:'/graph2/size/size/all/monthwise_data_all',
         dataType:'json',
         type:'get',
         cache:false,
@@ -217,12 +218,12 @@ var flag=1;
           $('#dropdownMenu3').html(month);
           addPara("#moreInfo",month);
           $.ajax({
-            url:'/size/all/'+id+'_data_all',
+            url:'/graph2/size/size/all/'+id+'_data_all',
             dataType:'json',
             type:'get',
             cache:false,
             success:function(data){
-
+              console.log("Monthwise - "+id);
               createGraph(data);
                   }
           });
@@ -234,7 +235,7 @@ var flag=1;
           $('#dropdownMenu1').html('2015');
           addPara("#moreInfo","2015");
           $.ajax({
-            url:'/size/all/monthwise_data_all',
+            url:'/graph2/size/size/all/monthwise_data_all',
             dataType:'json',
             type:'get',
             cache:false,

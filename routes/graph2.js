@@ -3,12 +3,12 @@ var fs = require('fs');
 var router = express.Router();
 var User = require('../model/schema');
 
-router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
-  console.log("reached");
+router.get('/size/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
+  console.log("reached 2");
   var charttype = req.params.charttype;
   var packagetype = req.params.packagetype;
   var datename = req.params.datename;
-  if(charttype==="rate")
+  if(charttype==="size")
   {
       if(packagetype==="all")
       {
@@ -25,18 +25,18 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
                 tempObj["Output"] = 0;
                 data.push(tempObj);
             }
-            User.aggregate([{$group:{_id: {"period":"$month","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+            User.aggregate([{$group:{_id: {"period":"$month","Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
 
                   for(var i=0; i<result.length; i++)
                   {
                       if(result[i]["_id"]["Type"]==="I")
                       {
-                          data[month.indexOf(result[i]["_id"]["period"])]["Input"]+=result[i]["count"];
+                          data[month.indexOf(result[i]["_id"]["period"])]["Input"]+=result[i]["size"];
                       }
 
                       else
                       {
-                          data[month.indexOf(result[i]["_id"]["period"])]["Output"]+=result[i]["count"];
+                          data[month.indexOf(result[i]["_id"]["period"])]["Output"]+=result[i]["size"];
                       }
                   }
                   //console.log(data);
@@ -83,17 +83,17 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
                       data.push(tempObj);
                   }
               }
-              User.aggregate([{$match:{"year":2015,"month":sp[0]}},{$group:{_id: {"period":"$date","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+              User.aggregate([{$match:{"year":2015,"month":sp[0]}},{$group:{_id: {"period":"$date","Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
                 for(var i=0; i<result.length; i++)
                 {
                     if(result[i]["_id"]["Type"]==="I")
                     {
-                        data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["count"];
+                        data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["size"];
                     }
 
                     else
                     {
-                        data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["count"];
+                        data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["size"];
                     }
                 }
                 res.send(JSON.stringify(data));
@@ -116,17 +116,17 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
                 tempObj["Output"] = 0;
                 data.push(tempObj);
             }
-            User.aggregate([{$match:{"year":2015,"download":{$not:/.deb/}}},{$group:{_id: {"period":"$month","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+            User.aggregate([{$match:{"year":2015,"download":{$not:/.deb/}}},{$group:{_id: {"period":"$month","Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
               for(var i=0; i<result.length; i++)
               {
                   if(result[i]["_id"]["Type"]==="I")
                   {
-                      data[month.indexOf(result[i]["_id"]["period"])]["Input"]+=result[i]["count"];
+                      data[month.indexOf(result[i]["_id"]["period"])]["Input"]+=result[i]["size"];
                   }
 
                   else
                   {
-                      data[month.indexOf(result[i]["_id"]["period"])]["Output"]+=result[i]["count"];
+                      data[month.indexOf(result[i]["_id"]["period"])]["Output"]+=result[i]["size"];
                   }
               }
               //console.log(data);
@@ -172,24 +172,24 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
                       data.push(tempObj);
                   }
                 }
-                User.aggregate([{$match:{"year":2015,"month":sp[0],"download":{$not:/.deb/}}},{$group:{_id: {"period":"$date","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+                User.aggregate([{$match:{"year":2015,"month":sp[0],"download":{$not:/.deb/}}},{$group:{_id: {"period":"$date","Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
                   for(var i=0; i<result.length; i++)
                   {
                       if(result[i]["_id"]["Type"]==="I")
                       {
-                          data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["count"];
+                          data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["size"];
                       }
 
                       else
                       {
-                          data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["count"];
+                          data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["size"];
                       }
                   }
                   res.send(JSON.stringify(data));
                 });
 
           }
-      }
+      } 
       else if(packagetype === "package")
       {
           sp = datename.split('_');
@@ -205,17 +205,17 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
                 tempObj["Output"] = 0;
                 data.push(tempObj);
             }
-            User.aggregate([{$match:{"year":2015,"download":/.deb/}},{$group:{_id: {"period":"$month","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+            User.aggregate([{$match:{"year":2015,"download":/.deb/}},{$group:{_id: {"period":"$month","Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
               for(var i=0; i<result.length; i++)
               {
                   if(result[i]["_id"]["Type"]==="I")
                   {
-                      data[month.indexOf(result[i]["_id"]["period"])]["Input"]+=result[i]["count"];
+                      data[month.indexOf(result[i]["_id"]["period"])]["Input"]+=result[i]["size"];
                   }
 
                   else
                   {
-                      data[month.indexOf(result[i]["_id"]["period"])]["Output"]+=result[i]["count"];
+                      data[month.indexOf(result[i]["_id"]["period"])]["Output"]+=result[i]["size"];
                   }
               }
               //console.log(data);
@@ -261,17 +261,17 @@ router.get('/:charttype=?/:packagetype=?/:datename=?',function(req,res,next){
                       data.push(tempObj);
                   }
                 }
-                User.aggregate([{$match:{"year":2015,"month":sp[0],"download":/.deb/}},{$group:{_id: {"period":"$date","Type":"$mode"},count:{$sum:1}}}],function(err,result){
+                User.aggregate([{$match:{"year":2015,"month":sp[0],"download":/.deb/}},{$group:{_id: {"period":"$date","Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
                   for(var i=0; i<result.length; i++)
                   {
                       if(result[i]["_id"]["Type"]==="I")
                       {
-                          data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["count"];
+                          data[result[i]["_id"]["period"]-1]["Input"]+=result[i]["size"];
                       }
 
                       else
                       {
-                          data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["count"];
+                          data[result[i]["_id"]["period"]-1]["Output"]+=result[i]["size"];
                       }
                   }
                   res.send(JSON.stringify(data));
