@@ -8,7 +8,12 @@ var bodyParser = require('body-parser');
 var mainRoutes = require('./routes/index');
 var packageRoutes = require('./routes/package');
 var graphRoutes = require('./routes/graph');
+<<<<<<< HEAD
+var graph2Routes = require('./routes/graph2');
 var repRoutes = require('./routes/repository');
+=======
+var packageanalytics = require('./routes/packageanalytics');
+>>>>>>> 3a7e875618f596b2b6e346cd5fc7376d4e2f03d8
 
 var app = express();
 
@@ -26,15 +31,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', mainRoutes);
-<<<<<<< HEAD
-app.use('/db', packageRoutes);
 app.use('/graph',graphRoutes);
-app.use('/repository/mode',repRoutes);
-
-=======
-app.use('/graph',graphRoutes);
+app.use('/graph2',graph2Routes);
 app.use('/package', packageRoutes);
->>>>>>> fbe04c3bb339c172c870421a98dc99d750d000cd
+<<<<<<< HEAD
+app.use('/repository/mode',repRoutes);
+=======
+app.use('/packageanalytics', packageanalytics);
+>>>>>>> 3a7e875618f596b2b6e346cd5fc7376d4e2f03d8
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
