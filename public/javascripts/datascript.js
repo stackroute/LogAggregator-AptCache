@@ -129,7 +129,7 @@ function addPara(tab,when)
 
 function ajaxCall(value,data){
 
-  var url='/datagraph/size/size/'+data+'/'+value+'_data_'+data
+  var url='/dataRateData/size/'+data+'/2015/'+value+'_data_'+data
   $.ajax({
     url:url,
     dataType:'json',
