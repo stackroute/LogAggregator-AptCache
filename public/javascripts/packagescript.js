@@ -22,7 +22,7 @@
     $('#grid-basic').bootgrid("destroy");
     $('#grid-basic tbody').empty();
     $.ajax({
-      url:'/package/year/yearwise/2015',
+      url:'/PackageCountData/year/year_month/2015',
       dataType:'json',
       type:'get',
       cache:false,
@@ -48,7 +48,7 @@
     $('#grid-basic').bootgrid("destroy");
     $('#grid-basic tbody').empty();
     $.ajax({
-      url:'/package/year/monthwise/2015/Oct',
+      url:'/PackageCountData/year/year_month/2015_Oct',
       dataType:'json',
       type:'get',
       cache:false,
@@ -69,7 +69,7 @@
       var id =$(this).children().attr('id');
 
       $.ajax({
-        url:'/package/year/monthwise/2015/'+id,
+        url:'/PackageCountData/year/year_month/2015_'+id,
         dataType:'json',
         type:'get',
         cache:false,

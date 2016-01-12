@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', mainRoutes);
 app.use('/graph',graphRoutes);
 app.use('/datagraph',dataGraph);
-app.use('/package', packageRoutes);
+app.use('/PackageCountData', packageRoutes);
 app.use('/packageanalytics', packageAnalytics);
 app.use('/repository/mode',repRoutes);
 
