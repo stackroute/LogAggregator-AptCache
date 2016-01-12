@@ -116,8 +116,8 @@ function addPara(tab,when)
   $(tab + " p").css("font-size","17px");
 }
 
-function ajaxCall(id,data){
-  var url='/graph/rate/'+data+'/'+id+'_log_'+data;
+function ajaxCall(urlData){
+  var url='/graph/rate/'+urlData;
   $.ajax({
     url:url,
     dataType:'json',
@@ -136,7 +136,7 @@ function filter(value)
   $('#radio input[value="all"]').prop('checked', true);
   $('#radio input').on('click', function() {
   var data=$('input[name="filter"]:checked', '#radio').val();
-  ajaxCall(value,data);
+  ajaxCall(value+"_"+data);
 
   });
 }
@@ -145,33 +145,34 @@ function filter(value)
 $(function(){
 
   $('#dropdownMenu1').html('2015')
-  ajaxCall("monthwise","all");
+  ajaxCall("2015_all");
 
   addPara("#moreInfo","2015");
-  filter("monthwise");
+  filter('2015');
    $('#year2015').click(function(){
+        var year = $(this).text();
        $('#dropdownMenu1').html('2015');
        addPara("#moreInfo","2015");
-       ajaxCall("monthwise","all");
-       filter("monthwise");
+       ajaxCall(year+"_all");
+       filter(year);
      });
   $('#month2015').click(function(){
       $('#dropdownMenu2').html('2015');
-
+      year = $(this).text();
       $("#monthList1 li").click(function() {
           var month = $(this).text();
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
           addPara("#moreInfo",month);
-          ajaxCall(id,"all");
-
-            filter(id);
+          ajaxCall(year+"_"+id+"_all");
+          filter(year+"_"+id);
       });
       $('#year2015').click(function(){
+          var year = $(this).text();
           $('#dropdownMenu1').html('2015');
           addPara("#moreInfo","2015");
-          ajaxCall("monthwise","all");
-          filter("monthwise");
+          ajaxCall(year+"_all");
+          filter(year);
         });
 
   });

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var mainRoutes = require('./routes/index');
 var packageRoutes = require('./routes/package');
-var graphRoutes = require('./routes/rateGraph');
+var graphRoutes = require('./routes/logRateData');
 var dataGraph = require('./routes/dataGraph');
 var packageAnalytics = require('./routes/packageAnalytics');
 var repRoutes = require('./routes/repository');
