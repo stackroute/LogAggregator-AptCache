@@ -119,10 +119,10 @@ var createGraph = function(data)
 
 
 }
-function addPara(tab,when)
+function addPara(tab,para)
 {
   $(tab + " p").remove();
-  $(tab).append("<p>This Line graph represent Request rate in Megabytes(both Input and Output) for the year "+ when + ". Here the Output  represents the total data rate(in MB) which is served from Server to clients and the Input rate represents the total data rate (in MB) which is downloaded from external medium to Server repository.    </p>");
+  $(tab).append("<p>"+para+"</p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
@@ -154,7 +154,7 @@ function filter(value)
 function default_selection(year,month)
 {
     $('#dropdownMenu1').html(year);
-    addPara("#moreInfo",year);
+    addPara("#moreInfo","This graph shows the total size of packages in MB grouped by outgoing requests and those cached by the server in all of 2015.");
     ajaxCall("monthwise","all");
     filter("monthwise");
 }
@@ -172,7 +172,7 @@ $(function(){
        id="Oct";
        $('#dropdownMenu2').html(year);
        $('#dropdownMenu3').html(month);
-       addPara("#moreInfo",month);
+       addPara("#moreInfo","This graph shows the total size of packages in MB grouped by outgoing requests and those cached by the server in all of 2015.");
        ajaxCall(id,"all");
        filter(id);
        });
@@ -180,7 +180,7 @@ $(function(){
   $('#year2015').click(function(){
 
       $('#dropdownMenu1').html('2015');
-      addPara("#moreInfo","2015");
+      addPara("#moreInfo","This graph shows the total size of packages in MB grouped by outgoing requests and those cached by the server in all of 2015.");
       ajaxCall("monthwise","all");
       filter("monthwise");
     });
@@ -193,7 +193,7 @@ $(function(){
           var month = $(this).text();
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
-          addPara("#moreInfo",month);
+          addPara("#moreInfo","This graph shows the total size of packages in MB grouped by outgoing requests and those cached by the server in all of 2015.");
           ajaxCall(id,"all");
           filter(id);
       });

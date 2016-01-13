@@ -25,7 +25,6 @@ function WriteRow(data,ele) {
       row.append($("<td>"+data[ele][e]["count"]+"</td>"));
 
   }
-  //th.attr('rowspan',i);
 }
 
 $(document).ready(function(){
@@ -87,4 +86,3 @@ $(document).ready(function(){
     });
 
 });
-//$("#contenttable").bootgrid();
