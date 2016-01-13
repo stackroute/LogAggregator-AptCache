@@ -17,12 +17,24 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse divider-vertical" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav col-xs-10">
-          <li role="presentation" class="<%= navClass1 %>" ><a href="/">Home</a></li>
-          <li role="presentation" class="<%= navClass2 %>" ><a href="/requestrate">Request Rate</a></li>
-          <li role="presentation" class="<%= navClass3 %>" ><a href="/requestdata">Data Rate</a></li>
-          <li role="presentation" class="<%= navClass4 %>" ><a href="/packagecount">Package Count</a></li>
-          <li role="presentation" class="<%= navClass5 %>" ><a href="/packageanalytics">Package Analytics</a></li>
-          <li role="presentation" class="<%= navClass6 %>" ><a href="/packagerepository">Packages Repository</a></li>
+          <li role="presentation" id='Home'>
+            <a href="/">Home</a>
+          </li>
+          <li role="presentation" id='AllLogs'>
+            <a href="/requestrate">Request Rate</a>
+          </li>
+          <li role="presentation" id='AllData'>
+            <a href="/requestdata">Data Rate</a>
+          </li>
+          <li role="presentation" id='PackageCount'>
+            <a href="/packagecount">Package Count</a>
+          </li>
+          <li role="presentation" id='PackageAnalytics'>
+            <a href="/packageanalytics">Package Analytics</a>
+          </li>
+          <li role="presentation" id='PackageRepository'>
+            <a href="/packagerepository">Packages Repository</a>
+          </li>
         </ul>
       </div>
 
