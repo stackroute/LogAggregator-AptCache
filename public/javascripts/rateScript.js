@@ -107,11 +107,11 @@ var createGraph = function(data)
 
 }
 
-function addPara(tab,when)
+function addPara(tab,when,para)
 {
   $(tab + " p").remove();
   $(tab).append("<p><strong>Request Rate for all of " + when + " <strong></p>");
-  $(tab).append("<p>This graph shows the number of logs for all of " + when + ". The Output refers to the apt requests made by individual devices and Input refers to the ones cached by the server.</p>");
+  $(tab).append("<p>"+para+"</p>");
   $(tab + " p").css("margin-top","20px");
   $(tab + " p").css("font-size","17px");
 }
@@ -147,12 +147,12 @@ $(function(){
   $('#dropdownMenu1').html('2015')
   ajaxCall("2015_all");
 
-  addPara("#moreInfo","2015");
+  addPara("#moreInfo","2015","This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of 2015.");
   filter('2015');
    $('#year2015').click(function(){
         var year = $(this).text();
        $('#dropdownMenu1').html('2015');
-       addPara("#moreInfo","2015");
+       addPara("#moreInfo","2015","This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of 2015.");
        ajaxCall(year+"_all");
        filter(year);
      });
@@ -163,14 +163,14 @@ $(function(){
           var month = $(this).text();
           var id = $(this).children().attr('id');
           $('#dropdownMenu3').html(month);
-          addPara("#moreInfo",month);
+          addPara("#moreInfo",month,"This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of "+month+" in the year "+year);
           ajaxCall(year+"_"+id+"_all");
           filter(year+"_"+id);
       });
       $('#year2015').click(function(){
           var year = $(this).text();
           $('#dropdownMenu1').html('2015');
-          addPara("#moreInfo","2015");
+          addPara("#moreInfo","2015","This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of 2015.");
           ajaxCall(year+"_all");
           filter(year);
         });
