@@ -32,6 +32,7 @@
     });
   }
 
+  //Loading the year data by-default
   loadYearData();
 
   $('#year_tab').click(function(){
