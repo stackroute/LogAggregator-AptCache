@@ -93,7 +93,7 @@ router.get('/size/:packagetype=?/:year=?/:datename=?',function(req,res,next){
  }
 
   User.aggregate([{$match:match},{$group:{_id: {"period":period,"Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
-
+ 
     if(sp[0]==="monthwise"){
       yearly(result);
     }
