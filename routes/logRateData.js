@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var router = express.Router();
-var User = require('../model/schema');
+var Logs = require('../model/schema');
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function createMonthlyData(result,year,month){
     data = new Array();
@@ -117,7 +117,7 @@ router.get('/:charttype=?/:urldata=?',function(req,res,next){
         periodName = param[0]+"_"+param[1];
     }
     var queryParams = makeQuery(packageType,periodType,periodName);
-    User.aggregate([
+    Logs.aggregate([
       {$match:queryParams[0]},
       {$group:{_id: queryParams[1],count:{$sum:1}}}],
       function(err,result){

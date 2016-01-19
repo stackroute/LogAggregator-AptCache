@@ -1,0 +1,76 @@
+<div class="row" id="row_well" ng-controller="logRateController" ng-init="month=''">
+        <div class="container" id="main">
+          <div class="row" id="moreInfo">
+            <div class="col-lg-12">
+              <h2>Apt-log Request rate</h2>
+              <p class="lead">The graph shows the number of logs in the selected time period, grouped by input and output</p>
+              <div>
+                <div class="tabbable">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';setTab(1)" ng-init="generate('2015','')">Year-wise</a></li>
+                    <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="month='Oct';generate('2015','Oct');setTab(2)">Month-wise</a></li>
+                  </ul>
+                  <div id="myTab" class="tab-content col-lg-4">
+                    <div class="tab-pane active" ng-show="tab===1">
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><a href ng-click="generate(2015,'')">2015</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="tab-pane active"  ng-show="tab===2">
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><a href ng-click="year=2015">2015</a></li>
+                          </ul>
+                      </div>
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{month}}<span class="caret"></span></button>
+                          <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                            <li><a href ng-click="generate(year,'Jan')">January</a></li>
+                            <li><a href ng-click="generate(year,'Feb')">February</a></li>
+                            <li><a href ng-click="generate(year,'Mar')">March</a></li>
+                            <li><a href ng-click="generate(year,'Apr')">April</a></li>
+                            <li><a href ng-click="generate(year,'May')">May</a></li>
+                            <li><a href ng-click="generate(year,'Jun')">June</a></li>
+                            <li><a href ng-click="generate(year,'Jul')">July</a></li>
+                            <li><a href ng-click="generate(year,'Aug')">August</a></li>
+                            <li><a href ng-click="generate(year,'Sep')">September</a></li>
+                            <li><a href ng-click="generate(year,'Oct')">October</a></li>
+                            <li><a href ng-click="generate(year,'Nov')">November</a></li>
+                            <li><a href ng-click="generate(year,'Dec')">December</a></li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div  id="radio" class="alert col-lg-8">
+                  <div class="form-inline">
+                    <label class="control-label">Filter</label>
+                    <label class="radio">
+                      <input value="all" name="filter"  type="radio" ng-model='value' ng-change="filterGenerate('all')" ng-checked="true">All
+                    </label>
+                    <label class="radio">
+                      <input value="metadata" name="filter" type="radio" ng-model='value' ng-change="filterGenerate('metadata')">Metadata
+                    </label>
+                    <label class="radio">
+                      <input value="package" name="filter" type="radio" ng-model='value' ng-change="filterGenerate('package')">Packages
+                    </label>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <p id="para">
+                    <h4>{{"logRateData"|addPara:year:month}}</h4>
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div><!-- end row -->
+          <hr>
+        </div><!-- end container -->
+  	  </div> <!-- end row_well -->

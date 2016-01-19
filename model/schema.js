@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/LogAggregate');
 
 var Schema = mongoose.Schema;
-var userSchema = new Schema({
+var logSchema = new Schema({
   date:Number,
   month:String,
   year:Number,
@@ -12,5 +12,5 @@ var userSchema = new Schema({
   source_ip:String,
   download:String
 });
-var User = mongoose.model('User', userSchema,'AllLogsData');
-module.exports = User;
+var Logs = mongoose.model('Logs', logSchema,'AllLogsData');
+module.exports = Logs;
