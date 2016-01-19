@@ -73,12 +73,8 @@
           </tr>
         </thead>
         <tbody id="grid-body">
-          <tr ng-repeat="data in tableData">
-            <td>{{data["Serial Number"]}}</td>
-            <td>{{data["Package Name"]}}</td>
-            <td>{{data["Package Version"]}}</td>
-            <td>{{data["Package Architecture"]}}</td>
-            <td>{{data["Count"]}}</td>
+          <tr ng-repeat="rowData in tableData">
+            <td ng-repeat="packageData in rowData">{{packageData}}</td>
           </tr>
         </tbody>
       </table>
