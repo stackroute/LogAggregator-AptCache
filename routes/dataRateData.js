@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var User = require('../model/schema');
+var Logs = require('../model/schema');
 
 router.get('/size/:packagetype=?/:year=?/:datename=?',function(req,res,next){
   var year = parseInt(req.params.year);
@@ -92,7 +92,7 @@ router.get('/size/:packagetype=?/:year=?/:datename=?',function(req,res,next){
    }
  }
 
-  User.aggregate([{$match:match},{$group:{_id: {"period":period,"Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
+  Logs.aggregate([{$match:match},{$group:{_id: {"period":period,"Type":"$mode"},size:{$sum:"$size"}}}],function(err,result){
 
     if(sp[0]==="monthwise"){
       yearly(result);

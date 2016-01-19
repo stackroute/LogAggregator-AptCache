@@ -6,12 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mainRoutes = require('./routes/index');
-var packageRoutes = require('./routes/package');
-var graphRoutes = require('./routes/logRateData');
-var dataRateData = require('./routes/dataRateData');
+var packageRoutes = require('./routes/packageCount');
+ var graphRoutes = require('./routes/logRateData');
+ var dataRateData = require('./routes/dataRateData');
 var packageAnalytics = require('./routes/packageAnalytics');
 var repRoutes = require('./routes/repository');
-
+//
 var app = express();
 
 // view engine setup
@@ -27,12 +27,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', mainRoutes);
-app.use('/graph',graphRoutes);
-app.use('/dataRateData',dataRateData);
-app.use('/PackageCountData', packageRoutes);
-app.use('/packageanalytics', packageAnalytics);
-app.use('/repository/mode',repRoutes);
+ app.use('/', mainRoutes);
+ app.use('/logRateData',graphRoutes);
+ app.use('/dataRateData',dataRateData);
+ app.use('/packageCount', packageRoutes);
+ app.use('/packageanalytics', packageAnalytics);
+ app.use('/repository/mode',repRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,69 @@
+<div class="row" id="row_well" ng-controller="packageCountController">
+
+  <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
+  <div class="container" id="main">
+    <div class="row" id="moreInfo">
+      <div class="col-lg-12">
+        <h2>Apt-log Package Count</h2>
+        <p class="lead">In the year-wise table we are showing the information of the downloaded packages along with their details such as package name, version, architecture and count for the given year, and in month-wise graph all the same information will come monthly.</p>
+        <div>
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';writeTable();setTab(1)" ng-init="writeTable()">Year-wise</a></li>
+              <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="month='Oct';writeTable();setTab(2)">Month-wise</a></li>
+            </ul>
+            <div id="myTab" class="tab-content col-lg-4">
+              <div class="tab-pane active" ng-show="tab===1">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href ng-click="writeTable()">2015</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tab-pane active" ng-show="tab===2">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <li><a href="#" ng-click="year=2015">2015</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{month}}<span class="caret"></span></button>
+                    <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                      <li><a href ng-click="month='Jan';writeTable()">January</a></li>
+                      <li><a href ng-click="month='Feb';writeTable()">February</a></li>
+                      <li><a href ng-click="month='Mar';writeTable()">March</a></li>
+                      <li><a href ng-click="month='Apr';writeTable()">April</a></li>
+                      <li><a href ng-click="month='May';writeTable()">May</a></li>
+                      <li><a href ng-click="month='Jun';writeTable()">June</a></li>
+                      <li><a href ng-click="month='Jul';writeTable()">July</a></li>
+                      <li><a href ng-click="month='Aug';writeTable()">August</a></li>
+                      <li><a href ng-click="month='Sep';writeTable()">September</a></li>
+                      <li><a href ng-click="month='Oct';writeTable()">October</a></li>
+                      <li><a href ng-click="month='Nov';writeTable()">November</a></li>
+                      <li><a href ng-click="month='Dec';writeTable()">December</a></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <p id="para">
+              <h4>{{"packageCount"|addPara:year:month}}</h4>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div> <!-- end col-lg-12 -->
+    </div> <!-- end row -->
+    <hr>
+    <div ui-grid="{ data: tableData }" class="myGrid">
+
+    </div> <!-- end content -->
+  </div> <!-- end container -->
+<!-- Delete Till Here -->
+
+</div>

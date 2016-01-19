@@ -1,44 +1,83 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <% include partial/head.ejs %>
+    <title>Apt Log Statistics</title>
+    <meta name="description" content="">
+    <%include header_includes.ejs%>
     </head>
-  <body>
-
+  <body ng-app="aptLogApp">
     <div class="container-fluid">
-      <% include partial/header.ejs %>
-
-      <div class="row" id="row_well">
-
+      <div class="row" id="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-xs-2">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <img alt="Log Aggregator" src="../images/log_aggregator_logo.png">
+              </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse divider-vertical" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav col-xs-10">
+                <li role="presentation" id='Home'>
+                  <a href="#home">Home</a>
+                </li>
+                <li role="presentation" id='AllLogs'>
+                  <a href="#requestrate">Request Rate</a>
+                </li>
+                <li role="presentation" id='AllData'>
+                  <a href="#requestdata">Data Rate</a>
+                </li>
+                <li role="presentation" id='PackageCount'>
+                  <a href="#packagecount">Package Count</a>
+                </li>
+                <li role="presentation" id='PackageAnalytics'>
+                  <a href="#packageanalytics">Package Analytics</a>
+                </li>
+                <li role="presentation" id='PackageRepository'>
+                  <a href="#packagerepository">Packages Repository</a>
+                </li>
+              </ul>
+            </div>
+          </div> <!-- end container -->
+        </nav>
+      </div> <!-- end row -->
+      <div class="row" id="row_well" ng-view>
         <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
-
-				<div class="container" id="bigCallout">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="well">
-    						<div class="page-header">
-    							<h1>Apt-Get <small>Ubuntu's Advanced Packaging Tool (APT)</small></h1>
-    						</div> <!-- end page-header -->
-                <p class="lead">The apt-get command is a powerful command-line tool, which works with Ubuntu's Advanced Packaging Tool (APT) performing such functions as installation of new software packages, upgrade of existing software packages, updating of the package list index, and even upgrading the entire Ubuntu system.</p>
-                <p class="lead">Being a simple command-line tool, apt-get has numerous advantages over other package management tools available in Ubuntu for server administrators. Some of these advantages include ease of use over simple terminal connections (SSH), and the ability to be used in system administration scripts, which can in turn be automated by the cron scheduling utility.</p>
-
-    					</div> <!-- end well -->
-            </div> <!-- end col-xs-12 -->
-          </div> <!-- end row -->
-        </div> <!-- end bigCallout -->
-
         <!-- Delete Till Here -->
-
 			</div> <!-- end row_well -->
-
-      <% include partial/footer.ejs %>
-
+      <footer class="row">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-2">
+              <h6>Copyright &copy; 2015</h6>
+            </div><!-- end col-xs-2 -->
+            <div class="col-xs-4">
+              <h6>About Us</h6>
+              <p>We are an unnamed team hoping to grasp the concepts of MEAN stack development. We hope to make it big in world of information technology and contribute to evergreen field of web technologies!</p>
+            </div><!-- end col-xs-4 -->
+            <div class="col-xs-2">
+              <h6>Navigation</h6>
+              <ul class="list-unstyled">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Links</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+              </div><!-- end col-xs-2 -->
+            <div class="col-xs-2">
+              <h6>Coded with <span class="glyphicon glyphicon-heart"></span> by Unnamed Team</h6>
+            </div><!-- end col-xs-2 -->
+          </div><!-- end row -->
+        </div><!-- end container -->
+      </footer>
     </div> <!-- end container-fluid -->
-
-    <!-- All Javascript at the bottom of the page for faster page loading -->
-      <% include partial/jsdefaults.ejs %>
-
-
+    <%include footer_includes.ejs%>
   </body>
 </html>
