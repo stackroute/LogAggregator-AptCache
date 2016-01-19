@@ -23,7 +23,7 @@ router.get('/year/year_month/:year_month=?', function(req, res, next) {
     { $match : matchObj},
     { $group:{_id:{package:"$download"},count:{$sum:1}}}],
     function(err,doc){
-      for(var i=0; i<doc.length; i++)
+      for(var i=0,j=1; i<doc.length; i++)
       {
         len = doc[i]["_id"]["package"].length;
         var packages = doc[i]["_id"]["package"].split('/');
@@ -35,6 +35,7 @@ router.get('/year/year_month/:year_month=?', function(req, res, next) {
           var packageFileName = packageFile.split('_')[0];
           var packageFileVersion = packageFile.split('_')[1];
           var packageFileArch = packageFile.split('_')[2].split('.')[0];
+          obj[packageFile]["Serial Number"] = j++;
           obj[packageFile]["Package Name"] = packageFileName;
           obj[packageFile]["Package Version"] = packageFileVersion;
           obj[packageFile]["Package Architecture"] = packageFileArch;

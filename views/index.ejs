@@ -23,28 +23,15 @@
               </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse divider-vertical" id="bs-example-navbar-collapse-1">
+
+            <div class="collapse navbar-collapse divider-vertical" id="bs-example-navbar-collapse-1" ng-controller="ActiveController">
               <ul class="nav navbar-nav col-xs-10">
-                <li role="presentation" id='Home'>
-                  <a href="#home">Home</a>
-                </li>
-                <li role="presentation" id='AllLogs'>
-                  <a href="#requestrate">Request Rate</a>
-                </li>
-                <li role="presentation" id='AllData'>
-                  <a href="#requestdata">Data Rate</a>
-                </li>
-                <li role="presentation" id='PackageCount'>
-                  <a href="#packagecount">Package Count</a>
-                </li>
-                <li role="presentation" id='PackageAnalytics'>
-                  <a href="#packageanalytics">Package Analytics</a>
-                </li>
-                <li role="presentation" id='PackageRepository'>
-                  <a href="#packagerepository">Packages Repository</a>
+                <li ng-repeat='item in menuItems' ng-class="{active : activeMenu === item['itemName']}" ng-click="setActive(item['itemName'])" role="presentation" id='Home'>
+                  <a href="{{item['htmlPageName']}}">{{item["itemName"]}}</a>
                 </li>
               </ul>
             </div>
+
           </div> <!-- end container -->
         </nav>
       </div> <!-- end row -->
