@@ -13,7 +13,6 @@ angular.module('aptLogApp').controller("packageAnalyticsController",function($sc
   $scope.tab=1;
   $scope.setTab = function(tabVal){
       $scope.tab=tabVal;
-      console.log($scope.tab);
-  };
+    };
 
 });

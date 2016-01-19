@@ -24,7 +24,6 @@ angular.module('aptLogApp').controller("dataRateController",function($scope,$htt
     $scope.tab=1;
     $scope.setTab = function(tabVal){
         $scope.tab=tabVal;
-        console.log($scope.tab);
-    };
+      };
 
 });
