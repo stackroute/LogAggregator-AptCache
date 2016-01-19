@@ -1,4 +1,4 @@
-<div class="row" id="row_well" ng-controller="logRateController" ng-init="month=''">
+<div class="row" id="row_well" ng-controller="logRateController" ng-init="initializeVars(false);">
         <div class="container" id="main">
           <div class="row" id="moreInfo">
             <div class="col-lg-12">
@@ -7,40 +7,35 @@
               <div>
                 <div class="tabbable">
                   <ul class="nav nav-tabs">
-                    <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';setTab(1);generate('2015','')" ng-init="generate('2015','')">Year-wise</a></li>
-                    <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="month='Oct';generate('2015','Oct');setTab(2)">Month-wise</a></li>
+                    <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="requiredMonth='';setTab(1);generate(requiredYear,'')">Year-wise</a></li>
+                    <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2)">Month-wise</a></li>
                   </ul>
                   <div id="myTab" class="tab-content col-lg-4">
                     <div class="tab-pane active" ng-show="tab===1">
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a href ng-click="generate(2015,'')">2015</a></li>
+                          <li ng-repeat="year in info['years']">
+                            <a href ng-click="generate(year,'')">{{year}}</a>
+                          </li>
                         </ul>
                       </div>
                     </div>
                     <div class="tab-pane active"  ng-show="tab===2">
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span></button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li><a href ng-click="year=2015">2015</a></li>
+                            <li ng-repeat="year in info['years']">
+                              <a href ng-click="generate(year,requiredMonth)">{{year}}</a>
+                            </li>
                           </ul>
                       </div>
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{month}}<span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredMonth}}<span class="caret"></span></button>
                           <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                            <li><a href ng-click="generate(year,'Jan')">January</a></li>
-                            <li><a href ng-click="generate(year,'Feb')">February</a></li>
-                            <li><a href ng-click="generate(year,'Mar')">March</a></li>
-                            <li><a href ng-click="generate(year,'Apr')">April</a></li>
-                            <li><a href ng-click="generate(year,'May')">May</a></li>
-                            <li><a href ng-click="generate(year,'Jun')">June</a></li>
-                            <li><a href ng-click="generate(year,'Jul')">July</a></li>
-                            <li><a href ng-click="generate(year,'Aug')">August</a></li>
-                            <li><a href ng-click="generate(year,'Sep')">September</a></li>
-                            <li><a href ng-click="generate(year,'Oct')">October</a></li>
-                            <li><a href ng-click="generate(year,'Nov')">November</a></li>
-                            <li><a href ng-click="generate(year,'Dec')">December</a></li>
+                            <li ng-repeat="month in info['months']">
+                              <a href ng-click="generate(requiredYear,month)">{{month}}</a>
+                            </li>
                           </ul>
                       </div>
                     </div>

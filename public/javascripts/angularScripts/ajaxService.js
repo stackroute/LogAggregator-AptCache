@@ -25,6 +25,20 @@ angular.module('aptLogApp').factory('ajaxService',function(){
               $scope.tableData = data;
             });
         }
+        else if(type==="getInfo"){
+          var url = '/getInfo/initInfo';
+          $http.get(url).success(function(data){
+              $scope.info = data;
+              $scope.requiredYear = $scope.info["currentYear"];
+              if(urlData === "true"){
+                  $scope.requiredMonth = $scope.info["currentMonth"];
+              }
+              else{
+                  $scope.requiredMonth = '';
+              }
+              $scope.generate($scope.requiredYear,$scope.requiredMonth);
+          });
+        }
         else if(type==="repository"){
             var url = '/repository/mode'+urlData;
             $http.get(url).success( function(data) {

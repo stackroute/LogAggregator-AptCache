@@ -11,6 +11,7 @@ var packageRoutes = require('./routes/packageCount');
  var dataRateData = require('./routes/dataRateData');
 var packageAnalytics = require('./routes/packageAnalytics');
 var repRoutes = require('./routes/repository');
+var getInfo = require('./routes/getInfo');
 //
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  app.use('/packageCount', packageRoutes);
  app.use('/packageanalytics', packageAnalytics);
  app.use('/repository/mode',repRoutes);
+ app.use('/getInfo',getInfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
