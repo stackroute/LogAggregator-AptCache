@@ -13,7 +13,9 @@
                   <div id="myTab" class="tab-content col-lg-4">
                     <div class="tab-pane active" ng-show="tab===1">
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          {{requiredYear}}<span class="caret"></span>
+                        </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                           <li ng-repeat="year in info['years']">
                             <a href ng-click="generate(year,'')">{{year}}</a>
@@ -23,7 +25,10 @@
                     </div>
                     <div class="tab-pane active"  ng-show="tab===2">
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          {{requiredYear}}
+                          <span class="caret"></span>
+                        </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li ng-repeat="year in info['years']">
                               <a href ng-click="generate(year,requiredMonth)">{{year}}</a>
@@ -31,7 +36,9 @@
                           </ul>
                       </div>
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredMonth}}<span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          {{requiredMonth}}<span class="caret"></span>
+                        </button>
                           <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
                             <li ng-repeat="month in info['months']">
                               <a href ng-click="generate(requiredYear,month)">{{month}}</a>
