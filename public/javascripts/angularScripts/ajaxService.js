@@ -25,7 +25,7 @@ angular.module('aptLogApp').factory('ajaxService',function(){
               $scope.tableData = data;
             });
         }
-        else if(type==="getInfo"){
+        else if(type==="getInfoGraph"){
           var url = '/getInfo/initInfo';
           $http.get(url).success(function(data){
               $scope.info = data;
@@ -39,22 +39,47 @@ angular.module('aptLogApp').factory('ajaxService',function(){
               $scope.generate($scope.requiredYear,$scope.requiredMonth);
           });
         }
+        else if(type==="getInfoTable"){
+          var url = '/getInfo/initInfo';
+          $http.get(url).success(function(data){
+
+              $scope.info = data;
+              $scope.requiredYear = $scope.info["currentYear"];
+              if(urlData === "true"){
+                  $scope.requiredMonth = $scope.info["currentMonth"];
+              }
+              else{
+                  $scope.requiredMonth = '';
+              }
+              $scope.writeTable($scope.requiredYear,$scope.requiredMonth);
+          });
+        }
+        else if(type==="getRepoTable"){
+          var url = '/getInfo/initInfo';
+          $http.get(url).success(function(data){
+
+              $scope.info = data;
+              $scope.requiredYear = $scope.info["currentYear"];
+              $scope.mode=urlData;
+              $scope.writeTable($scope.requiredYear,$scope.mode);
+          });
+        }
         else if(type==="repository"){
             var url = '/repository/mode'+urlData;
             $http.get(url).success( function(data) {
-              for(i = 0; i < data.length; i++){
-                var l1 = data[i].repository;
+              for(i = 0; i < data.length; i++){                             //logic for calculating rowspan
+                var repositoryName1 = data[i].repository;                   //i,j & k,m is for traversing through the rows of data
                 data[i].rowspan = 1;
                 for(j = i+1; j < data.length; j++){
-                  var l2 = data[j].repository;
-                  if(l1 == l2){
+                  var repositoryName2 = data[j].repository;
+                  if(repositoryName1 == repositoryName2 ){
                     data[i].rowspan += 1;
                     for(k=0;k<data.length;k++){
-                      var n1=data[k].pool;
+                      var poolName1=data[k].pool;
                       data[k].rowspan1=1;
                       for(m=k+1;m<data.length;m++){
-                        var n2=data[m].pool;
-                        if(n1==n2){
+                        var poolName2=data[m].pool;
+                        if(poolName1==poolName2){
                           data[k].rowspan1+=1;
                         }
                         else{

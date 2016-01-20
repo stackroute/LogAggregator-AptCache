@@ -1,4 +1,4 @@
-<div class="row" id="row_well" ng-controller="packageAnalyticsController">
+<div class="row" id="row_well" ng-controller="packageAnalyticsController" ng-init="initializeVars(false);">
 
   <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
   <div class="container" id="main">
@@ -9,40 +9,35 @@
         <div>
           <div class="tabbable">
             <ul class="nav nav-tabs">
-              <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';writeTable();setTab(1)" ng-init="writeTable()">Year-wise</a></li>
-              <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="month='Oct';writeTable();setTab(2)">Month-wise</a></li>
+              <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="requiredMonth='';setTab(1);writeTable(requiredYear,'')">Year-wise</a></li>
+              <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2)">Month-wise</a></li>
             </ul>
             <div id="myTab" class="tab-content col-lg-4">
               <div class="tab-pane active" ng-show="tab===1">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span></button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href ng-click="writeTable()">2015</a></li>
+                    <li ng-repeat="year in info['years']">
+                      <a href ng-click="writeTable(year,'')">{{year}}</a>
+                    </li>
                   </ul>
                 </div>
               </div>
               <div class="tab-pane active" ng-show="tab===2">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{year}}<span class="caret"></span></button>
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <li><a href="#" ng-click="year=2015">2015</a></li>
+                      <li ng-repeat="year in info['years']">
+                        <a href ng-click="writeTable(year,requiredMonth)">{{year}}</a>
+                      </li>
                     </ul>
                 </div>
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{month}}<span class="caret"></span></button>
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredMonth}}<span class="caret"></span></button>
                     <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                      <li><a href ng-click="month='Jan';writeTable()">January</a></li>
-                      <li><a href ng-click="month='Feb';writeTable()">February</a></li>
-                      <li><a href ng-click="month='Mar';writeTable()">March</a></li>
-                      <li><a href ng-click="month='Apr';writeTable()">April</a></li>
-                      <li><a href ng-click="month='May';writeTable()">May</a></li>
-                      <li><a href ng-click="month='Jun';writeTable()">June</a></li>
-                      <li><a href ng-click="month='Jul';writeTable()">July</a></li>
-                      <li><a href ng-click="month='Aug';writeTable()">August</a></li>
-                      <li><a href ng-click="month='Sep';writeTable()">September</a></li>
-                      <li><a href ng-click="month='Oct';writeTable()">October</a></li>
-                      <li><a href ng-click="month='Nov';writeTable()">November</a></li>
-                      <li><a href ng-click="month='Dec';writeTable()">December</a></li>
+                      <li ng-repeat="month in info['months']">
+                        <a href ng-click="writeTable(requiredYear,month)">{{month}}</a>
+                      </li>
                     </ul>
                 </div>
               </div>
@@ -50,7 +45,7 @@
           </div>
           <div class="col-lg-12">
             <p id="para">
-              <h4>{{"packageAnalytics"|addPara:year:month}}</h4>
+              <h4>{{"packageAnalytics"|addPara:requiredYear:requiredMonth}}</h4>
             </p>
 
           </div>

@@ -20,7 +20,7 @@ angular.module('aptLogApp').controller("logRateController",function($scope,$http
        else{
          urlData = "false";
        }
-       ajaxService.ajaxCall("getInfo",urlData,$http,$scope);
+       ajaxService.ajaxCall("getInfoGraph",urlData,$http,$scope);
 
      };
     $scope.filterGenerate = function(filterType){
