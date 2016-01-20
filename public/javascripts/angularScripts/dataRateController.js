@@ -9,8 +9,18 @@ angular.module('aptLogApp').controller("dataRateController",function($scope,$htt
         }
         else {
           ajaxService.ajaxCall("dataRateData","all/"+year+"/"+month,$http);
-          ajaxService.ajaxCall("dataRateData","all/"+year+"/"+month,$http);
         }
+     };
+     $scope.initializeVars = function(isMonth){
+       var urlData = "";
+       if(isMonth===true){
+         urlData = "true";
+       }
+       else{
+         urlData = "false";
+       }
+       ajaxService.ajaxCall("getInfo",urlData,$http,$scope);
+
      };
     $scope.filterGenerate = function(filterType,year,month){
         if($scope.month===''){
