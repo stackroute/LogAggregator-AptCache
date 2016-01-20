@@ -19,7 +19,7 @@ angular.module('aptLogApp').controller("dataRateController",function($scope,$htt
        else{
          urlData = "false";
        }
-       ajaxService.ajaxCall("getInfo",urlData,$http,$scope);
+       ajaxService.ajaxCall("getInfoGraph",urlData,$http,$scope);
 
      };
     $scope.filterGenerate = function(filterType,year,month){
