@@ -1,4 +1,4 @@
-<div class="row" id="row_well" ng-controller="repositoryController" ng-init="mode='Input'">
+<div class="row" id="row_well" ng-controller="repositoryController" ng-init="initializeVars();">
   <div class="container" id="main">
   	<div class="row" id="moreInfo">
 			<div class="col-lg-12">
@@ -7,25 +7,25 @@
 
 				<div class="tabbable" >
 					<ul class="nav nav-tabs">
-							<li class="active"><a data-toggle="tab" class="tab-link" id="year_tab" ng-click="mode='Input'" ng-init="generate('2015','Input')">Year-wise</a></li>
+              <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="writeTable(requiredYear,'Input')">Year-wise</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab1">
               <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    								{{year}}<span class="caret"></span>
-								</button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							    <li><a href id="year2015" ng-click="year=2015">2015</a></li>
-							  </ul>
-							</div> <!-- end dropdown -->
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li ng-repeat="year in info['years']">
+                    <a href ng-click="writeTable(year,'Input')">{{year}}</a>
+                  </li>
+                </ul>
+              </div>
               <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										{{mode}}<span class="caret"></span>
 								</button>
                 <ul id="inout"class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <li><a href id="input" ng-click="generate(year,'Input')">Input</a></li>
-                  <li><a href id="output" ng-click="generate(year,'Output')">Output</a></li>
+                  <li><a href id="input" ng-click="writeTable(requiredYear,'Input')">Input</a></li>
+                  <li><a href id="output" ng-click="writeTable(requiredYear,'Output')">Output</a></li>
                 </ul>
               </div> <!-- end dropdown -->
 						</div> <!-- end tab-pane, tab1 -->

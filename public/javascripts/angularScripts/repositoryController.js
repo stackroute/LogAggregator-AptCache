@@ -1,12 +1,17 @@
 angular.module('aptLogApp').controller("repositoryController",function($scope,$http,ajaxService){
-    $scope.year = 2015;
-    $scope.mode = "";
+    $scope.requiredYear = 2015;
+    $scope.mode = "Input";
     $scope.tableData = {};
 
 
-    $scope.generate = function(year,mode){
-        $scope.year = year;
+    $scope.writeTable = function(year,mode){
+        $scope.requiredYear = year;
         $scope.mode = mode;
           ajaxService.ajaxCall("repository","/"+year+"/"+mode,$http,$scope);
         };
+        $scope.initializeVars = function(){
+          ajaxService.ajaxCall("getRepoTable",$scope.mode,$http,$scope);
+
+        };
+
 });

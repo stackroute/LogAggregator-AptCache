@@ -42,6 +42,7 @@ angular.module('aptLogApp').factory('ajaxService',function(){
         else if(type==="getInfoTable"){
           var url = '/getInfo/initInfo';
           $http.get(url).success(function(data){
+
               $scope.info = data;
               $scope.requiredYear = $scope.info["currentYear"];
               if(urlData === "true"){
@@ -51,6 +52,16 @@ angular.module('aptLogApp').factory('ajaxService',function(){
                   $scope.requiredMonth = '';
               }
               $scope.writeTable($scope.requiredYear,$scope.requiredMonth);
+          });
+        }
+        else if(type==="getRepoTable"){
+          var url = '/getInfo/initInfo';
+          $http.get(url).success(function(data){
+
+              $scope.info = data;
+              $scope.requiredYear = $scope.info["currentYear"];
+              $scope.mode=urlData;
+              $scope.writeTable($scope.requiredYear,$scope.mode);
           });
         }
         else if(type==="repository"){
