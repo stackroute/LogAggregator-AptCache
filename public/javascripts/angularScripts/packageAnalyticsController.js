@@ -1,14 +1,27 @@
 angular.module('aptLogApp').controller("packageAnalyticsController",function($scope,$http,ajaxService){
-  $scope.year = 2015;
-  $scope.month = "";
-  $scope.tableData = {};
-  $scope.writeTable = function(){
-      if($scope.month===""){
-          ajaxService.ajaxCall("packageAnalytics",$scope.year,$http,$scope);
+  $scope.requiredYear = 2015;
+  $scope.requiredMonth = "";
+  $scope.info = undefined;
+  $scope.writeTable = function(year,month){
+      $scope.requiredYear = year;
+      $scope.requiredMonth = month;
+      if(month===""){
+          ajaxService.ajaxCall("packageAnalytics",year,$http,$scope);
       }
       else{
-          ajaxService.ajaxCall("packageAnalytics",$scope.year+"_"+$scope.month,$http,$scope);
+          ajaxService.ajaxCall("packageAnalytics",year+"_"+month,$http,$scope);
       }
+  };
+  $scope.initializeVars = function(isMonth){
+    var urlData = "";
+    if(isMonth===true){
+      urlData = "true";
+    }
+    else{
+      urlData = "false";
+    }
+    ajaxService.ajaxCall("getInfoTable",urlData,$http,$scope);
+
   };
   $scope.tab=1;
   $scope.setTab = function(tabVal){
