@@ -17,6 +17,6 @@ dropdownModule.directive('dropdownYear', function(){
 dropdownModule.directive('dropdownMode', function(){
   return {
     restrict: 'E',
-    templateUrl:'dropdownMode.html'
+    templateUrl:'html/dropdownMode.html'
   };
 });
