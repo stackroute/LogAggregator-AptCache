@@ -13,3 +13,10 @@ dropdownModule.directive('dropdownYear', function(){
     templateUrl:'html/dropdownYear.html'
   };
 });
+
+dropdownModule.directive('dropdownMode', function(){
+  return {
+    restrict: 'E',
+    templateUrl:'dropdownMode.html'
+  };
+});

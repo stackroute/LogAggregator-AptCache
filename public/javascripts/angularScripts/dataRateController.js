@@ -12,10 +12,10 @@ angular.module('aptLogApp').controller("dataRateController",function($scope,$htt
         }
      };
      $scope.setYear = function(year){
-        $scope.requiredYear = year;
+        $scope.year = year;
      }
      $scope.setMonth = function(month){
-        $scope.requiredMonth = month;
+        $scope.month = month;
      }
      $scope.initializeVars = function(isMonth){
        var urlData = "";
