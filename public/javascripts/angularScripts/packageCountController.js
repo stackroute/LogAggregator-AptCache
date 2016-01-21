@@ -4,6 +4,7 @@ angular.module('aptLogApp').controller("packageCountController",function($scope,
   $scope.tab=1;
   $scope.tableData = {};
   $scope.monthList=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  $scope.yearList=['2013','2014','2015','2016'];
   $scope.packageHeader=["SI No", "Package Name", "Package Version", "Package Architecture", "Count"]
 
   $scope.setMonth = function(monthValue){

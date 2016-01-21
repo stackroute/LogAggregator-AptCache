@@ -6,28 +6,35 @@
       <div class="col-lg-12">
         <h2>Apt-log Package Count</h2>
         <p class="lead">In the year-wise table we are showing the information of the downloaded packages along with their details such as package name, version, architecture and count for the given year, and in month-wise graph all the same information will come monthly.</p>
-        <div>
-          <div class="tabbable">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';writeTable();setTab(1)" ng-init="writeTable()">Year-wise</a></li>
-              <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="defaultYearMonth(true);writeTable();setTab(2)">Month-wise</a></li>
-            </ul>
-            <div id="myTab" class="tab-content col-lg-4">
-              <div class="tab-pane active" ng-show="tab===1">
-                <dropdown-year ></dropdown-year>
-              </div>
-              <div class="tab-pane active" ng-show="tab===2">
-                <dropdown-year ></dropdown-year>
-                <dropdown-month></dropdown-month>
-              </div>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';writeTable();setTab(1)" ng-init="writeTable()">
+                Year-wise
+              </a>
+            </li>
+            <li>
+              <a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="defaultYearMonth(true);writeTable();setTab(2)">
+                Month-wise
+              </a>
+            </li>
+          </ul>
+          <div id="myTab" class="tab-content col-lg-4">
+            <div class="tab-pane active" ng-show="tab===1">
+              <dropdown-year ></dropdown-year>
+            </div>
+            <div class="tab-pane active" ng-show="tab===2">
+              <dropdown-year ></dropdown-year>
+              <dropdown-month></dropdown-month>
             </div>
           </div>
-          <div class="col-lg-12">
-            <p id="para">
-              <h4>{{"packageCount"|addPara:year:month}}</h4>
-            </p>
-          </div>
         </div>
+        <div class="col-lg-12">
+          <p id="para">
+            <h4>{{"packageCount"|addPara:year:month}}</h4>
+          </p>
+        </div>
+
       </div> <!-- end col-lg-12 -->
     </div> <!-- end row -->
 
