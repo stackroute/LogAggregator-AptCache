@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+var dropdownModule=angular.module("DropDownModule",[]);
+=======
 var dropdownModule=angular.module("dropdownModule",[]);
+>>>>>>> 1cc3c1ac8061ddb4956264174876e0b65632b86a
 
 dropdownModule.directive('dropdownMonth',function(){
   return {
