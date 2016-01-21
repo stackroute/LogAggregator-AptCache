@@ -1,9 +1,9 @@
 angular.module('aptLogApp').controller("dataRateController",function($scope,$http,ajaxService){
-    $scope.year = 2015;
-    $scope.month = "";
+    $scope.requiredYear = 2015;
+    $scope.requiredMonth = "";
     $scope.generate = function(year,month){
-        $scope.year = year;
-        $scope.month = month;
+        $scope.requiredYear = year;
+        $scope.requiredMonth = month;
         if(month===''){
           ajaxService.ajaxCall("dataRateData","all/"+year+"/monthwise",$http);
         }
@@ -12,10 +12,10 @@ angular.module('aptLogApp').controller("dataRateController",function($scope,$htt
         }
      };
      $scope.setYear = function(year){
-        $scope.year = year;
+        $scope.requiredYear = year;
      }
      $scope.setMonth = function(month){
-        $scope.month = month;
+        $scope.requiredMonth = month;
      }
      $scope.initializeVars = function(isMonth){
        var urlData = "";
@@ -29,11 +29,11 @@ angular.module('aptLogApp').controller("dataRateController",function($scope,$htt
 
      };
     $scope.filterGenerate = function(filterType,year,month){
-        if($scope.month===''){
-          ajaxService.ajaxCall("dataRateData",filterType+"/"+$scope.year+"/monthwise",$http);
+        if($scope.requiredMonth===''){
+          ajaxService.ajaxCall("dataRateData",filterType+"/"+$scope.requiredYear+"/monthwise",$http);
         }
         else {
-          ajaxService.ajaxCall("dataRateData",filterType+"/"+$scope.year+"/"+$scope.month,$http);
+          ajaxService.ajaxCall("dataRateData",filterType+"/"+$scope.requiredYear+"/"+$scope.requiredMonth,$http);
         }
 
     };
