@@ -7,15 +7,15 @@
               <div>
                 <div class="tabbable">
                   <ul class="nav nav-tabs">
-                    <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="requiredMonth='';setTab(1);generate(requiredYear,'')">Year-wise</a></li>
-                    <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2)">Month-wise</a></li>
+                    <li class="active"><a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="requiredMonth='';setTab(1);generate(requiredYear,'');">Year-wise</a></li>
+                    <li><a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2);">Month-wise</a></li>
                   </ul>
                   <div id="myTab" class="tab-content col-lg-4">
                     <div class="tab-pane active" ng-show="tab===1">
                       <drop-year></drop-year>
                     </div>
                     <div class="tab-pane active"  ng-show="tab===2">
-                      <drop-year></drop-year>
+                      <drop-year-month></drop-year-month>
                       <drop-month></drop-month>
                     </div>
                   </div>

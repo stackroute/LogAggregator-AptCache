@@ -12,6 +12,12 @@ angular.module('aptLogApp').controller("logRateController",function($scope,$http
           ajaxService.ajaxCall("logRateData",year+"_"+month+"_all",$http);
         }
      };
+     $scope.setYear = function(year){
+        $scope.requiredYear = year;
+     }
+     $scope.setMonth = function(month){
+        $scope.requiredMonth = month;
+     }
      $scope.initializeVars = function(isMonth){
        var urlData = "";
        if(isMonth===true){
