@@ -1,0 +1,14 @@
+<div  id="radio" class="alert col-lg-8">
+  <div class="form-inline">
+    <label class="control-label">Filter</label>
+    <label class="radio">
+      <input value="all" name="filter"  type="radio" ng-model='value' ng-change="filterGenerate('all')" ng-checked="true">All
+    </label>
+    <label class="radio">
+      <input value="metadata" name="filter" type="radio" ng-model='value' ng-change="filterGenerate('metadata')">Metadata
+    </label>
+    <label class="radio">
+      <input value="package" name="filter" type="radio" ng-model='value' ng-change="filterGenerate('package')">Packages
+    </label>
+  </div>
+</div>
