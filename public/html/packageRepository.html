@@ -19,15 +19,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										{{mode}}<span class="caret"></span>
-								</button>
-                <ul id="inout"class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <li><a href id="input" ng-click="writeTable(requiredYear,'Input')">Input</a></li>
-                  <li><a href id="output" ng-click="writeTable(requiredYear,'Output')">Output</a></li>
-                </ul>
-              </div> <!-- end dropdown -->
+              <dropdown-Mode></dropdown-Mode>
 						</div> <!-- end tab-pane, tab1 -->
 					</div> <!-- end tab-content -->
 				</div> <!-- end tabbable -->
