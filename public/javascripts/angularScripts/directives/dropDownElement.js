@@ -28,7 +28,7 @@ dropDownElement.directive('dropYearMonth', function(){
 dropDownElement.directive('radioFilter',function(){
   return {
     restrict:'E',
-    templateUrl:'html/filters/radioFilter.html'
+    templateUrl:'html/directives/radioFilter.html'
   };
 });
 dropDownElement.directive('dropdownMode', function(){
