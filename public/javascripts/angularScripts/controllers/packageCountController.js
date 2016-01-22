@@ -1,38 +1,37 @@
 angular.module('aptLogApp').controller("packageCountController",function($scope, $http, ajaxService){
-  $scope.year = "";
-  $scope.month = "";
+  $scope.requiredYear = 2015;
+  $scope.requiredMonth = "";
   $scope.tab=1;
   $scope.tableData = {};
-  $scope.monthList=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  $scope.yearList=['2013','2014','2015','2016'];
   $scope.packageHeader=["SI No", "Package Name", "Package Version", "Package Architecture", "Count"]
-
+  $scope.info = {};
   $scope.setMonth = function(monthValue){
-    $scope.month = monthValue;
+    $scope.requiredMonth = monthValue;
   }
 
   $scope.setYear = function(yearValue){
-    $scope.year = yearValue;
+    $scope.requiredYear = yearValue;
   }
 
-  $scope.defaultYearMonth = function(isMonth){
-    var latestDate = new Date();
-    var latestMonth = latestDate.getMonth();
-    var latestYear = latestDate.getFullYear();
-    $scope.year= latestYear;
-    if(isMonth)
-    {
-      $scope.month= $scope.monthList[latestMonth];
+  $scope.initializeVars = function(isMonth){
+    var urlData = "";
+    if(isMonth===true){
+      urlData = "true";
     }
+    else{
+      urlData = "false";
+    }
+    ajaxService.ajaxCall("getInfoTable",urlData,$http,$scope);
 
-  }
-
-  $scope.writeTable = function(){
-      if($scope.month===""){
-        ajaxService.ajaxCall("packageCount",$scope.year,$http,$scope);
+  };
+  $scope.writeTable = function(year,month){
+      $scope.requiredYear = year;
+      $scope.requiredMonth = month;
+      if($scope.requiredMonth===""){
+        ajaxService.ajaxCall("packageCount",$scope.requiredYear,$http,$scope);
       }
       else{
-        ajaxService.ajaxCall("packageCount",$scope.year+"_"+$scope.month,$http,$scope);
+        ajaxService.ajaxCall("packageCount",$scope.requiredYear+"_"+$scope.requiredMonth,$http,$scope);
       }
   };
 

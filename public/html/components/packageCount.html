@@ -1,7 +1,7 @@
-<div class="row" id="row_well" ng-controller="packageCountController" ng-init="defaultYearMonth(false)">
+<div class="row" id="row_well" ng-controller="packageCountController" ng-init="initializeVars(false);">
 
   <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
-  <div class="container" id="main">
+  <div class="container" id="main" ng-controller="dropController" ng-init="actionFunction=writeTable">
     <div class="row" id="moreInfo">
       <div class="col-lg-12">
         <h2>Apt-log Package Count</h2>
@@ -9,29 +9,29 @@
         <div class="tabbable">
           <ul class="nav nav-tabs">
             <li class="active">
-              <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="month='';writeTable();setTab(1)" ng-init="writeTable()">
+              <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="requiredMonth='';setTab(1);writeTable(requiredYear,'')">
                 Year-wise
               </a>
             </li>
             <li>
-              <a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="defaultYearMonth(true);writeTable();setTab(2)">
+              <a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2)">
                 Month-wise
               </a>
             </li>
           </ul>
           <div id="myTab" class="tab-content col-lg-4">
             <div class="tab-pane active" ng-show="tab===1">
-              <dropdown-year ></dropdown-year>
+              <drop-year ></drop-year>
             </div>
             <div class="tab-pane active" ng-show="tab===2">
-              <dropdown-year ></dropdown-year>
-              <dropdown-month></dropdown-month>
+              <drop-year-month></drop-year-month>
+              <drop-month></drop-month>
             </div>
           </div>
         </div>
         <div class="col-lg-12">
           <p id="para">
-            <h4>{{"packageCount"|addPara:year:month}}</h4>
+            <h4>{{"packageCount"|addPara:requiredYear:requiredMonth}}</h4>
           </p>
         </div>
 

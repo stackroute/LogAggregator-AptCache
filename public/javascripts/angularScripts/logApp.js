@@ -1,4 +1,4 @@
-aptLogApp = angular.module("aptLogApp",['ngRoute','ui.grid','dropdownModule','dropDownElement']);
+aptLogApp = angular.module("aptLogApp",['ngRoute','ui.grid','dropDownElement']);
 
 aptLogApp.controller('DropDownController',function($scope)
 {

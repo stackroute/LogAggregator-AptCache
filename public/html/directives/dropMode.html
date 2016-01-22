@@ -1,8 +1,8 @@
-<div class="tab-pane active" id="tab1" ng-controller="DropDownController">
+<div class="tab-pane active" id="tab1">
   <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{requiredYear}}<span class="caret"></span>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li ng-repeat="year in yearList">
+      <li ng-repeat="year in info['years']">
         <a href ng-click="writeTable(year,'Input')">{{year}}</a>
       </li>
     </ul>
@@ -12,7 +12,7 @@
         {{mode}}<span class="caret"></span>
     </button>
     <ul id="inout"class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <li ng-repeat="i in modeList">
+      <li ng-repeat="i in info['modes']">
         <a href ng-click="writeTable(requiredYear,i)">{{i}}</a>
       </li>
     </ul>
