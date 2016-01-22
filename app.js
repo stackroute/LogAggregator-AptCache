@@ -5,13 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var mainRoutes = require('./routes/index');
-var packageRoutes = require('./routes/packageCount');
- var graphRoutes = require('./routes/logRateData');
- var dataRateData = require('./routes/dataRateData');
-var packageAnalytics = require('./routes/packageAnalytics');
-var repRoutes = require('./routes/repository');
-var getInfo = require('./routes/getInfo');
+var mainRoutes = require('./routes/aptCache/index');
+var packageRoutes = require('./routes/aptCache/packageCount');
+ var graphRoutes = require('./routes/aptCache/logRateData');
+ var dataRateData = require('./routes/aptCache/dataRateData');
+var packageAnalytics = require('./routes/aptCache/packageAnalytics');
+var repRoutes = require('./routes/aptCache/repository');
+var getInfo = require('./routes/aptCache/getInfo');
 //
 var app = express();
 
