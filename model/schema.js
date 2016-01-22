@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/LogAggregate');
+mongoose.connect('mongodb://172.23.238.253:27018/LogAggregate');
 
 var Schema = mongoose.Schema;
 var logSchema = new Schema({
