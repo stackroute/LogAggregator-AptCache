@@ -98,6 +98,83 @@
   }*/
 
 /* --------------------------------------
+   Tabs Layout
+   -------------------------------------- */
+
+   /*#main-tab{
+     margin-top: 100px;
+   }*/
+   
+   /*#main-tab .tab-content{
+     width: 100% !important;
+     height: 900px;
+     height: auto;
+     overflow: hidden;
+     border:1px solid #e3e3e3;
+     border-top: none;
+   }*/
+   #main-tab  .nav-tabs li {
+     width:20%;
+     text-align: center;
+   }
+   #main-tab  .nav-tabs li a{
+     color:#337ab7;
+     font-size: 16px;
+     padding-bottom: 17px;
+   }
+   .tab-content {
+     background-color: #F8F8F8;
+   }
+   .tab-pane {
+     height: 100%;
+   }
+   .tab-pane .criteriaPane {
+     border-radius: 0px;
+     border: 0px;
+     border-bottom: 2px solid lightgrey;
+     border-left: 1px solid lightgrey;
+     height: 50px;
+     font-size: 0.83em;
+   }
+   .tab-pane .criteriaGroup {
+     width: 20%;
+     height: 100%;
+   }
+   .wrap {
+     width: 80%;
+     float: right;
+     height: 100%;
+     border-left: 1px solid lightgrey;
+     text-align: center;
+   }
+   .wrap .page-header {
+     margin: 0px;
+   }
+   .wrap .well {
+     margin: 20px;
+   }
+   .wrap svg{
+     display: block;
+     margin: auto;
+     margin: 15px auto;
+   }
+   .nav li.active a{
+     color:#fff !important;
+     background-color:#337ab7 !important;
+     padding-bottom: 18px;
+   }
+   .navbar-nav li.active a{
+     background-color: #38474e !important;
+     color:#fff !important;
+   }
+   .filters .dropdown {
+     display : inline-block;
+   }
+   .AgentProgressIcon{
+     margin-top: 13px;
+   }
+
+/* --------------------------------------
    Layout
    -------------------------------------- */
 
