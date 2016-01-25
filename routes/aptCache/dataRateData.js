@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var Logs = require('../../model/schema');
+var Logs = require('../../model/logSchema');
 
 router.get('/size/:packagetype=?/:year=?/:datename=?',function(req,res,next){
   var year = parseInt(req.params.year);
