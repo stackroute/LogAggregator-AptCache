@@ -50,7 +50,7 @@
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
               <!-- <li class="active-nav" ng-class="{active: (tab == 'logListing')}"><a ng-href="#logListing" ng-click="tab='logListing'">Home <i class="fa fa-home fa-fw"></i></a></li> -->
-              <li class="active-nav" ><a href="#home">Home <i class="fa fa-home fa-fw"></i></a></li>
+              <li class="active-nav" ><a href="/">Home <i class="fa fa-home fa-fw"></i></a></li>
               <li class="dropdown">
                 <!-- <div class="dropdown"> -->
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -58,7 +58,7 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#requestrate">Apt Log Statistics</a></li>
+                    <li><a href="#logPage">Apt Log Statistics</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Nginx Log Statistics</a></li>
                   </ul>
@@ -75,8 +75,33 @@
 
       </div> <!-- end row -->
 
-      <div class="row" id="row_well" ng-view>
+      <div class="row" id="row_well">
         <!-- INSERT YOUR CODE HERE AND DELETE THE BELOW WHOLE CONTAINER CLASS -->
+
+        <div class="container-fluid" id="main">
+          <div class="row" id="moreInfo">
+            <div class="col-lg-12">
+              <div class="tabbable" id="main-tab">
+                <div class="homepage">
+                  <ul class="nav nav-tabs" >
+                    <!-- <li ng-class="{active: (tab == 'logListing')}"><a ng-href="#logListing" ng-click="tab='logListing'">Log Listing</a></li>
+                    <li ng-class="{active: (tab == 'agentAnalytics')}"><a ng-href="#agentAnalytics" ng-click="tab='agentAnalytics'">User Agent</a></li>
+                    <li ng-class="{active: (tab == 'requestRate')}"><a ng-href="#requestRate" ng-click="tab='requestRate'">Request Rate</a></li> -->
+                    <li role="presentation" ><a href="#requestrate">Request Rate</a></li>
+                    <li role="presentation" ><a href="#requestdata">Data Rate</a></li>
+                    <li role="presentation" ><a href="#packagecount">Package Count</a></li>
+                    <li role="presentation" ><a href="#packageanalytics">Package Analytics</a></li>
+                    <li role="presentation" ><a href="#packagerepository">Package Repository</a></li>
+                  </ul>
+                </div> <!-- end homepage -->
+
+                <div class="tab-pane" ng-view="">
+                </div> <!-- end tab-pane -->
+              </div> <!-- end tabbable -->
+            </div>
+          </div>
+        </div>
+
         <!-- Delete Till Here -->
 			</div> <!-- end row_well -->
 

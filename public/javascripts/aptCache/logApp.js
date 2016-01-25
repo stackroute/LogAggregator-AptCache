@@ -44,10 +44,9 @@ aptLogApp.controller("ActiveController", function($scope){
 
 aptLogApp.config(function($routeProvider) {
         $routeProvider
-
             // route for the home page
             .when('/', {
-                templateUrl : 'html/components/main.html',
+                templateUrl : 'html/components/main.html'
             })
             .when('/home',{
                 templateUrl: 'html/components/main.html'
@@ -56,7 +55,6 @@ aptLogApp.config(function($routeProvider) {
                 templateUrl : 'javascripts/aptCache/logRate/views/allLogs.html',
                 controller: 'logRateController'
             })
-
             .when('/packageanalytics', {
                 templateUrl : 'javascripts/aptCache/packageAnalytics/views/packageAnalytics.html',
                 controller: 'packageAnalyticsController'
@@ -69,8 +67,6 @@ aptLogApp.config(function($routeProvider) {
               templateUrl : 'javascripts/aptcache/packageRepository/views/packageRepository.html',
                 controller: 'repositoryController'
             })
-
-
             .when('/packagecount', {
                 templateUrl : 'javascripts/aptCache/packageCount/views/packageCount.html',
                 controller: 'packageCountController'

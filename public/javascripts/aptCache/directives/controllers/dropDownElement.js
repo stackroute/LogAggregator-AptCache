@@ -37,4 +37,3 @@ dropDownElement.directive('dropdownMode', function(){
     templateUrl:'javascripts/aptCache/directives/views/dropMode.html'
   };
 });
-javascripts
