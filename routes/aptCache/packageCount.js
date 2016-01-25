@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var router = express.Router();
-var Logs = require('../../model/schema');
+var Logs = require('../../model/logSchema');
 
 router.get('/year/year_month/:year_month=?', function(req, res, next) {
   var year_month=req.params.year_month.split('_');
