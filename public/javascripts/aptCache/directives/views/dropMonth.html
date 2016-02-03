@@ -1,0 +1,10 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    {{requiredMonth}}<span class="caret"></span>
+  </button>
+    <ul id="monthList1" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+      <li ng-repeat="month in info['months']">
+        <a href ng-click="actionFunction(requiredYear,month)">{{month}}</a>
+      </li>
+    </ul>
+</div>
