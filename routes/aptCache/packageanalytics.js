@@ -1,7 +1,9 @@
 var express = require('express');
 var fs = require('fs');
 var router = express.Router();
-var Logs = require('../../model/logSchema');
+//var Logs = require('../../model/logSchema');
+var Logs = require('../../models/dbConfig').aptLogModel;
+
 function makeQuery(period){
     var match = new Object();
     dataRange = period.split('_');

@@ -1,7 +1,10 @@
 var express = require('express');
 var fs = require('fs');
 var router = express.Router();
-var Logs = require('../../model/logSchema');
+//var Logs = require('../../model/logSchema');
+var Logs = require('../../models/dbConfig').aptLogModel;
+
+
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function createMonthlyData(result,year,month){
     data = new Array();

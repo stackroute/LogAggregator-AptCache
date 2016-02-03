@@ -3,7 +3,9 @@ var fs = require('fs');
 var router = express.Router();
 var mongoose = require('mongoose');
 //mongoose.connect('mongodb://127.0.0.1:27017/LogAggregate');
-var Logs = require('../../model/logSchema');
+//var Logs = require('../../model/logSchema');
+var Logs = require('../../models/dbConfig').aptLogModel;
+
 
 var data=new Object();
 router.get('/:year=?/:modetype=?',function(req,res,next){

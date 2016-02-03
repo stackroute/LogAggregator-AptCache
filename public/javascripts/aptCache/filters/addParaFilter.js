@@ -34,3 +34,9 @@ angular.module('aptLogApp').filter('addPara',function(){
       }
   }
 });
+
+angular.module('aptLogApp').filter('showLinks',function(){
+  return function(tab){
+    return angular.lowercase(tab.split(' ').join(''));
+  }
+});

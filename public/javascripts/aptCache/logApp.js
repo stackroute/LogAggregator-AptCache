@@ -8,60 +8,22 @@ aptLogApp.controller('DropDownController',function($scope)
   $scope.modeList=["Input","Output"];
 });
 
-aptLogApp.controller("ActiveController", function($scope){
-  $scope.menuItems = [
-    {
-      itemName : "Home",
-      htmlPageName:"#home"
-    },
-    {
-      itemName : "Request Rate",
-      htmlPageName:"#requestrate"
-    },
-    {
-      itemName : "Data Rate",
-      htmlPageName:"#requestdata"
-    },
-    {
-      itemName : "Package Count",
-      htmlPageName:"#packagecount"
-    },
-    {
-      itemName : "Package Analytics",
-      htmlPageName:"#packageanalytics"
-    },
-    {
-      itemName : "Package Repository",
-      htmlPageName:"#packagerepository"
-    }
-  ];
-  $scope.activeMenu = "Home";
-
-  $scope.setActive = function(menuItem) {
-  $scope.activeMenu = menuItem
-  }
-});
-
 aptLogApp.config(function($routeProvider) {
         $routeProvider
-
             // route for the home page
             .when('/', {
-                templateUrl : 'html/components/main.html',
-            })
-            .when('/home',{
-                templateUrl: 'html/components/main.html'
+              templateUrl : 'javascripts/aptCache/logRate/views/allLogs.html',
+              controller: 'logRateController'
             })
             .when('/requestrate', {
                 templateUrl : 'javascripts/aptCache/logRate/views/allLogs.html',
                 controller: 'logRateController'
             })
-
             .when('/packageanalytics', {
                 templateUrl : 'javascripts/aptCache/packageAnalytics/views/packageAnalytics.html',
                 controller: 'packageAnalyticsController'
             })
-            .when('/requestdata', {
+            .when('/datarate', {
                 templateUrl : 'javascripts/aptCache/dataRate/views/allData.html',
                 controller: 'dataRateController'
             })
@@ -69,8 +31,6 @@ aptLogApp.config(function($routeProvider) {
               templateUrl : 'javascripts/aptcache/packageRepository/views/packageRepository.html',
                 controller: 'repositoryController'
             })
-
-
             .when('/packagecount', {
                 templateUrl : 'javascripts/aptCache/packageCount/views/packageCount.html',
                 controller: 'packageCountController'
