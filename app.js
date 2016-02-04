@@ -70,7 +70,8 @@ app.use(session({
   resave: true,
   secret: 'secret',
   cookie:{
-    login:false
+    login:false,
+    httpOnly:false
   }
 }));
 app.use(passport.initialize());

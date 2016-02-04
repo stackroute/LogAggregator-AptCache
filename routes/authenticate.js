@@ -24,9 +24,17 @@ console.log("in authenticate");
 
 
 	router.get('/success', function(req, res){
-
-		// res.send("success");
+		console.log("called auth success");
 		res.send({state: 'success', user: req.user ? req.user : null});
+	});
+
+	router.get('/google/success',function(req,res) {
+		// console.log("*****************************************************************");
+		// console.log(req);
+		// console.log(res);
+		// console.log("*****************************************************************");
+		res.cookie('google',req.user.google.id);
+		res.redirect("http://qt2.stackroute.in:8080/#/");
 	});
 
 	//sends failure login state back to angular
@@ -52,6 +60,15 @@ console.log("in authenticate");
 		req.logout();
 		res.send({state:'logout',message:"Logged Out Successfully"});
 	});
+
+	router.get('/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+    // the callback after google has authenticated the user
+  router.get('/google/callback',
+            passport.authenticate('google', {
+                  failureRedirect : '/',
+									successRedirect: '/auth/google/success'}
+									));
 
 	return router;
 

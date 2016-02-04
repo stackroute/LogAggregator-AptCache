@@ -20,7 +20,9 @@ function($scope,$cookies, $http, $rootScope, $location) {
   var check = false;
   $scope.error_message = '';
   $scope.checkData="";
-  if($cookies.get('login')==='true'){
+  console.log($cookies.get('connect.sid'));
+  if($cookies.get('login')==='true' || $cookies.get('connect.sid') != null ){
+    $cookies.put('login','true');
     $location.path('/logListing');
   }
 

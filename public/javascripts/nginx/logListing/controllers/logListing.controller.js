@@ -87,6 +87,6 @@ function($scope,$cookies,$location, $rootScope, logService, $interval) {
   }
 }//close pagenoClickEventlick event
 else{
-  $location.path('/');
+  //$location.path('/');
 }
 }]);//close fn

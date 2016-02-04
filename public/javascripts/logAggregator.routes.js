@@ -16,6 +16,12 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
 
 angular.module('logAggregator').config(['$routeProvider',
   function($routeProvider) {
+    // 
+    // $routeProvider.$on('$routeChangeStart',function(event,next,current) {
+    //   console.log(event);
+    //   console.log(next);
+    //   console.log(current);
+    // });
     $routeProvider
     .when('/', {
       templateUrl : 'javascripts/auth/views/auth.view.html',

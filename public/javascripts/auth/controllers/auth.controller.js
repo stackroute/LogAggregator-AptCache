@@ -20,13 +20,34 @@ function($scope,$cookies, $http, $rootScope, $location) {
   var check = false;
   $scope.error_message = '';
   $scope.checkData="";
-  if($cookies.get('login')==='true'){
+
+  if($cookies.get('login')==='true'||$cookies.get('google')!=null){
+    $cookies.put('login','true');
+    console.log($cookies.getAll());
     $location.path('/loglisting');
   }
 
   var result=document.getElementsByClassName('homepage');
   angular.element(result).css('display','none');
-
+  $scope.googleLogin = function(){
+      $http.jsonp('/auth/google').then(function(response){
+        if(response.data.state == 'success'){
+          $rootScope.authenticated = true;
+          $rootScope.loginMessage="";
+          //$rootScope.current_user = response.data.user.username;
+          // $rootScope.tab = "logListing";
+          var result=document.getElementsByClassName('homepage');
+          angular.element(result).css('display','block');
+          $cookies.put('login','true');
+          $scope.$parent.clicked="";
+          $location.path('/loglisting');
+        }
+        else{
+          $scope.error_message = response.data.message;
+          $rootScope.loginMessage="Invalid username or password";
+        }
+      });
+  }
   $scope.login = function(username,password){
     $scope.user={
       username:username,

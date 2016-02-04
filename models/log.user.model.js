@@ -31,6 +31,18 @@ var LogUserSchema = new Schema({
     required: 'Username is required',
     trim: true
   },
+  google : {
+    id: String,
+    token: String,
+    email: String,
+    name: String
+  },
+  facebook : {
+    id: String,
+    token: String,
+    email: String,
+    name: String
+  },
   password : {
     type: String,
     validate: [
