@@ -387,7 +387,7 @@ td, tr, th{
 }
 
 .changeColour{
-  color: grey;
+  color: white;
 }
 #dropdownMenu2{
   width: 120px;
@@ -403,7 +403,7 @@ td, tr, th{
 
 .tab-pane h2 {
   display: inline-block;
-  padding-left: 5%;
+  padding-left: 3px;
 }
 
 .tab-pane small{
