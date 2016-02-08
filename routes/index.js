@@ -22,12 +22,4 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-router.get('/aptCache', function(req, res, next) {
-  res.render('aptCache', { title: 'AptCache' });
-});
-
-router.get('/nginx', function(req, res, next) {
-  res.render('index', { title: 'nginx' });
-});
-
 module.exports = router;
