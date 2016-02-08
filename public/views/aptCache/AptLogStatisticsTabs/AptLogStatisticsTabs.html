@@ -1,0 +1,14 @@
+<div class="container-fluid ">
+  <div class="tabbable" id="main-tab">
+    <div class="homepage watchlist-tabs">
+      <ul class="nav nav-tabs" >
+        <li ng-repeat="tabs in aptLogTabs" >
+          <a ui-sref=".{{tabs | showLinks}}">{{tabs}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tab-pane" ui-view>
+    </div> <!-- end tab-pane -->
+  </div> <!-- end main-tab -->
+</div> <!-- end container-fluid -->

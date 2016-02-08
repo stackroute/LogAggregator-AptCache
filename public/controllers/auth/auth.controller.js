@@ -21,7 +21,7 @@ function($scope,$cookies, $http, $rootScope, $location) {
   $scope.error_message = '';
   $scope.checkData="";
   if($cookies.get('login')==='true'){
-    $location.path('/loglisting');
+    $location.path('/NginxLogStatistics');
   }
 
   var result=document.getElementsByClassName('homepage');
@@ -42,7 +42,7 @@ function($scope,$cookies, $http, $rootScope, $location) {
         angular.element(result).css('display','block');
         $cookies.put('login','true');
         $scope.$parent.clicked="";
-        $location.path('/loglisting');
+        $location.path('/NginxLogStatistics');
       }
       else{
         $scope.error_message = response.data.message;

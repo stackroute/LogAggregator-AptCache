@@ -14,8 +14,8 @@ limitations under the License.
 
 This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday Kumar Mydam, Nirup TNL, Sandeep Reddy G, Deepak Kumar*/
 
-angular.module('logAggregator').controller('mainController', ['$scope','$cookies','$rootScope', '$window','$http','$location', 'loadConfig',
-  function($scope,$cookies,$rootScope, $window,$http,$location, loadConfig ) {
+angular.module('logAggregator').controller('mainController', ['$scope','$cookies','$rootScope', '$window','$http','$location', 'loadConfig','$state',
+'$timeout',function($scope,$cookies,$rootScope, $window,$http,$location, loadConfig, $state,$timeout ) {
       //  angular.element('.homepage').css('display','block');
       loadConfig.getdata( function(data) {
         $scope.config = data;
@@ -24,15 +24,32 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
 
       $scope.aptLogTabs=['Request Rate','Data Rate','Package Count','Package Analytics','Package Repository'];
       $scope.nginxLogTabs=['Log Listing','User Agent','Traffic Rate'];
-      var aptLogLinks={
-        '/requestrate':"aptLogStatistics",
-        '/datarate':"aptLogStatistics",
-        '/packagecount':"aptLogStatistics",
-        '/packageanalytics':"aptLogStatistics",
-        '/packagerepository':"aptLogStatistics"
-      };
-      var angularRoute=$location.$$path;
-      $scope.selection=aptLogLinks[angularRoute];
+      // var aptLogLinks={
+      //   '/requestrate':"aptLogStatistics",
+      //   '/datarate':"aptLogStatistics",
+      //   '/packagecount':"aptLogStatistics",
+      //   '/packageanalytics':"aptLogStatistics",
+      //   '/packagerepository':"aptLogStatistics"
+      // };
+      // var angularRoute=$location.$$path;
+      // $scope.selection=aptLogLinks[angularRoute];
+
+      $scope.setTab = function(logName){
+        if(logName === "Apt Log Statistics")
+        {
+          console.log(logName);
+          $timeout(function() {
+            $state.go("AptLogStatistics.requestrate");
+          },100);
+        }
+        else if(logName === "Nginx Log Statistics")
+        {
+          console.log(logName);
+          $timeout(function() {
+            $state.go("NginxLogStatistics.loglisting");
+          },1);
+        }
+      }
 
       $scope.dashName = "Dashboard";
     // $scope.selection="nginxLogStatistics";

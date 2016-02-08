@@ -54,7 +54,7 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                   <li ng-repeat="value in config.dashboard">
-                    <a href="{{value.target}}" ng-click="setSelection(value.selection);setDashName(value.name);">
+                    <a href="#/{{value.name.split(' ').join('')}}" ng-click="setSelection(value.selection);setDashName(value.name);setTab(value.name);">
                       {{value.name}}
                     </a>
                   </li>
@@ -80,34 +80,7 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
       </div> <!-- end container-fluid -->
     </div> <!-- end homepage -->
 
-    <div class="container-fluid">
-      <div class="tabbable" id="main-tab">
-        <div class="homepage watchlist-tabs ng-cloak" >
-          <div ng-switch on="selection">
-            <div ng-switch-when="aptLogStatistics">
-              <ul class="nav nav-tabs" >
-                <li ng-repeat="tabs in aptLogTabs" >
-                  <a href="#{{tabs | showLinks}}">{{tabs}}</a>
-                </li>
-              </ul>
-              <!-- <div ng-view=""></div> -->
-            </div>
-            <div ng-switch-default>
-              <ul class="nav nav-tabs" >
-                <!-- <li ng-class="{active: (tab == 'logListing')}"><a ng-href="#logListing" ng-click="tab='logListing'">Log Listing</a></li> -->
-                <li ng-repeat="tabs in nginxLogTabs" >
-                  <a href="#{{tabs | showLinks}}" >{{tabs}}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- end watchlist-tabs -->
-        <div class="tab-pane" ng-view=""></div>
-      </div>
-      <!-- end tabbable -->
-    </div>
-    <!-- end container-fluid -->
+    <div ui-view> </div>
 
   <%include footer_includes.ejs%>
   </body>
