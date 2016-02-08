@@ -14,8 +14,23 @@ limitations under the License.
 
 This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday Kumar Mydam, Nirup TNL, Sandeep Reddy G, Deepak Kumar*/
 
+var passport = require('passport'),
+    mongoose = require('mongoose');
 
+module.exports = function() {
+  var User = require('./models/dbConfig.js').userModel;
 
-{
-  "directory" : "public/lib"
-}
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    User.findOne({
+      _id: id
+    }, '-password -hash', function(err, user) {
+      done(err, user);
+    });
+  });
+  require('./localAuth.js')();
+  return passport;
+};
