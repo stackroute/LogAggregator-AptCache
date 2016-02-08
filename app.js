@@ -35,9 +35,9 @@ var routes = require('./routes/index');
 
 var configRoute = require('./routes/config');
 var authenticate = require('./routes/authenticate')(passport);
-var userAgent = require('./routes/API/userAgent');
-var logListing = require('./routes/API/logListing');
-var trafficRate = require('./routes/API/trafficRate');
+var userAgent = require('./routes/nginx/userAgent');
+var logListing = require('./routes/nginx/logListing');
+var trafficRate = require('./routes/nginx/trafficRate');
 
 //Wave 2 code
 // var mainRoutes = require('./routes/aptCache/index');
