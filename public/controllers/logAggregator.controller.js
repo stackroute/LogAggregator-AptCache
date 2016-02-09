@@ -40,7 +40,7 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
           console.log(logName);
           $timeout(function() {
             $state.go("AptLogStatistics.requestrate");
-          },100);
+          },1);
         }
         else if(logName === "Nginx Log Statistics")
         {
