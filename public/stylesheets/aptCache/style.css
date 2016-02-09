@@ -211,3 +211,7 @@
 #para {
   font-family: 'Alegreya', serif;
 }
+#noInfoMsg{
+  font-size: 16.35px;
+  text-align: center;
+}

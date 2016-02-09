@@ -2,7 +2,9 @@ angular.module('aptLogApp').controller("repositoryController",function($scope,$h
     $scope.requiredYear = 2015;
     $scope.mode = "Input";
     $scope.tableData = {};
-    $scope.info = {}
+    $scope.info = {};
+    $scope.msg="";
+    
     $scope.initializeVars = function(){
       ajaxService.ajaxCall("getRepoTable","Input",$http,$scope);
 
