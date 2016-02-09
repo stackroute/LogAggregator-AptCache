@@ -7,9 +7,16 @@ function($scope,$cookies,$location,$state) {
     if(!angularRoute[2])
     {
       $state.go('NginxLogStatistics.loglisting');
+      angularRoute[2] = "loglisting";
     }
+    $scope.activeTab = angularRoute[2];
   }
   else{
     $location.path('/');
   }
+
+  $scope.setActiveClass = function(tab) {
+    $scope.activeTab = angular.lowercase(tab.split(" ").join(''));
+  }
+
 }]);//close fn

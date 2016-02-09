@@ -25,18 +25,11 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
       $scope.nginxLogTabs=['Log Listing','User Agent','Traffic Rate'];
 
       $scope.setTab = function(logName){
-        if(logName === "Apt Log Statistics")
-        {
-          $timeout(function() {
-            $state.go("AptLogStatistics.requestrate");
-          },1);
-        }
-        else if(logName === "Nginx Log Statistics")
-        {
-          $timeout(function() {
-            $state.go("NginxLogStatistics.loglisting");
-          },1);
-        }
+        var presentRoute=$location.$$path.split("/");
+        var stateToGo = logName.split(" ").join("")+"."+presentRoute[2];
+        $timeout(function() {
+          $state.go(stateToGo);
+        },1);
       }
 
       $scope.dashName = "Dashboard";
@@ -44,9 +37,11 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
     $scope.setDashName = function(val){
       $scope.dashName = val;
     }
-    $scope.setSelection=function(selection_name){
-        $scope.selection = selection_name;
-    }
+
+    // $scope.setSelection=function(selection_name){
+    //     $scope.selection = selection_name;
+    // }
+
     $scope.aboutus=function(){
       var watchlist=document.getElementsByClassName('watchlist-tabs');
       angular.element(watchlist).css('display','none');

@@ -2,9 +2,8 @@
   <div class="tabbable" id="main-tab">
     <div class="homepage watchlist-tabs ng-cloak">
       <ul class="nav nav-tabs" >
-        <!-- <li ng-class="{active: (tab == 'logListing')}"><a ng-href="#logListing" ng-click="tab='logListing'">Log Listing</a></li> -->
-        <li ng-repeat="tabs in nginxLogTabs" >
-          <a ng-class="{active:(tab === '{{tabs | showLinks}}')}" ng-click="tab='{{tabs | showLinks}}'" ui-sref=".{{tabs | showLinks}}" >{{tabs}}</a>
+        <li ng-repeat="tabs in nginxLogTabs" ng-class="{active:(activeTab==='{{tabs | showLinks}}')}">
+          <a ng-click="setActiveClass(tabs)" ui-sref=".{{tabs | showLinks}}" >{{tabs}}</a>
         </li>
       </ul>
     </div>
