@@ -21,3 +21,5 @@ var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute'
 angular.element(document).ready(function() {
   angular.bootstrap(document, [mainApplicationModuleName]);
 });
+
+aptLogApp = angular.module("aptLogApp",['ngRoute','ui.grid','dropDownElement']);

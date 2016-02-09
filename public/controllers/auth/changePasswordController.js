@@ -32,7 +32,7 @@ function($scope,$cookies, $http, $rootScope, $location) {
       newPassword:password,
       confirmNewPassword:confirmNewPassword
     };
-    console.log(changePasswordObj);
+    
 
   }
 

@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-//var db1 = mongoose.createConnection("mongodb://localhost/nginx");
-//var db2 = mongoose.createConnection("mongodb://localhost/LogAggregate");
- var db1 = mongoose.createConnection("mongodb://172.23.238.253:27018/nginx");
-var db2 = mongoose.createConnection("mongodb://172.23.238.253:27018/LogAggregate");
+// var db1 = mongoose.createConnection("mongodb://172.23.238.253:27018/nginx");
+// var db2 = mongoose.createConnection("mongodb://172.23.238.253:27018/LogAggregate");
+var db1 = mongoose.createConnection("mongodb://localhost/nginx");
+var db2 = mongoose.createConnection("mongodb://localhost/LogAggregate");
 
 var userSchema = require('./log.user.model');
 var serverSchema = require('./log.server.model');

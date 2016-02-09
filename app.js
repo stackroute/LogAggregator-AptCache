@@ -40,7 +40,6 @@ var logListing = require('./routes/nginx/logListing');
 var trafficRate = require('./routes/nginx/trafficRate');
 
 //Wave 2 code
-// var mainRoutes = require('./routes/aptCache/index');
 var packageRoutes = require('./routes/aptCache/packageCount');
 var graphRoutes = require('./routes/aptCache/logRateData');
 var dataRateData = require('./routes/aptCache/dataRateData');
@@ -91,7 +90,6 @@ app.use('/json/logListing', logListing);
 app.use('/json/trafficRate', trafficRate);
 
 //wave 2 code
-// app.use('/', mainRoutes);
 app.use('/logRateData',graphRoutes);
 app.use('/dataRateData',dataRateData);
 app.use('/packageCount', packageRoutes);
