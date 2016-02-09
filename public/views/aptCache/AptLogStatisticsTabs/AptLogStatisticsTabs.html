@@ -2,8 +2,8 @@
   <div class="tabbable" id="main-tab">
     <div class="homepage watchlist-tabs">
       <ul class="nav nav-tabs" >
-        <li ng-repeat="tabs in aptLogTabs" >
-          <a ui-sref=".{{tabs | showLinks}}">{{tabs}}</a>
+        <li ng-repeat="tabs in aptLogTabs" ng-class="{active:(activeTab==='{{tabs | showLinks}}')}" >
+          <a ui-sref=".{{tabs | showLinks}}" ng-click="setActiveClass(tabs)">{{tabs}}</a>
         </li>
       </ul>
     </div>

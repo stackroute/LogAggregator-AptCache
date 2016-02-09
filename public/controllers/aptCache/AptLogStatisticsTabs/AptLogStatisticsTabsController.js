@@ -7,9 +7,16 @@ function($scope,$cookies,$location,$state) {
     if(!angularRoute[2])
     {
       $state.go('AptLogStatistics.requestrate');
+      angularRoute[2] = "requestrate";
     }
+    $scope.activeTab = angularRoute[2];
   }
   else{
     $location.path('/');
   }
+
+  $scope.setActiveClass = function(tab) {
+    $scope.activeTab = angular.lowercase(tab.split(" ").join(''));
+  }
+
 }]);//close fn

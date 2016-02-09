@@ -53,11 +53,11 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                   <li ng-repeat="value in config.dashboard">
-                    <a href="#/{{value.name.split(' ').join('')}}" ng-click="setSelection(value.selection);setDashName(value.name);setTab(value.name);">
+                    <a href="#/{{value.name.split(' ').join('')}}" ng-click="setDashName(value.name);setTab(value.name);">
                       {{value.name}}
                     </a>
                   </li>
-                </ul>
+                </ul> <!-- end dropdown-menu -->
               </li>
             </ul> <!-- end navbar-nav -->
 
