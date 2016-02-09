@@ -34,7 +34,7 @@
       </div> <!-- end row -->
       <hr>
       <p id="noInfoMsg">{{msg}}</p>
-      <div ui-grid="{ data: tableData }" class="myGrid">
+      <div ui-grid="{ data: tableData }" ng-if="tableData.length > 0" class="myGrid">
       </div> <!-- end content -->
 
     </div> <!-- end tabbable -->
