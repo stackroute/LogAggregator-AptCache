@@ -101,6 +101,7 @@ router.get('/size/:packagetype=?/:year=?/:datename=?',function(req,res,next){
     else{
       monthly(result);
     }
+    
     res.json(data);
   });
 

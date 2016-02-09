@@ -49,6 +49,7 @@ router.get('/year/year_month/:year_month=?', function(req, res, next) {
       {
         finalresult.push(obj[item]);
       }
+      console.log(finalresult);
       res.json(finalresult);
     }
   );

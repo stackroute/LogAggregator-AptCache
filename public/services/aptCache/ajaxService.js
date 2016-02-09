@@ -16,6 +16,8 @@ angular.module('aptLogApp').factory('ajaxService',function(){
         else if(type==="packageCount"){
             var url = '/packageCount/year/year_month/'+urlData;
             $http.get(url).success( function(data) {
+              if(data===null)
+              console.log("hi");
               $scope.tableData = data;
             });
         }
