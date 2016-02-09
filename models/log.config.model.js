@@ -34,5 +34,4 @@ var LogConfigSchema = new Schema({
   refreshInterval: Number
 },{collection: "log_config"})
 
-//mongoose.model('Config', LogConfigSchema);
 module.exports = LogConfigSchema;

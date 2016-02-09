@@ -18,8 +18,7 @@ angular.module('logAggregator').controller('authController', ['$scope','$cookies
 function($scope,$cookies, $http, $rootScope, $location) {
 
   if($cokkies.get('login')=='true'){
-    console.log("in errorhandler");
-    $location.path('/errorhandler');
+      $location.path('/errorhandler');
   }
   else {
     var result=document.getElementsByClassName('homepage');

@@ -15,27 +15,19 @@ limitations under the License.
 This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday Kumar Mydam, Nirup TNL, Sandeep Reddy G, Deepak Kumar*/
 
 var mongoose = require('mongoose');
-//var User = require('mongoose').model('User');
 var User = require('./models/dbConfig.js').userModel;
 var LocalStrategy   = require('passport-local').Strategy;
-//var bCrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
 module.exports = function(passport){
 
 	// Passport needs to be able to serialize and deserialize users to support persistent login sessions
 	passport.serializeUser(function(user, done) {
-		console.log('serializing user:',user.username);
 		done(null, user._id);
 	});
 
 	passport.deserializeUser(function(id, done) {
-		console.log("Session id is"+id);
-		// console.log("request object is"+req.session);
 		User.findById(id, function(err, user) {
-			console.log('deserializing user:',user.username);
-			console.log("inside deserializeUser");
-
 			done(err, user);
 		});
 	});
@@ -52,12 +44,10 @@ module.exports = function(passport){
 						return done(err);
 					// Username does not exist, log the error and redirect back
 					if (!user){
-						console.log('User Not Found with username '+username);
 						return done(null, false);
 					}
 					// User exists but wrong password, log the error
 					if (!(isValidPassword(user,password))){
-						console.log('Invalid Password');
 						return done(null, false); // redirect back to login page
 					}
 					// User and password both match, return user from done method
@@ -72,18 +62,15 @@ module.exports = function(passport){
 			passReqToCallback : true // allows us to pass back the entire request to the callback
 		},
 		function(req,username,password,done) {
-			console.log("inside Passport"+req.body);
 
 			// find a user in mongo with provided username
 			User.findOne({ 'username' :  username }, function(err, user) {
 				// In case of any error, return using the done method
 				if (err){
-					console.log('Error in SignUp: '+err);
 					return done(err);
 				}
 				// already exists
 				if (user) {
-					console.log('User already exists with username: '+username);
 					return done(null, false);
 				} else {
 					// if there is no user, create the user
@@ -94,8 +81,6 @@ module.exports = function(passport){
 					newUser.username = username;
 					newUser.hash=hash;
 					newUser.password = crypto.pbkdf2Sync(req.body.password,hash, 10000, 64).toString('base64');
-					console.log("signup hash"+hash);
-					console.log("new USer Hash"+newUser.hash);
 					newUser.email=req.body.email;
 					newUser.firstName=req.body.firstName;
 					newUser.lastName=req.body.lastName;
@@ -103,10 +88,8 @@ module.exports = function(passport){
 					// save the user
 					newUser.save(function(err) {
 						if (err){
-							console.log('Error in Saving user: '+err);
 							throw err;
 						}
-						console.log(newUser.username + ' Registration succesful');
 						return done(null, newUser);
 					});
 				}
@@ -115,9 +98,6 @@ module.exports = function(passport){
 	);
 
 	var isValidPassword = function(user,password) {
-		console.log(user.password+" user password");
-		console.log(crypto.pbkdf2Sync(password, user.hash, 10000, 64).toString('base64')+"database Password");
-		console.log(user.hash+"             signin");
 
 		if(user.password==crypto.pbkdf2Sync(password, user.hash, 10000, 64).toString('base64')){
 				return true;
@@ -126,17 +106,4 @@ module.exports = function(passport){
 			return false;
 		}
 	};
-//
-// var createHash = function(password) {
-// 	  return this.password === this.hashPassword(password);
-// 	};
-
-	// var isValidPassword = function(user, password){
-	// 	return bCrypt.compareSync(password, user.password);
-	// };
-	// // Generates hash using bCrypt
-	// var createHash = function(password){
-	// 	return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-	// };
-
 };

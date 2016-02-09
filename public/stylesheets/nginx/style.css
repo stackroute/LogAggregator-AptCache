@@ -14,48 +14,6 @@ limitations under the License.
 
 This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday Kumar Mydam, Nirup TNL, Sandeep Reddy G, Deepak Kumar*/
 
-
-/* Navbar styling start */
-/*.navbar-default{
-  background-color: #333;
-  color: #ffffff;
-}
-.navbar-brand,.navbar
-{
-  padding-left:15px;
-}
-.logo{
-  font-size: 21px;
-  padding-left: 6px !important;
-  color:#ffffff !important;
-}
-.navbar-right{
-  margin-right: 0px;
-}
-.navbar-nav li a{
-  color: #ffffff !important;
-  font-size: 18px;
-}
-.btn-success.active{
-  color:#fff !important;
-}
-
-a.home{
-  padding-bottom: 20px !important;
-}
-.navbar-nav a.nginx {
-    border: 1px solid white;
-    background-color: white !important;
-    color: #333 !important;
-    padding-bottom: 18px;
-    margin-left: 10px;
-}
-
-.navbar-nav a.nginx:hover{
-    background-color: white !important;
-    color: #333 !important;
-}*/
-
 .navbar-default{
   background-color: #333;
   color: #ffffff;
@@ -72,7 +30,6 @@ a.home{
   color: #ffffff !important;
 }
 .btn-default{
-  /*color: #ffffff;*/
   margin: 10px;
   background: #333;
   border: 0px;
@@ -116,7 +73,6 @@ div.aboutusContainer {
   border-top: none;
 }
 #main-tab  .nav-tabs li {
-  /*width:33.3333333333333%;*/
   text-align: center;
 }
 #main-tab  .nav-tabs li a{
@@ -185,10 +141,6 @@ div.aboutusContainer {
   background-color:#337ab7 !important;
   padding-bottom: 18px;
 }
-/*.navbar-nav li.active a{
-  background-color: #38474e !important;
-  color:#fff !important;
-}*/
 .filters .dropdown {
   display : inline-block;
 }
@@ -226,9 +178,6 @@ div.aboutusContainer {
 .noBorder {
   border-left: 0px !important;
 }
-/*.withBorder {
-  border-left : 4px solid blue !important;
-}*/
 
 /*--------------------------------------- listing page stylesheet------------------------------------------------*/
 .logButtonStyle{
@@ -412,11 +361,6 @@ td, tr, th{
   color: grey;
 }
 
-/*.dropdown.month_text,.dropdown.year_text,.crossMonthFilter{
-  float: left;
-  padding: 10px;
-  margin-top: 10px
-}*/
 .dropdown.month_text{
   padding-right: 0px;
 }
@@ -424,10 +368,6 @@ td, tr, th{
   padding: 10px 10px 10px 0px;
   color: #333;
 }
-/*.crossMonthFilter{
-  padding-top: 9px;
-  padding-left: 0px;
-}*/
 .btn{
    font-size: 14px !important;
    font-weight: normal !important;
@@ -512,13 +452,9 @@ serverdown{
 .login-main{
   background-image: url("http://www.qhpress.org/quakerpages/qwhp/paper.gif");
 }
-/*.login-main{
-  background-image: url("../images/data.jpg");
-}*/
 .login-page{
   width: 100%;
   background-color: #222;
-  /*background-color: white;*/
   color: #fff;
   height: 200px;
   margin-top: -100px;
@@ -651,9 +587,6 @@ serverdown{
 
 ***************************************** change password ***************************************************
 
-/*.update-password .fa-lock,.fa-key{
-  display: none;
-}*/
 .update-password{
   background-color: red;
   margin: auto;
@@ -731,12 +664,6 @@ h4.error{
 }
 
 @media (max-width: 900px){
-  /*.tab-pane h2 {
-    display: none;
-  }*/
-  /*.filters{
-    float: left;
-  }*/
 }
 
 @media (max-width: 900px){

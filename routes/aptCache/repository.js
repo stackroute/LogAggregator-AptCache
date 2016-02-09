@@ -2,8 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var router = express.Router();
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://127.0.0.1:27017/LogAggregate');
-//var Logs = require('../../model/logSchema');
+
 var Logs = require('../../models/dbConfig').aptLogModel;
 
 

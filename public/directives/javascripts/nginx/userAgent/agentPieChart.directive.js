@@ -25,12 +25,11 @@ angular.module('logAggregator').directive('agentPieChart', ['$compile', function
       showAgentProgress : '='
     },
     link : function(scope, element, attrs) {
-      // console.log("scope.$id = ",scope.$id);
-      // console.log("scope.$id = ",scope.$id);
+
       var data = scope.data;
 
       var well = d3.select(element[0]);
-      
+
       var svg = well.append("svg").attr("width",600).attr("height",400);
       var g = svg.append("g").attr("id","donut").attr("ng-hide", "showAgentProgress");
       color = d3.scale.category10();

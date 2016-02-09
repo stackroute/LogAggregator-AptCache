@@ -30,5 +30,4 @@ var logSchema = new Schema({
   time : Date
 },{collection: "logs"})//changed from serverhits
 
-//mongoose.model('Logs', logSchema);
 module.exports = logSchema;

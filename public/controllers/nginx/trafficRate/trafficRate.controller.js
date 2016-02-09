@@ -77,7 +77,7 @@ function($scope,$cookies,$location, $rootScope, getTrafficData, $interval) {
     var data = [2];
     $scope.trafficData = data;
     $scope.showProgress = false;
-    console.log("error");}
+  }
   );
 
 
@@ -105,7 +105,7 @@ function($scope,$cookies,$location, $rootScope, getTrafficData, $interval) {
       var data = [2];
       $scope.trafficData = data;
       $scope.showProgress = false;
-      console.log("error");}
+    }
     );
   }
 
@@ -130,7 +130,7 @@ function($scope,$cookies,$location, $rootScope, getTrafficData, $interval) {
      var data = [2];
      $scope.trafficData = data;
       $scope.showProgress = false;
-     console.log("error");}
+     }
    );
   }
 
@@ -151,7 +151,7 @@ function($scope,$cookies,$location, $rootScope, getTrafficData, $interval) {
       var data = [2];
       $scope.trafficData = data;
       $scope.showProgress = false;
-      console.log("error");}
+      }
     );
   }
 
@@ -179,7 +179,7 @@ function($scope,$cookies,$location, $rootScope, getTrafficData, $interval) {
       var data = [2];
       $scope.trafficData = data;
       $scope.showProgress = false;
-      console.log("error");}
+      }
     );
   }
 }
