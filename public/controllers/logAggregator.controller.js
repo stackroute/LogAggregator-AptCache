@@ -16,7 +16,6 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
 
 angular.module('logAggregator').controller('mainController', ['$scope','$cookies','$rootScope', '$window','$http','$location', 'loadConfig','$state',
 '$timeout',function($scope,$cookies,$rootScope, $window,$http,$location, loadConfig, $state,$timeout ) {
-      //  angular.element('.homepage').css('display','block');
       loadConfig.getdata( function(data) {
         $scope.config = data;
         $window.config = $scope.config;
@@ -24,27 +23,16 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
 
       $scope.aptLogTabs=['Request Rate','Data Rate','Package Count','Package Analytics','Package Repository'];
       $scope.nginxLogTabs=['Log Listing','User Agent','Traffic Rate'];
-      // var aptLogLinks={
-      //   '/requestrate':"aptLogStatistics",
-      //   '/datarate':"aptLogStatistics",
-      //   '/packagecount':"aptLogStatistics",
-      //   '/packageanalytics':"aptLogStatistics",
-      //   '/packagerepository':"aptLogStatistics"
-      // };
-      // var angularRoute=$location.$$path;
-      // $scope.selection=aptLogLinks[angularRoute];
 
       $scope.setTab = function(logName){
         if(logName === "Apt Log Statistics")
         {
-          console.log(logName);
           $timeout(function() {
             $state.go("AptLogStatistics.requestrate");
           },1);
         }
         else if(logName === "Nginx Log Statistics")
         {
-          console.log(logName);
           $timeout(function() {
             $state.go("NginxLogStatistics.loglisting");
           },1);
@@ -52,11 +40,7 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
       }
 
       $scope.dashName = "Dashboard";
-    // $scope.selection="nginxLogStatistics";
-    // $scope.changePasswordController=function(){
-    //
-    //   $location.path('/changePassword');
-    // }
+
     $scope.setDashName = function(val){
       $scope.dashName = val;
     }
@@ -84,7 +68,6 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
    $http.get('/auth/signout').then(function(response){
       var result=document.getElementsByClassName('homepage');
       angular.element(result).css('display','none');
-      console.log("inside response function");
       $rootScope.tab="";
       $cookies.remove('login');
       $location.path('/');

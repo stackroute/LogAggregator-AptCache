@@ -17,7 +17,7 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
 var express = require('express');
 var router = express.Router();
 var passport=require('passport');
-//require('.././localAuth');
+
 module.exports = function(){
 console.log("in authenticate");
 	//sends successful login state back to angular
@@ -25,7 +25,6 @@ console.log("in authenticate");
 
 	router.get('/success', function(req, res){
 
-		// res.send("success");
 		res.send({state: 'success', user: req.user ? req.user : null});
 	});
 
