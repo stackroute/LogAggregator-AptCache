@@ -1,41 +1,34 @@
+var sinon = require('sinon');
 var express = require('express');
 var chai = require('chai');
 var expect = require('chai').expect;
 var superTest = require('supertest');
+var app = require("../bin/www");
+
 var url = superTest("http://localhost:8080");
-var app = require("../app");
+var logSchema = require('../models/dbConfig.js').aptLogModel;
+
+
+var mStub = sinon.stub(logSchema, 'aggregate');
 
 describe("testing packageCount route",function(err){
-  it("should return Pckage count data with json datatype",function(done){
-    url
-      .get("/packagecount/year/year_month/2015")
-      .expect(200)
-      .expect("Content type",/json/)
-      .end(function(err, res){
-        // console.log("*******************",res.text);
-        var myObj = JSON.parse(res.text);
-        // console.log("*******************"+myObj[0]);
-        console.log(myObj[0]["Package Version"]);
-        expect(myObj[0]["Package Version"]).to.equal("1.2.50-1ubuntu2.14.04.1");
-        console.log(myObj[0]["Package Version"]);
-        done();
-      })
-  })
-})
-describe("testing packageCount route",function(err){
-  it("should return Pckage count data with json datatype",function(done){
-    url
-      .get("/dataRateData/size/all/2015/monthwise")
-      .expect(200)
-      .expect("Content type",/json/)
-      .end(function(err, res){
-        // console.log("*******************",res.text);
-        var myObj = JSON.parse(res.text);
-        // console.log("*******************"+myObj[0]);
-        console.log(myObj[11]["Input"]);
-        expect(myObj[11]["Input"]).to.equal(191697559);
 
-        done();
-      })
-  })
+  beforeEach(function(){
+    var argvalue = [{$match:{mode:"O",year:2015,month:"Oct","download":{$regex:".deb$"}}},{$group:{_id: {package:"$download"},count:{$sum:1}}}];
+    var yieldValue = [{ "_id" : { "package" : "uburep/pool/universe/f/fsplib/jishnu_0.11-2_i386.deb" }, "count" : 1 }];
+    mStub.withArgs(argvalue).yields(null,yieldValue);
+    // mStub.yields(null,yieldValue);
+
+  });
+
+  it('should retrieve data', function(done){
+    url
+       .get("/packagecount/year/year_month/2015_Oct")
+       .expect(200)
+       .end(function(err, res){
+          var myObj = JSON.parse(res.text);
+          expect(myObj[0]["Package Name"]).to.equal("jishnu");
+          done();
+       })
+  });
 })
