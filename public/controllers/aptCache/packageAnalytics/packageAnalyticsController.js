@@ -2,6 +2,8 @@ angular.module('aptLogApp').controller("packageAnalyticsController",function($sc
   $scope.requiredYear = 2015;
   $scope.requiredMonth = "";
   $scope.info = undefined;
+  $scope.msg="";
+  
   $scope.writeTable = function(year,month){
       $scope.requiredYear = year;
       $scope.requiredMonth = month;

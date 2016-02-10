@@ -16,13 +16,19 @@ angular.module('aptLogApp').factory('ajaxService',function(){
         else if(type==="packageCount"){
             var url = '/packageCount/year/year_month/'+urlData;
             $http.get(url).success( function(data) {
+              $scope.msg="";
+              if(data.length===0)
+              $scope.msg="No Data Available for this Period.";
               $scope.tableData = data;
             });
         }
         else if(type==="packageAnalytics"){
             var url = '/packageanalytics/package/package_bz2_info/'+urlData;
             $http.get(url).success( function(data) {
-              $scope.tableData = data;
+              $scope.msg="";
+              if(data.length===0)
+              $scope.msg="No Data Available for this Period.";
+            $scope.tableData = data;
             });
         }
         else if(type==="getInfoGraph"){
@@ -95,7 +101,10 @@ angular.module('aptLogApp').factory('ajaxService',function(){
                 }
               i = j-1;
               }
-            $scope.tableData=data;
+              $scope.msg="";
+              if(data.length===0)
+              $scope.msg="No Data Available for this Period.";
+              $scope.tableData = data;
 
             });
         }

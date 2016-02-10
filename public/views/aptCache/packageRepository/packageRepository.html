@@ -16,8 +16,9 @@
   				</div> <!-- end tabbable -->
 		    </div> <!-- end row -->
   		<hr>
+
       <div id="content">
-        <table class="table table-striped" id="contenttable">
+        <table class="table table-striped" id="contenttable" ng-if="tableData.length > 0">
           <tr>
             <th>Repository Name</th>
             <th>Pool Name</th>
@@ -31,6 +32,7 @@
             <td>{{data['packageVersion']}}</td>
           </tr>
         </table>
+        <p id="noInfoMsg">{{msg}}</p>
       </div> <!-- end content -->
     </div> <!-- end tabbable -->
 	</div> <!-- end container -->

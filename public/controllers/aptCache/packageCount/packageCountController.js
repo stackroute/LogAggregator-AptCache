@@ -5,6 +5,7 @@ angular.module('aptLogApp').controller("packageCountController",function($scope,
   $scope.tableData = {};
   $scope.packageHeader=["SI No", "Package Name", "Package Version", "Package Architecture", "Count"]
   $scope.info = {};
+  $scope.msg="";
   $scope.setMonth = function(monthValue){
     $scope.requiredMonth = monthValue;
   }
