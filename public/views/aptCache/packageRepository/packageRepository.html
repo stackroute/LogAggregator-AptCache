@@ -1,0 +1,55 @@
+<!--Copyright 2016 Wipro Limited, NIIT Limited
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This code is written by Ashish Gupta, Tarun Mohandas, Suriya Prakash, Srinivasa Burli, Jishnu Surendran and Bhairavi Balakrishnan -->
+
+<div ng-controller="repositoryController" ng-init="initializeVars();">
+  <div class="container-fluid" id="main" ng-controller="dropController" ng-init="actionFunction=writeTable">
+    <div class="tabbable" id="main-tab">
+    	<div class="row" id="moreInfo">
+  			  <h2>Apt-log Package With Repository and Pool</h2>
+  				<p class="lead">The yearwise table shows repositories and pools from which the packages were downloaded with their versions.</p>
+  				<div class="tabbable" >
+  					<ul class="nav nav-tabs">
+              <li class="active">
+                <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="writeTable(requiredYear,'Input')">
+                  Year-wise
+                </a>
+              </li>
+  					</ul>
+              <dropdown-mode></dropdown-mode>
+  				</div> <!-- end tabbable -->
+		    </div> <!-- end row -->
+  		<hr>
+
+      <div id="content">
+        <table class="table table-striped" id="contenttable" ng-if="tableData.length > 0">
+          <tr>
+            <th>Repository Name</th>
+            <th>Pool Name</th>
+            <th>Package Name</th>
+            <th>Package Version</th>
+          </tr>
+          <tr ng-repeat="data in tableData ">
+            <td ng-if="data.rowspan" rowspan={{data.rowspan}}>{{data['repository']}}</td>
+            <td ng-if="data.rowspan1" rowspan={{data.rowspan1}}>{{data['pool']}}</td>
+            <td>{{data['packageName']}}</td>
+            <td>{{data['packageVersion']}}</td>
+          </tr>
+        </table>
+        <p id="noInfoMsg">{{msg}}</p>
+      </div> <!-- end content -->
+    </div> <!-- end tabbable -->
+	</div> <!-- end container -->
+</div> <!-- end repositoryController -->

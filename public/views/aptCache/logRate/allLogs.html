@@ -1,0 +1,54 @@
+<!--Copyright 2016 Wipro Limited, NIIT Limited
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This code is written by Ashish Gupta, Tarun Mohandas, Suriya Prakash, Srinivasa Burli, Jishnu Surendran and Bhairavi Balakrishnan -->
+
+<div ng-controller="logRateController" ng-init="initializeVars(false);">
+  <div class="container-fluid" id="main" ng-controller="dropController" ng-init="actionFunction=generate">
+    <div class="row" id="moreInfo">
+        <div class="tabbable" id="main-tab">
+          <h2>Apt-log Request rate</h2>
+          <p class="lead">The graph shows the number of logs in the selected time period, grouped by input and output</p>
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="setTab(1);generate(requiredYear,'');">
+                  Year-wise
+                </a>
+              </li>
+              <li>
+                <a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2);">
+                  Month-wise
+                </a>
+              </li>
+            </ul>
+            <div class="tab-pane active" ng-show="tab===1">
+                <drop-year></drop-year>
+            </div>
+            <div class="tab-pane active"  ng-show="tab===2">
+              <drop-year></drop-year>
+              <drop-month></drop-month>
+            </div>
+        </div> <!-- end tabbable -->
+        <radio-filter></radio-filter>
+        <div class="col-lg-12">
+
+            <h4>{{"logRateData"|addPara:requiredYear:requiredMonth}}</h4>
+        </div>  <!-- end col-lg-12 for paragraph -->
+
+      </div> <!-- end tabbable -->
+    </div> <!-- end row -->
+    <hr>
+  </div><!-- end container -->
+</div> <!-- end logRateController -->
