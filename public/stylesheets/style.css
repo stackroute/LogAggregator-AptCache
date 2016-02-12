@@ -29,10 +29,17 @@ This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday
 .navbar-nav li a{
   color: #ffffff !important;
 }
+
+.navbar-nav li.active a{
+    background-color: #38474e !important;
+    color:#fff !important;
+  }
+
 .btn-default{
   margin: 10px;
   background: #333;
   border: 0px;
+  color: #ffffff;
 }
 .dropdown-menu li a{
   color: #333 !important;
@@ -74,10 +81,12 @@ div.aboutusContainer {
 }
 #main-tab  .nav-tabs li {
   text-align: center;
+  width:20%;
 }
 #main-tab  .nav-tabs li a{
   font-size: 16px;
   padding-bottom: 15px;
+  color:#337ab7;
 }
 .change-pass{
   font-size: 16px;
@@ -88,6 +97,7 @@ div.aboutusContainer {
 }
 .tab-pane {
   height: 100%;
+   background-color: #f5f5f5;
 }
 .tab-pane .criteriaPane {
   border-radius: 0px;
@@ -107,13 +117,13 @@ div.aboutusContainer {
   height: 100%;
   border-left: 1px solid lightgrey;
   text-align: center;
+     background-color: #f5f5f5;
 }
 .wrap .page-header {
   margin: 0px;
 }
 .wrap .well {
   margin: 20px;
-  overflow-x: scroll;
 }
 
 .well::-webkit-scrollbar {
@@ -142,7 +152,7 @@ div.aboutusContainer {
   padding-bottom: 18px;
 }
 .filters .dropdown {
-  display : inline-block;
+  display: inline;
 }
 .AgentProgressIcon{
   margin-top: 13px;
@@ -183,8 +193,6 @@ div.aboutusContainer {
 .logButtonStyle{
   border-radius: 0px;
   border: 0px;
-  border-bottom: 2px solid lightgrey;
-  border: 0.5px solid #e3e3e3;
   height: 50px;
   width: 100%;
   margin-left: 0;
@@ -193,6 +201,7 @@ div.aboutusContainer {
   margin-top: -0.5px;
   color: grey !important;
   background-color: #ffffff !important;
+  margin: 0px;
 }
 .buttonClicked{
   color: blue;
@@ -675,3 +684,94 @@ h4.error{
     font-size: 16px !important;
   }
 }
+
+
+
+/*Aptlog cache Style*/
+
+/* --------------------------------------
+  Layout
+  -------------------------------------- */
+
+   body {
+     -webkit-font-smoothing: antialiased;
+     text-rendering: optimizelegibility;
+   }
+
+   .tab-link {
+     font-size: 20px;
+   }
+
+   #featuresHeading {
+     margin-top: 70px;
+   }
+
+   .dropdown {
+     display: inline;
+     width: 20%;
+   }
+
+   .tab-link {
+     font-size: 20px;
+   }
+
+   h2 {
+     text-align: center;
+     font-family: 'Alegreya', serif;
+     margin-bottom: 30px;
+   }
+
+   .dropdown-menu{
+     margin-top: 20px;
+     margin-left: 0;
+     padding-left: 0;
+     min-width: 80px;
+   }
+
+   .dropdown-menu li a:hover{
+     background-color: #eee;
+   }
+
+   #radio {
+     width: 400px;
+   }
+
+   #radio label, #radio input{
+     font-size: 12px;
+     padding-left: 5px;
+     margin-left: 10px;
+   }
+
+   #myTab{
+     padding: 0px;
+   }
+
+   #row_well {
+     background: rgba(29, 83, 119, 1);
+   }
+
+   #bigCallout {
+     margin-top: 70px;
+   }
+
+   #main{
+     margin-top: 0px;
+     background-color: #f5f5f5;
+     margin-bottom: 20px;
+   }
+
+   #moreInfo {
+     margin-top: -100px;
+     margin-left: 10px;
+     margin-right: 15px;
+   }
+   #moreInfo p{
+     padding-right: 10px;
+   }
+   #para {
+     font-family: 'Alegreya', serif;
+   }
+   #noInfoMsg{
+     font-size: 16.35px;
+     text-align: center;
+   }
