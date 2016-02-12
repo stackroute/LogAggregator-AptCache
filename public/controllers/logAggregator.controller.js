@@ -61,13 +61,14 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
     $scope.logout=function(){
       $rootScope.loginMessage="";
       $rootScope.checkData="";
-   $http.get('/auth/signout').then(function(response){
-      var result=document.getElementsByClassName('homepage');
-      angular.element(result).css('display','none');
-      $rootScope.tab="";
-      $cookies.remove('login');
-      $location.path('/login');
-    });
+      $http.get('/auth/signout').then(function(response){
+        var result=document.getElementsByClassName('homepage');
+        angular.element(result).css('display','none');
+        $rootScope.tab="";
+        $cookies.remove('login');
+        $location.path('/login');
+        $window.location.reload();
+      });
     }
   }
 ]);
