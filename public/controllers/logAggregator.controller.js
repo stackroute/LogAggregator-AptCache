@@ -66,7 +66,7 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
       angular.element(result).css('display','none');
       $rootScope.tab="";
       $cookies.remove('login');
-      $location.path('/');
+      $location.path('/login');
     });
     }
   }
