@@ -58,7 +58,7 @@ var createDataGraph = function(data)
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<strong>Size:</strong> <span>" + bytesToString(d.value) + "</span>";
+          return "<strong>Size:</strong> <span style='color:lightblue'>" + bytesToString(d.value) + "</span>";
         })
 
   var svg = d3.select("div #main").append("svg")

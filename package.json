@@ -23,6 +23,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
+    "chai": "^3.5.0",
     "sinon": "^1.17.3",
     "supertest": "^1.1.0"
   }

@@ -45,8 +45,8 @@ router.get('/year/year_month/:year_month=?', function(req, res, next) {
   startTimestamp = startTimestamp.toString();
   var endTimestamp = Date.parse(endDate)/1000;
   endTimestamp = endTimestamp.toString();
-  console.log(startDate," ",startTimestamp);
-  console.log(endDate," ",endTimestamp);
+  // console.log(startDate," ",startTimestamp);
+  // console.log(endDate," ",endTimestamp);
 
   var matchObj={
     timestamp : {$gte: startTimestamp, $lte: endTimestamp},
@@ -54,6 +54,7 @@ router.get('/year/year_month/:year_month=?', function(req, res, next) {
     path : {$regex:".deb$"}
   };
 
+  console.log(startTimestamp + "  " + endTimestamp);
   console.log(matchObj);
 
   Logs.aggregate([
