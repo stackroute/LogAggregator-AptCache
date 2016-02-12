@@ -72,7 +72,6 @@ function createYearlyData(result){
     var LENGTH = result.length;
     for(var i=0; i<LENGTH; i++){
           var timeObj = timeConverter(parseInt(result[i]["timestamp"]));
-          //console.log(timeObj);
           if(result[i]["mode"]==="I"){
             data[months.indexOf(timeObj["month"])]["Input"]+=result[i]["size"];
           }
@@ -80,7 +79,6 @@ function createYearlyData(result){
             data[months.indexOf(timeObj["month"])]["Output"]+=result[i]["size"];
           }
     }
-    console.log(data);
     return data;
 }
 function makeQuery(packageType,periodType,periodName){
@@ -114,7 +112,7 @@ function makeQuery(packageType,periodType,periodName){
             queryParams["timestamp"]["$lte"] = endtime;
         }
         else if(periodType === "monthly"){
-            match["path"] = {$not:/.deb/};
+            queryParams["path"] = {$not:/.deb/};
             periods = periodName.split("_");
             var monthPos = months.indexOf(periods[1]);
             var days = new Date(parseInt(periods[0]), monthPos+1, 0).getDate();
