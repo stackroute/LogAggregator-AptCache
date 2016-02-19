@@ -41,15 +41,16 @@ angular.module('aptLogApp').controller("packageCountController",function($scope,
     ajaxService.ajaxCall("getInfoTable",urlData,$http,$scope);
 
   };
+
   $scope.writeTable = function(year,month){
-      $scope.requiredYear = year;
-      $scope.requiredMonth = month;
-      if($scope.requiredMonth===""){
-        ajaxService.ajaxCall("packageCount",$scope.requiredYear,$http,$scope);
-      }
-      else{
-        ajaxService.ajaxCall("packageCount",$scope.requiredYear+"_"+$scope.requiredMonth,$http,$scope);
-      }
+    $scope.requiredYear = year;
+    $scope.requiredMonth = month;
+    if($scope.requiredMonth===""){
+      ajaxService.ajaxCall("packageCount",$scope.requiredYear,$http,$scope);
+    }
+    else{
+      ajaxService.ajaxCall("packageCount",$scope.requiredYear+"_"+$scope.requiredMonth,$http,$scope);
+    }
   };
 
   $scope.setTab = function(tabVal){

@@ -18,41 +18,39 @@ This code is written by Ashish Gupta, Tarun Mohandas, Suriya Prakash, Srinivasa 
   <div class="container-fluid" id="main" ng-controller="dropController" ng-init="actionFunction=writeTable">
     <div class="tabbable" id="main-tab">
       <div class="row" id="moreInfo">
-          <h2>Apt-log Package Count</h2>
-          <p class="lead">The year-wise table shows information of the downloaded packages for the given year and the month-wise table shows the same information for given month.</p>
-          <div class="tabbable">
-            <ul class="nav nav-tabs">
-              <li class="active">
-                <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="setTab(1);writeTable(requiredYear,'')">
-                  Year-wise
-                </a>
-              </li>
-              <li>
-                <a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2)">
-                  Month-wise
-                </a>
-              </li>
-            </ul>
-            <div class="tab-pane active" ng-show="tab===1">
-                <drop-year ></drop-year>
-              </div>
-            <div class="tab-pane active" ng-show="tab===2">
-              <drop-year></drop-year>
-              <drop-month></drop-month>
-            </div>
-          </div> <!-- end tabbable -->
-
-          <div class="col-lg-12">
-
-              <h4>{{"packageCount"|addPara:requiredYear:requiredMonth}}</h4>
-          </div> <!-- end col-lg-12 for paragraph -->
+        <h2>Apt-log Package Count</h2>
+        <p class="lead">The year-wise table shows information of the downloaded packages for the given year and the month-wise table shows the same information for given month.</p>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href data-toggle="tab" class="tab-link" id="year_tab" ng-click="setTab(1);writeTable(requiredYear,'')">
+                Year-wise
+              </a>
+            </li>
+            <li>
+              <a href data-toggle="tab" class="tab-link" id="month_tab" ng-click="initializeVars(true);setTab(2)">
+                Month-wise
+              </a>
+            </li>
+          </ul>
+          <div class="tab-pane active" ng-show="tab===1">
+            <drop-year ></drop-year>
+          </div>
+          <div class="tab-pane active" ng-show="tab===2">
+            <drop-year></drop-year>
+            <drop-month></drop-month>
+          </div>
+        </div> <!-- end tabbable -->
+        <div class="col-lg-12">
+          <h4>{{"packageCount"|addPara:requiredYear:requiredMonth}}</h4>
+        </div> <!-- end col-lg-12 for paragraph -->
       </div> <!-- end row -->
 
       <hr>
       <p id="noInfoMsg">{{msg}}</p>
-      <div ui-grid="{ data: tableData }"ng-if="tableData.length > 0" class="myGrid">
 
-      </div> <!-- end content -->
+      <div ui-grid="{ data: tableData }" ng-if="tableData.length > 0" class="myGrid">
+      </div> <!-- end ui-grid -->
 
     </div> <!-- end tabbable -->
   </div> <!-- end container -->
