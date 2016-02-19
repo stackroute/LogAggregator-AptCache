@@ -36,6 +36,7 @@ angular.module('aptLogApp').factory('ajaxService',function(){
               if(data.length===0)
               $scope.msg="No Data Available for this Period.";
               $scope.tableData = data;
+              console.log(data);
             });
         }
         else if(type==="packageAnalytics"){
