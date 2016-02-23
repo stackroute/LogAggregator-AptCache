@@ -49,6 +49,11 @@ var getInfo = require('./routes/aptCache/getInfo');
 //end wave 2 code
 
 var app = express();
+//piece of code to authenticate request before accesing routes
+var isAuthenticated = function (req, res, next) {
+  if(req.isAuthenticated()) return next();
+  res.status(401).send("Not authorised");
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -85,6 +90,12 @@ var initPassport = require('./passport-init');
 initPassport(passport);
 app.use('/', routes);
 app.use('/auth', authenticate);
+//
+//##### #### FROM THIS LINE OF CODE ALL THE ROUTES REQUIRES AUTHENTICATION
+//
+app.use(isAuthenticated);
+
+
 app.use('/json/userAgent', userAgent);
 app.use('/json/logListing', logListing);
 app.use('/json/trafficRate', trafficRate);

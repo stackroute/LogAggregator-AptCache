@@ -1,5 +1,5 @@
 exports.config = {
-  // allScriptsTimeout:11000,
+  allScriptsTimeout:50000,
 
   chromeDriver:'./selenium/chromedriver',
   framework: 'jasmine',
