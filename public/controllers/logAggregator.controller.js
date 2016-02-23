@@ -15,25 +15,25 @@ limitations under the License.
 This code is written by Prateek Reddy Yammanuru, Shiva Manognya Kandikuppa, Uday Kumar Mydam, Nirup TNL, Sandeep Reddy G, Deepak Kumar
  and updated by Ashish Gupta, Tarun Mohandas, Suriya Prakash, Srinivasa Burli, Jishnu Surendran and Bhairavi Balakrishnan*/
 
-angular.module('logAggregator').controller('mainController', ['$scope','$cookies','$rootScope', '$window','$http','$location', 'loadConfig','$state',
-'$timeout',function($scope,$cookies,$rootScope, $window,$http,$location, loadConfig, $state,$timeout ) {
-      loadConfig.getdata( function(data) {
-        $scope.config = data;
-        $window.config = $scope.config;
-      });
+angular.module('logAggregator').controller('mainController', ['$scope','$cookies','$rootScope', '$window','$http','$location', 'loadConfig','$state','$timeout',
+  function($scope,$cookies,$rootScope, $window,$http,$location, loadConfig, $state,$timeout ) {
+    loadConfig.getdata( function(data) {
+      $scope.config = data;
+      $window.config = $scope.config;
+    });
 
-      $scope.aptLogTabs=['Request Rate','Data Rate','Package Count','Package Analytics','Package Repository'];
-      $scope.nginxLogTabs=['Log Listing','User Agent','Traffic Rate'];
+    $scope.aptLogTabs=['Request Rate','Data Rate','Package Count','Package Analytics','Package Repository'];
+    $scope.nginxLogTabs=['Log Listing','User Agent','Traffic Rate'];
 
-      $scope.setTab = function(logName){
-        var presentRoute=$location.$$path.split("/");
-        var stateToGo = logName.split(" ").join("")+"."+presentRoute[2];
-        $timeout(function() {
-          $state.go(stateToGo);
-        },1);
-      }
+    $scope.setTab = function(logName){
+      var presentRoute=$location.$$path.split("/");
+      var stateToGo = logName.split(" ").join("")+"."+presentRoute[2];
+      $timeout(function() {
+        $state.go(stateToGo);
+      },1);
+    }
 
-      $scope.dashName = "Dashboard";
+    $scope.dashName = "Dashboard";
 
     $scope.setDashName = function(val){
       $scope.dashName = val;
@@ -54,11 +54,12 @@ angular.module('logAggregator').controller('mainController', ['$scope','$cookies
       angular.element(result).css('display','block');
       $location.path($location.path());
     }
-    else{
+    else {
     $cookies.put("login",'false');
-  }
+    }
+
     $scope.showContent=false;
-    $scope.logout=function(){
+    $scope.logout=function() {
       $rootScope.loginMessage="";
       $rootScope.checkData="";
       $http.get('/auth/signout').then(function(response){

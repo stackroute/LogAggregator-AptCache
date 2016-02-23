@@ -1,5 +1,5 @@
 exports.config = {
-  allScriptsTimeout:11000,
+  // allScriptsTimeout:11000,
 
   chromeDriver:'./selenium/chromedriver',
   framework: 'jasmine',
@@ -7,8 +7,8 @@ exports.config = {
     'browserName': 'firefox'
   },
 
-  seleniumAddress: 'http://172.23.238.214:4444/wd/hub',
-  baseUrl: 'http://localhost:7070/#/login',
+  seleniumAddress: 'http://172.23.238.188:4444/wd/hub',
+  baseUrl: 'http://localhost:3000/#/login',
   specs: ['spec.js'],
 
   jasmineNodeOpts : {

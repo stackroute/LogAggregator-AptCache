@@ -15,7 +15,7 @@ limitations under the License.
 This code is written by Ashish Gupta, Tarun Mohandas, Suriya Prakash, Srinivasa Burli, Jishnu Surendran and Bhairavi Balakrishnan*/
 
 var express = require('express');
-var fs = require('fs');
+// var fs = require('fs');
 var router = express.Router();
 
 var Logs = require('../../models/dbConfig').aptLogModel;
@@ -54,14 +54,14 @@ router.get('/year/year_month/:year_month=?', function(req, res, next) {
     path : {$regex:".deb$"}
   };
 
-  console.log(startTimestamp + "  " + endTimestamp);
-  console.log(matchObj);
+  // console.log(startTimestamp + "  " + endTimestamp);
+  // console.log(matchObj);
 
   Logs.aggregate([
     { $match : matchObj},
     { $group:{_id:{package:"$path"},count:{$sum:1}}}],
     function(err,doc){
-      console.log(doc);
+      // console.log(doc);
       for(var i=0,j=1; i<doc.length; i++)
       {
         len = doc[i]["_id"]["package"].length;

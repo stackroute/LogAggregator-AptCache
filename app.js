@@ -33,7 +33,6 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 var routes = require('./routes/index');
-
 var configRoute = require('./routes/config');
 var authenticate = require('./routes/authenticate')(passport);
 var userAgent = require('./routes/nginx/userAgent');
