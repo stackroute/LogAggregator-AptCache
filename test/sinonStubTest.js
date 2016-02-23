@@ -3,12 +3,12 @@ var express = require('express');
 var chai = require('chai');
 var expect = require('chai').expect;
 var superTest = require('supertest');
-var app = require("../bin/www");
-
-var url = superTest("http://localhost:8080");
+var app = require("../app.js");
+var url = superTest.agent(app);
 var logSchema = require('../models/dbConfig.js').aptLogModel;
 
 describe("Testing Datarate  Route --",function(err){
+  before(loginUser());
    this.timeout(20000);
   it("should return monthwise data rate for spacified year with json datatype",function(done){
     url
@@ -21,6 +21,7 @@ describe("Testing Datarate  Route --",function(err){
 
         done();
       })
+      after(logoutUser());
   })
 
 //****************************************************************
@@ -108,6 +109,8 @@ describe("Testing Datarate  Route --",function(err){
 // ****************************************************************************
 // *******************Package repository route*****************************
 describe("Testing package repository route -- ",function(err){
+  before(loginUser());
+
    this.timeout(20000);
 
       it("should return yearwise package details in table formate for the selected year",function(done){
@@ -134,9 +137,12 @@ describe("Testing package repository route -- ",function(err){
                 })
 
 })
+after(logoutUser());
 })
 //*************************LogRate data and PackageAnalytics route *************************************
 describe("Testing LogRateData Routes Yearwise",function(err){
+  before(loginUser());
+
    this.timeout(200000);
   it("should return LogRate all data for the year 2016 with Json datatype",function(done){
     url
@@ -179,8 +185,11 @@ describe("Testing LogRateData Routes Yearwise",function(err){
         done();
       })
   })
+  after(logoutUser());
 })
 describe("Testing LogRateData Routes Monthwise",function(err){
+  before(loginUser());
+
      this.timeout(20000);
   it("should return LogRate all data for the year 2016 month October with Json datatype",function(done){
     url
@@ -223,9 +232,12 @@ describe("Testing LogRateData Routes Monthwise",function(err){
         done();
       })
   })
+  after(logoutUser());
 })
 
 describe("Testing PackageAnalytics Routes Yearwise",function(err){
+  before(loginUser());
+
    this.timeout(20000);
   it("should return PackageAnalytics data for the year 2016 with Json datatype",function(done){
     url
@@ -240,9 +252,12 @@ describe("Testing PackageAnalytics Routes Yearwise",function(err){
         done();
       })
   })
+  after(logoutUser());
 })
 
 describe("Testing PackageAnalytics Routes Monthwise",function(err){
+  before(loginUser());
+
    this.timeout(20000);
   it("should return PackageAnalytics data for the year 2016, month February with Json datatype",function(done){
     url
@@ -257,9 +272,12 @@ describe("Testing PackageAnalytics Routes Monthwise",function(err){
         done();
       })
   })
+  after(logoutUser());
 })
 //**************************packagecount route***************************************************
 describe("Testing packageCount route Yearwise",function(err){
+  before(loginUser());
+
   it("should return Package count data yearwise with json datatype",function(done){
     url
       .get("/packagecount/year/year_month/2016")
@@ -287,11 +305,14 @@ describe("Testing packageCount route Yearwise",function(err){
           done();
       })
   })
+  after(logoutUser());
 })
 
 
 
 describe("Testing different Route using stub to fake mongo calls",function(err){
+  before(loginUser());
+
  this.timeout(20000);
   before(function(){
 
@@ -314,14 +335,6 @@ describe("Testing different Route using stub to fake mongo calls",function(err){
 
     var argvalue_package_count=[{$match:{timestamp:{'$gte':'1451606400','$lte':'1483228799'},mode:'O',path:{'$regex':'.deb$'}}},{$group:{_id:{package:"$path"},count:{$sum:1}}}]
     var yieldValue_package_count=[{ "_id" : { "package" : "uburep/pool/universe/a/aglfn/stubtest_0.0.0_test.deb" }, "count" : 1 }];
-
-
-//*****lograte******
-    // var argvalue_lograte_all = {timestamp:{'$gte': 1451606400, '$lte': 1483228799 }};//2016 feb month
-    // var yieldvalue_lograte_all = [{"_id" : "56bc2b018634926707000001", "timestamp" : "1455172317", "mode" : "I", "size" : 8888, "host" : "172.23.238.253", "path" : "security.debian.org/stubtest", "time" : "2016-02-11T06:32:08Z"},
-    //     { "_id" : "56bc2b018634926707000002", "timestamp" : "1455172317", "mode" : "I", "size" : 10000, "host" : "172.23.238.253", "path" : "security.debian.org/stubtest", "time" : "2016-02-11T06:32:08Z" }];
-
-//******package_analytics**********
 
 var argvalue_package_analytics_table = [{$match:{ timestamp: { '$gte': '1451606400', '$lte': '1483228799' } }},
           {$group:{_id: {"download":"$path"},count:{$sum:1}}}];
@@ -415,5 +428,31 @@ var yieldValue_package_analytics_table = [{ "_id" : { "download" : "security.ubu
         })
     })
 
-
+after(logoutUser());
 })
+function loginUser() {
+    return function(done) {
+        url.post('/auth/login')
+            .send({ username: 'abcd', password: '123456' })
+            .expect(302)
+			  .timeout(10000)
+            .end(function (err, res) {
+			  		if (err) return done(err);
+			  			console.log('logged in to make user available to all routes');
+              console.log(res.text);
+			  			return done();
+        });
+    };
+}
+
+function logoutUser() {
+	return function(done) {
+		url.get('/auth/signout')
+			.expect(200)
+			.end(function(err, res) {
+				if (err) return done(err);
+					console.log('logged out the user to destroy the current session');
+					return done();
+		});
+	};
+}
