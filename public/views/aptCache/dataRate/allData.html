@@ -33,16 +33,16 @@ This code is written by Ashish Gupta, Tarun Mohandas, Suriya Prakash, Srinivasa 
                 </a>
               </li>
             </ul>
-            <div class="tab-pane active" ng-show="tab===1">
+            <div class="tab-pane active" ng-if="tab===1">
                 <drop-year></drop-year>
               </div>
-              <div class="tab-pane active"  ng-show="tab===2">
+              <div class="tab-pane active"  ng-if="tab===2">
                 <drop-year></drop-year>
                 <drop-month></drop-month>
               </div>
           </div> <!-- end tabbable -->
           <radio-filter></radio-filter>
-          <div class="col-lg-12">
+          <div class="col-lg-12" id="Description">
             <!-- <p id="para"> -->
               <h4>{{"dataRateData"|addPara:requiredYear:requiredMonth}}</h4>
             <!-- </p> -->
