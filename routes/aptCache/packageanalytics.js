@@ -56,14 +56,13 @@ function makeQuery(period){
     startTimestamp = startTimestamp.toString();
     var endTimestamp = Date.parse(endDate)/1000;
     endTimestamp = endTimestamp.toString();
-    console.log(startDate," ",startTimestamp);
-    console.log(endDate," ",endTimestamp);
+
 
     var match={
       timestamp : {$gte: startTimestamp, $lte: endTimestamp}
     };
 
-    console.log(match);
+
     return match;
 }
 
@@ -117,7 +116,6 @@ router.get('/package/:packinfo=?/:period=?',function(req,res,next){
           {$match:matchParam},
           {$group:{_id: {"download":"$path"},count:{$sum:1}}}],
           function(err,result){
-            // console.log(result);
             jsonData = createData(result);
             res.json(jsonData);
           }
