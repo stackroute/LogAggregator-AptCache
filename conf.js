@@ -1,13 +1,23 @@
+var HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
+
+var reporter = new HtmlScreenshotReporter({
+  dest: './target/screenshots',
+  filename: 'my-report.html',
+});
+
 exports.config = {
   allScriptsTimeout:100000,
   chromeDriver:'./selenium/chromedriver',
   framework: 'jasmine',
+
   capabilities: {
     'browserName': 'firefox'
   },
-  seleniumAddress: 'http://192.168.1.7:4444/wd/hub',
-  baseUrl: 'http://localhost:3000/#/login',
+
+  seleniumAddress: 'http://172.23.238.214:4444/wd/hub',
+  baseUrl: 'http://localhost:7070/#/login',
   specs: ['spec.js'],
+
   jasmineNodeOpts : {
     onComplete: null,
     isVerbose:false,
@@ -15,9 +25,8 @@ exports.config = {
     includesStackTrace :true,
     defaultTimeoutInterval :60000
   },
+
   onPrepare: function () {
-    return browser.executeScript("alert('Test');").then(function () {
-        return browser.switchTo().alert().accept();
-    });
+    jasmine.getEnv().addReporter(reporter);
   },
 };

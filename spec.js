@@ -3,44 +3,41 @@ describe('Login Page', function() {
   var checkingTabs = function(yearDescription, monthDescription) {
     var YearTab = element(by.id('year_tab')).click();
     var YearTabYearButton = element.all(by.id('dropdownMenu1')).get(1).click();
-    var selectYear = element.all(by.repeater("year in info['years']").row(1)).click();
+    var selectYear = element.all(by.repeater("year in info['years']").row(3)).click();
     var description = by.id('Description');
     browser.wait(function() {
       return browser.isElementPresent(description);
     })
-    expect(YearTabYearButton.getText()).toContain('2014');
+    expect(YearTabYearButton.getText()).toContain('2016');
     expect(YearTab.getText()).toContain('Year-wise');
     expect(element(description).getText()).toEqual(yearDescription);
 
     var MonthTab = element(by.id('month_tab')).click();
     var MonthTabYearButton = element.all(by.id('dropdownMenu1')).get(1).click();
-    selectYear = element.all(by.repeater("year in info['years']").row(1)).click();
+    selectYear = element.all(by.repeater("year in info['years']").row(3)).click();
     var MonthTabMonthButton = element.all(by.id('dropdownMenu3')).click();
     var selectMonth = element.all(by.repeater("month in info['months']").row(1)).click();
     description = by.id('Description');
     browser.wait(function() {
       return browser.isElementPresent(description);
     })
-    expect(MonthTabYearButton.getText()).toContain('2014');
+    expect(MonthTabYearButton.getText()).toContain('2016');
     expect(MonthTabMonthButton.getText()).toContain('Feb');
     expect(MonthTab.getText()).toContain('Month-wise');
     expect(element(description).getText()).toEqual(monthDescription);
-
   }
-
-  browser.driver.manage().window().maximize();
+   browser.driver.manage().window().maximize();
 
   it('Title ', function() {
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:3000/#/login');
+    browser.get('http://localhost:7070/#/login');
 
-    var mainTab =   element(by.css('.login-page h1'));
     expect(browser.getTitle()).toEqual('Tattva');
   });
 
   it('Logged in ', function() {
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:3000/#/login');
+    browser.get('http://localhost:7070/#/login');
 
     element(by.model('uName')).sendKeys("abcd");
     element(by.model('pwd')).sendKeys("123456");
@@ -89,8 +86,8 @@ describe('Login Page', function() {
     expect(requestRateTab.getText()).toContain('Request Rate');
     expect(element(waitrequestRateTab).getText()).toEqual('Apt-log Request rate');
 
-    var yearDes = 'This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of 2014';
-    var monthDes = 'This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of Feb in the year 2014';
+    var yearDes = 'This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of 2016';
+    var monthDes = 'This graph shows the number of apt logs grouped by outgoing requests and those cached by the server in all of Feb in the year 2016';
     checkingTabs(yearDes, monthDes);
 
   });
@@ -104,8 +101,8 @@ describe('Login Page', function() {
     expect(dataRateTab.getText()).toContain('Data Rate');
     expect(element(waitdataRateTab).getText()).toEqual('Apt-log Data rate');
 
-    var yearDes = 'This graph shows the data size of apt logs grouped by outgoing requests and those cached by the server in all of 2014';
-    var monthDes = 'This graph shows the data size of apt logs grouped by outgoing requests and those cached by the server in all of Feb in the year 2014';
+    var yearDes = 'This graph shows the data size of apt logs grouped by outgoing requests and those cached by the server in all of 2016';
+    var monthDes = 'This graph shows the data size of apt logs grouped by outgoing requests and those cached by the server in all of Feb in the year 2016';
     checkingTabs(yearDes, monthDes);
 
   });
@@ -119,8 +116,8 @@ describe('Login Page', function() {
     expect(packageCountTab.getText()).toContain('Package Count');
     expect(element(waitpackageCountTab).getText()).toEqual('Apt-log Package Count');
 
-    var yearDes = 'This table shows the number of apt logs cached by the server organized by package details for all of 2014';
-    var monthDes = 'This table shows the number of apt logs cached by the server organized by package details for all of Feb in the year 2014';
+    var yearDes = 'This table shows the number of apt logs cached by the server organized by package details for all of 2016';
+    var monthDes = 'This table shows the number of apt logs cached by the server organized by package details for all of Feb in the year 2016';
     checkingTabs(yearDes, monthDes);
 
   });
@@ -134,8 +131,8 @@ describe('Login Page', function() {
     expect(packageAnalyticsTab.getText()).toContain('Package Analytics');
     expect(element(waitpackageAnalyticsTab).getText()).toEqual('Apt-log Package Analytics');
 
-    var yearDes = 'This table shows the number of apt logs cached by the server organized by package and operating system for all of 2014';
-    var monthDes = 'This table shows the number of apt logs cached by the server organized by package and operating system for all of Feb in the year 2014';
+    var yearDes = 'This table shows the number of apt logs cached by the server organized by package and operating system for all of 2016';
+    var monthDes = 'This table shows the number of apt logs cached by the server organized by package and operating system for all of Feb in the year 2016';
     checkingTabs(yearDes, monthDes);
 
   });
@@ -148,6 +145,13 @@ describe('Login Page', function() {
     });
     expect(packageRepositoryTab.getText()).toContain('Package Repository');
     expect(element(waitpackageRepositoryTab).getText()).toEqual('Apt-log Package With Repository and Pool');
+
+    element(by.css('.fa-power-off')).click();
+    var mainTab =   by.css('.login-page h1');
+    browser.wait(function() {
+      return browser.isElementPresent(mainTab);
+    });
+    expect(browser.getTitle()).toEqual('Tattva');
   });
 
 });

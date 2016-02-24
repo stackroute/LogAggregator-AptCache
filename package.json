@@ -33,6 +33,7 @@
     "karma-jasmine": "^0.3.7",
     "karma-junit-reporter": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.0",
     "sinon": "^1.17.3",
     "supertest": "^1.1.0"
   }
