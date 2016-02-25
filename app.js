@@ -49,6 +49,7 @@ var getInfo = require('./routes/aptCache/getInfo');
 //end wave 2 code
 
 var app = express();
+var env = app.get('env');
 //piece of code to authenticate request before accesing routes
 var isAuthenticated = function (req, res, next) {
   if(req.isAuthenticated()) return next();
@@ -59,13 +60,14 @@ var isAuthenticated = function (req, res, next) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+var cpath = env == 'production' ? '../public' : 'public' ;
+app.use(express.static(path.join(__dirname, cpath)));
+
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-} else if (process.env.NODE_ENV === 'production') {
-  app.use(compress());
-}
+app.use(favicon(path.join(__dirname, cpath, 'favicon.ico')));
+
+app.use(compress());
+
 
 app.use(flash());
 app.use(methodOverride());
