@@ -1,7 +1,7 @@
 var HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 
 var reporter = new HtmlScreenshotReporter({
-  dest: './target/screenshots',
+  dest: './protractorresults',
   filename: 'my-report.html',
 });
 
@@ -16,7 +16,7 @@ exports.config = {
 
   seleniumAddress: 'http://172.23.238.214:4444/wd/hub',
   baseUrl: 'http://localhost:7070/#/login',
-  specs: ['spec.js'],
+  specs: ['protractorspec/spec.js'],
 
   jasmineNodeOpts : {
     onComplete: null,
